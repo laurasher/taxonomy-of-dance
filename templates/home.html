@@ -90,7 +90,35 @@
 			width: 20px;
 			border-left: var(--black-line-width) solid black;
 		}
-		@media screen and (max-width: 800px) {
+		.desktop{
+			display:block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.mobile{
+			display:none;
+		}
+
+		@media (max-width: 640px) and (min-width: 0px){
+		.desktop{
+			display:none;
+		}
+
+		.mobile{
+			display:block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		#taxonomy-title {
+			padding-top: 8vh;
+			height: 80vh;
+			width: 80vw;
+			background: 
+			linear-gradient(black, black) right / var(--black-line-width) 25%;
+			background-repeat: no-repeat;
+			background-position-y: top;
+		}
 		}
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="https://d3js.org/d3.v4.min.js"></script>
@@ -103,7 +131,8 @@
 </head>
 <body>
 	<div id='title' class='blade'>
-		<img id='taxonomy-title' class='centered' src="{{ url_for('static', filename='assets/taxonomy-title-AND-backdrop.svg') }}">
+		<img id='taxonomy-title' class='centered, mobile' src="{{ url_for('static', filename='assets/taxonomy-of-dance-vertical.svg') }}" alt="taxonomy of dance">
+		<img id='taxonomy-title' class='centered, desktop' src="{{ url_for('static', filename='assets/taxonomy-title-AND-backdrop.svg') }}" alt="taxonomy of dance">
 	</div>
 	<div id='intro' class='blade'>
 		<div class='parent'>
