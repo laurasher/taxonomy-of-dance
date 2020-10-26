@@ -125,7 +125,13 @@
 		.mobile{
 			display:none;
 		}
-
+		#play-button {
+        	border-radius: 3px;
+	  		background: black;
+			color: white;
+			border: 1px solid black;
+			padding: 5px;
+      	}
 		@media (max-width: 720px) and (min-width: 0px){
 			.desktop{
 				display:none;
@@ -261,8 +267,8 @@
 	var lineRes = 0.05
 	var curveAlpha = 0.55
 	var radialLineWidth = 0.5
-	var radiusMult = 400 //this has to do with the spikes
-	var radiusOutwardMult = 4 //scaling to the page
+	var radiusMult = 100 //this has to do with the spikes
+	var radiusOutwardMult = 1 //scaling to the page
 	var curveType = 'basis'
 	var stepLengthMultipier = 2
 	function getRandomNumber(start, end) {
@@ -307,9 +313,10 @@
 			bottom: 120,
 			left: 20
 		};
-		var width = window.innerWidth - margin.left - margin.right - 20;
-		var height = window.innerHeight - margin.top - margin.bottom - 20;
-
+		// var width = window.innerWidth - margin.left - margin.right - 20;
+		// var height = window.innerHeight - margin.top - margin.bottom - 20;
+		var width = 200 - margin.left - margin.right - 20;
+		var height = 200 - margin.top - margin.bottom - 20;
 		//SVG container
 		var svg = d3.select("#coppelia-choreo-radial")
 			.append("svg")
