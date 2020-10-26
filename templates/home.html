@@ -41,20 +41,20 @@
 		.blade{
 			width: 100vw;
 			height: 90vh;
-			border-width: 5px;
 			border-top: black;
+			border-width: 0px;
 			border-left-width: 0px;
 			border-right-width: 0px;
-			border-bottom-width: 0px;
-			border-style: solid;
-			border-width: 0px;
+			border-bottom-width: 1px;
+			border-style: dashed;
+			/* border-width: 0px; */
 		}
 		#taxonomy-title {
 			padding-top: 8vh;
 			height: 80vh;
 			width: 80vw;
 			background: 
-			linear-gradient(black, black) right / var(--black-line-width) 40%;
+			linear-gradient(black, black) right / var(--black-line-width) 35%;
 			background-repeat: no-repeat;
 			background-position-y: top;
 		}
@@ -65,7 +65,7 @@
 			font-size: 2vh;
 		}
 		#learn-more {
-			width: 7vw;
+			width: 8vw;
 			margin-top: 10vh;
 			display: block;
 			margin-left: 1vw;
@@ -80,58 +80,98 @@
 			grid-template-columns: 250px 1fr;
 			grid-template-rows: 150px 1fr;
 			width: 80vw;
-			margin: -18vw 5vw;
-			/* height: 200px; */
 		}
 		.child {
 			grid-area: 1 / 1 / 2 / 2;
 			opacity: 0.8;
-			height: 350vh;
+			height: 550vh;
 			width: 20px;
 			border-left: var(--black-line-width) solid black;
+			margin: -18vw 5vw;
 		}
-		.desktop{
-			display:block;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		.mobile{
-			display:none;
-		}
-
-		@media (max-width: 640px) and (min-width: 0px){
-		.desktop{
-			display:none;
-		}
-
-		.mobile{
-			display:block;
-			margin-left: auto;
-			margin-right: auto;
-		}
-		#taxonomy-title {
-			padding-top: .5vh;
-			height: 95vh;
-			width: 95vw;
-			background: 
-			linear-gradient(black, black) right / var(--black-line-width) 25%;
-			background-repeat: no-repeat;
-			background-position-y: top;
-		}
-		#subtitle{
-			height: 8vw;
-			width: 35vh;
-			margin-left: 1vw;
-			font-size: 2.5vh;
-		}
-		.parent{
+		.spread-container{
 			display: grid;
-			grid-template-columns: 250px 1fr;
-			grid-template-rows: 150px 1fr;
-			width: 80vw;
-			margin: -30vw 5vw;
+			grid-gap: 3%;
+			grid-template-columns: auto auto auto;
+			padding: 3%;
+			width: 90%;
+			height: 90%;
+			margin-top: 0px;
+			margin-left: 5%;
 		}
+		.column-within-blade {
+			text-align: center;
+			padding: 2%;
+			border-style: dashed;
+			border-width: 1px;
+		}
+		.a {
+			grid-column: 1;
+			grid-row: 1 / 3;
+		}
+		.b {
+			grid-column: 2;
+			grid-row: 1 / 3;
+		}
+		.c {
+			grid-column: 3;
+			grid-row: 1 / 3;
+		}
+		.desktop{
+			display:block;
+		}
+		.mobile{
+			display:none;
+		}
+
+		@media (max-width: 720px) and (min-width: 0px){
+			.desktop{
+				display:none;
+			}
+			.mobile{
+				display:block;
+			}
+			#taxonomy-title {
+				padding-top: .5vh;
+				height: 95vh;
+				width: 95vw;
+				background: 
+				linear-gradient(black, black) right / var(--black-line-width) 25%;
+				background-repeat: no-repeat;
+				background-position-y: top;
+			}
+			#subtitle{
+				height: 8vw;
+				width: 35vh;
+				margin-left: 1vw;
+				font-size: 2.5vh;
+			}
+			.child {
+				grid-area: 1 / 1 / 2 / 2;
+				opacity: 0.8;
+				height: 350vh;
+				width: 20px;
+				border-left: var(--black-line-width) solid black;
+				margin: -30vw 5vw;
+			}
+			#learn-more {
+				width: 19vw;
+				margin-top: 16vh;
+				display: block;
+				margin-left: 1vw;
+			}
+			.a {
+				grid-row: 1;
+				grid-column: 1 / 3;
+			}
+			.b {
+				grid-row: 2;
+				grid-column: 1 / 3;
+			}
+			.c {
+				grid-row: 3;
+				grid-column: 1 / 3;
+			}
 		}
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="https://d3js.org/d3.v4.min.js"></script>
@@ -144,8 +184,8 @@
 </head>
 <body>
 	<div id='title' class='blade'>
-		<img id='taxonomy-title' class='centered, mobile' src="{{ url_for('static', filename='assets/taxonomy-of-dance-vertical.svg') }}" alt="taxonomy of dance">
-		<img id='taxonomy-title' class='centered, desktop' src="{{ url_for('static', filename='assets/taxonomy-title-AND-backdrop.svg') }}" alt="taxonomy of dance">
+		<img id='taxonomy-title' class='centered mobile' src="{{ url_for('static', filename='assets/taxonomy-of-dance-vertical.svg') }}" alt="taxonomy of dance">
+		<img id='taxonomy-title' class='centered desktop' src="{{ url_for('static', filename='assets/taxonomy-title-AND-backdrop.svg') }}" alt="taxonomy of dance">
 	</div>
 	<div id='intro' class='blade'>
 		<div class='parent'>
@@ -154,15 +194,49 @@
 					Using Labanotation, Taxonomy of Dance attempts to discover an underlying visual
 					structure in western choreography across three periods of dance: <b>classical</b>, <b>contemporary</b>, and <b>postmodern</b>.
 				</div>
-				<!-- <div id='learn-more'>
+				<div id='learn-more'>
 					<img src="{{ url_for('static', filename='assets/learn-more-2.svg') }}">
-				</div> -->
+				</div>
 			</div>	
+		</div>
+		<div style='margin-top: -16vh;'>INTRODUCTION</div>
 	</div>
+	<div id='methodology' class='blade'>
+		METHODOLOGY
 	</div>
-	<div id='classical-era' class='blade'>
-		<div id='classical-era' class='column-within-blade'>
-
+	<div id='classical-era-illustration-spread' class='blade'>
+		<div class='spread-container'>
+			<div id='coppelia-column' class="column-within-blade a">
+				<p class='column-title'>Coppélia 1870</p>
+				<div id="coppelia-choreo-radial"></div>
+				<p class='column-paragraph'>Coppélia was originally choreographed by Arthur Saint-Léon for the St. Petersburg Imperial Ballet in 
+					Russia, though it debuted in Paris in 1870. The ballet tells the comic story of an inventor who creates a doll so lifelike 
+					that a village boy becomes infatuated with it. Coppélia is still frequently performed today, and is known for its fast 
+					footwork as well as its historic use of mime and visual motif to tell a story.</p>
+			</div>
+			<div id='sleepingbeauty-column' class="column-within-blade b">
+					<p class='column-title'>Coppélia 1870</p>
+					<div id="coppelia-choreo-radial"></div>
+					<p class='column-paragraph'>Coppélia was originally choreographed by Arthur Saint-Léon for the St. Petersburg Imperial Ballet in 
+						Russia, though it debuted in Paris in 1870. The ballet tells the comic story of an inventor who creates a doll so lifelike 
+						that a village boy becomes infatuated with it. Coppélia is still frequently performed today, and is known for its fast 
+						footwork as well as its historic use of mime and visual motif to tell a story.</p>
+			</div>
+			<div id='raymonda-column' class="column-within-blade c">
+					<p class='column-title'>Coppélia 1870</p>
+					<div id="coppelia-choreo-radial"></div>
+					<p class='column-paragraph'>Coppélia was originally choreographed by Arthur Saint-Léon for the St. Petersburg Imperial Ballet in 
+						Russia, though it debuted in Paris in 1870. The ballet tells the comic story of an inventor who creates a doll so lifelike 
+						that a village boy becomes infatuated with it. Coppélia is still frequently performed today, and is known for its fast 
+						footwork as well as its historic use of mime and visual motif to tell a story.</p>
+			</div>
+		</div>
+	</div>
+	<div id='classical-era-vis-spread' class='blade'>
+		<div class='spread-container'>
+			<div id='coppelia-column' class="column-within-blade a">A</div>
+			<div id='sleepingbeauty-column' class="column-within-blade b">B</div>
+			<div id='raymonda-column' class="column-within-blade c">C</div>
 		</div>
 	</div>
 	<main>
