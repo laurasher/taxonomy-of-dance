@@ -52,7 +52,7 @@
 			border-right-width: 0px;
 			border-bottom-width: 1px;
 			border-style: dashed;
-			/* border-width: 0px; */
+			border-width: 0px;
 		}
 		#taxonomy-title {
 			padding-top: 8vh;
@@ -112,7 +112,7 @@
 			padding: 2%;
 			border-style: dashed;
 			border-width: 1px;
-			/* border-width: 0px; */
+			border-width: 0px;
 		}
 		.a {
 			grid-column: 1;
@@ -236,18 +236,54 @@
 				</div>
 			</div>	
 		</div>
-		<div style='margin-top: -5vh;'>
+		<!-- <div style='margin-top: -5vh;'>
 			<p class='left-margin'>INTRODUCTION</p>
-		</div>
+		</div> -->
 	</div>
-	<div id='methodology' class='blade'>
+	<!-- <div id='methodology' class='blade'>
 		<p class='left-margin'>METHODOLOGY</p>
-	</div>
-	<div id='classical-era-illustration-spread' class='blade'>
+	</div> -->
+	<!-- <div id='classical-era-illustration-spread' class='blade'>
 		<div class='spread-container'>
 			FEATURE ONE HIGHLY ILLUSTRATED HERE
 			<br>TALK ABOUT CLASSICAL DANCE IN GENERAL
 		</div>
+	</div> -->
+	<div id='postmodern-era-vis-spread' class='blade'>
+			<div class='spread-container'>
+				<div id='endolor-column' class="column-within-blade a">
+						<button id="endolor-play-button" class='play-button' onclick="document.getElementById('endolor-audio').play()">&#9658;</button>
+						<p class='column-title'>En Dolor 1944</p>
+						<div id='endolor-choreo-radial' class='choreo-radial'></div>
+						<p class='column-paragraph' style='text-align: left;'>Ethel Winter<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
+							in lacinia porttitor, leo metus vehicula turpis, et consequat felis lorem nec elit. Fusce augue arcu, facilisis nec 
+							posuere quis, ullamcorper sed neque. Pellentesque et eros tellus. Suspendisse id ex scelerisque, venenatis tortor nec, 
+							sodales tellus. Praesent dui libero, vehicula placerat consequat et, laoreet vitae justo. Sed in dignissim dolor. 
+						</p>
+				</div>
+				<div id='songs-column' class="column-within-blade b">
+						<button id="songs-play-button" class='play-button' onclick="document.getElementById('songs-audio').play()">&#9658;</button>
+						<p class='column-title'>Songs 1956</p>
+						<div id='songs-choreo-radial' class='choreo-radial'></div>
+						<p class='column-paragraph' style='text-align: left;'>Mary Anthony<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
+							in lacinia porttitor, leo metus vehicula turpis, et consequat felis lorem nec elit. Fusce augue arcu, facilisis nec 
+							posuere quis, ullamcorper sed neque. Pellentesque et eros tellus. Suspendisse id ex scelerisque, venenatis tortor nec, 
+							sodales tellus. Praesent dui libero, vehicula placerat consequat et, laoreet vitae justo. Sed in dignissim dolor. 
+						</p>
+				</div>
+				<div id='artifact-column' class="column-within-blade c">
+						<span>
+							<button id="artifact-play-button" class='play-button' onclick="document.getElementById('artifact-audio').play()">&#9658;</button>
+							<p class='column-title'>Artifact 1984</p>
+						</span>
+						<div id="artifact-choreo-radial" class='choreo-radial'></div>
+						<p class='column-paragraph' style='text-align: left;'>William Forsythe<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
+							in lacinia porttitor, leo metus vehicula turpis, et consequat felis lorem nec elit. Fusce augue arcu, facilisis nec 
+							posuere quis, ullamcorper sed neque. Pellentesque et eros tellus. Suspendisse id ex scelerisque, venenatis tortor nec, 
+							sodales tellus. Praesent dui libero, vehicula placerat consequat et, laoreet vitae justo. Sed in dignissim dolor. 
+						</p>
+				</div>
+			</div>
 	</div>
 	<div id='classical-era-vis-spread' class='blade'>
 			<div class='spread-container'>
@@ -257,7 +293,7 @@
 					<!-- TODO ADD PAUSE -->
 					<p class='column-title'>Coppélia 1870</p>
 					<div id="coppelia-choreo-radial" class='choreo-radial'></div>
-					<p class='column-paragraph'>Coppélia was originally choreographed by Arthur Saint-Léon for the St. Petersburg Imperial Ballet in 
+					<p class='column-paragraph' style='text-align: left;'>Arthur Michel Saint-Leon<br><br>Coppélia was originally choreographed by Arthur Saint-Léon for the St. Petersburg Imperial Ballet in 
 						Russia, though it debuted in Paris in 1870. The ballet tells the comic story of an inventor who creates a doll so lifelike 
 						that a village boy becomes infatuated with it. Coppélia is still frequently performed today, and is known for its fast 
 						footwork as well as its historic use of mime and visual motif to tell a story.</p>
@@ -265,7 +301,7 @@
 				<div id='sleepingbeauty-column' class="column-within-blade b">
 						<p class='column-title'>Sleeping Beauty 1890</p>
 						<div id='sleepingbeauty-choreo-radial' class='choreo-radial'></div>
-						<p class='column-paragraph'>Coppélia was originally choreographed by Arthur Saint-Léon for the St. Petersburg Imperial Ballet in 
+						<p class='column-paragraph' style='text-align: left;'>Marius Petipa<br><br>Coppélia was originally choreographed by Arthur Saint-Léon for the St. Petersburg Imperial Ballet in 
 							Russia, though it debuted in Paris in 1870. The ballet tells the comic story of an inventor who creates a doll so lifelike 
 							that a village boy becomes infatuated with it. Coppélia is still frequently performed today, and is known for its fast 
 							footwork as well as its historic use of mime and visual motif to tell a story.</p>
@@ -273,44 +309,11 @@
 				<div id='raymonda-column' class="column-within-blade c">
 						<p class='column-title'>Raymonda 1898</p>
 						<div id='raymonda-choreo-radial' class='choreo-radial'></div>
-						<p class='column-paragraph'>Set in Hungary, Raymonda tells a typically romantic story for a classical ballet about royalty, magic, 
+						<p class='column-paragraph' style='text-align: left;'>Marius Petipa<br><br>Set in Hungary, Raymonda tells a typically romantic story for a classical ballet about royalty, magic, 
 							vision and drama. It was choreographed by the renowned ballet master Marius Petipa of the St. Petersburg Imperial ballet and 
 							debuted in 1898 at the Mariinsky Theater in St. Petersburg.  Raymonda is a foundational and strongly classic ballet, though 
 							in its many productions since the late 19th century it has been greatly altered to suit modern taste and dancers. 
-							</p>
-				</div>
-			</div>
-	</div>
-	<div id='postmodern-era-vis-spread' class='blade'>
-			<div class='spread-container'>
-				<div id='endolor-column' class="column-within-blade a">
-						<button id="endolor-play-button" class='play-button' onclick="document.getElementById('endolor-audio').play()">&#9658;</button>
-						<p class='column-title'>En Dolor 1944</p>
-						<div id='endolor-choreo-radial' class='choreo-radial'></div>
-						<p class='column-paragraph'>Ethel Winter<br>Set in Hungary, Raymonda tells a typically romantic story for a classical ballet about royalty, magic, 
-								vision and drama. It was choreographed by the renowned ballet master Marius Petipa of the St. Petersburg Imperial ballet and 
-								debuted in 1898 at the Mariinsky Theater in St. Petersburg.  Raymonda is a foundational and strongly classic ballet, though 
-								in its many productions since the late 19th century it has been greatly altered to suit modern taste and dancers. </p>
-				</div>
-				<div id='songs-column' class="column-within-blade b">
-						<button id="songs-play-button" class='play-button' onclick="document.getElementById('songs-audio').play()">&#9658;</button>
-						<p class='column-title'>Songs 1956</p>
-						<div id='songs-choreo-radial' class='choreo-radial'></div>
-						<p class='column-paragraph'>Mary Anthony<br>Set in Hungary, Raymonda tells a typically romantic story for a classical ballet about royalty, magic, 
-								vision and drama. It was choreographed by the renowned ballet master Marius Petipa of the St. Petersburg Imperial ballet and 
-								debuted in 1898 at the Mariinsky Theater in St. Petersburg.  Raymonda is a foundational and strongly classic ballet, though 
-								in its many productions since the late 19th century it has been greatly altered to suit modern taste and dancers. </p>
-				</div>
-				<div id='artifact-column' class="column-within-blade c">
-						<span>
-							<button id="artifact-play-button" class='play-button' onclick="document.getElementById('artifact-audio').play()">&#9658;</button>
-							<p class='column-title'>Artifact 1984</p>
-						</span>
-						<div id="artifact-choreo-radial" class='choreo-radial'></div>
-						<p class='column-paragraph'>William Forsythe<br>Set in Hungary, Raymonda tells a typically romantic story for a classical ballet about royalty, magic, 
-								vision and drama. It was choreographed by the renowned ballet master Marius Petipa of the St. Petersburg Imperial ballet and 
-								debuted in 1898 at the Mariinsky Theater in St. Petersburg.  Raymonda is a foundational and strongly classic ballet, though 
-								in its many productions since the late 19th century it has been greatly altered to suit modern taste and dancers. </p>
+						</p>
 				</div>
 			</div>
 	</div>
@@ -348,11 +351,224 @@
 		var pi = Math.PI;
 		return rad * (180/pi);
 	}
+	
+///////////////////////////////////////////////////////////////////////////
+////////////////////////// Artifact, Forsythe /////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+var radiusOutwardMult_Artifact = 1.4
 	const ballet = 'artifact'
 	var measures_artifact = [{"index": 0, "ballet": "artifact", "ymin": 838.7689439141, "ymax": 1642.1331947345, "label": "measure_1", "step_length": 803.3642508204, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 1, "ballet": "artifact", "ymin": 33.6271162739, "ymax": 845.6937649165, "label": "measure_2", "step_length": 812.0666486426, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 39, "ballet": "artifact", "ymin": 8.1598672434, "ymax": 809.4435784606, "label": "measure_4", "step_length": 801.2837112172, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "4"}, {"index": 40, "ballet": "artifact", "ymin": 810.2366870525, "ymax": 1625.0795047733, "label": "measure_3", "step_length": 814.8428177208, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "3"}, {"index": 59, "ballet": "artifact", "ymin": 0.0, "ymax": 790.9936977924, "label": "measure_6", "step_length": 790.9936977924, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "6"}, {"index": 60, "ballet": "artifact", "ymin": 797.224138574, "ymax": 1604.0982529087, "label": "measure_5", "step_length": 806.8741143347, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "5"}, {"index": 79, "ballet": "artifact", "ymin": 826.0875400641, "ymax": 1638.8237179487, "label": "measure_7", "step_length": 812.7361778846, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "7"}, {"index": 80, "ballet": "artifact", "ymin": 4.3413461538, "ymax": 822.4697516026, "label": "measure_8", "step_length": 818.1284054487, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "8"}]
-	
+
+	d3.json(datapath+'artifact'+".json", function(data) {
+		dataset = data;
+		var spokeArr = d3.range(10,359,359/numRadialSpokes)
+		var spokeArrRad = spokeArr.map(x => degrees_to_radians(x))
+		var bodyMovements = [
+								"head",
+								"right_hand",
+								"right_arm",
+								"right_body",
+								"right_leg",
+								"right_support",
+								"left_support",
+								"left_leg",
+								"left_body",
+								"left_arm",
+								"left_hand"
+							]
+
+		///////////////////////////////////////////////////////////////////////////
+		//////////////////// Set up and initiate svg containers ///////////////////
+		///////////////////////////////////////////////////////////////////////////	
+		var margin = {
+			top: 0,
+			right: 0,
+			bottom: 0,
+			left: 0
+		};
+		// var width = window.innerWidth - margin.left - margin.right - 20;
+		// var height = window.innerHeight - margin.top - margin.bottom - 20;
+		var width = 400 - margin.left - margin.right;
+		var height = 400 - margin.top - margin.bottom;
+		//SVG container
+		var svg = d3.select("#artifact-choreo-radial")
+			.append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform", "translate(" + (margin.left + width/2) + "," + (margin.top + height/2) + ")");
+
+		//Container for the gradients
+		var defs = svg.append("defs");
+
+		//Filter for the outside glow
+		var filter = defs.append("filter")
+			.attr("id","glow");
+		filter.append("feGaussianBlur")
+			.attr("stdDeviation","1.5")
+			.attr("result","coloredBlur");
+		var feMerge = filter.append("feMerge");
+		feMerge.append("feMergeNode")
+			.attr("in","coloredBlur");
+		feMerge.append("feMergeNode")
+			.attr("in","SourceGraphic");
+
+		///////////////////////////////////////////////////////////////////////////
+		//////////////////////////// Helper functions /////////////////////////////
+		///////////////////////////////////////////////////////////////////////////
+		function staffNumToRad(staff_num){
+			return parseInt(staff_num);
+		}
+		function bodyMovementToTheta(body_movement){
+			switch(body_movement){
+				case "right_arm":
+					return spokeArr[2];
+				case "left_arm":
+					return spokeArr[9];
+				case "right_leg":
+					return spokeArr[4];
+				case "left_leg":
+					return spokeArr[7];
+				case "right_support":
+					return spokeArr[5];
+				case "left_support":
+					return spokeArr[6];
+				case "right_hand":
+					return spokeArr[1];
+				case "left_hand":
+					return spokeArr[10];
+				case "right_body":
+					return spokeArr[3];
+				case "left_body":
+					return spokeArr[8];
+				case "head":
+					return spokeArr[0];
+			}
+		}
+		function bodyDirectionToTheta(body_movement, direction){
+			switch(direction){
+				case "place":
+					return -1;
+				case "forward":
+					return spokeArr[0]
+				case "forward_diagonal":
+					if (body_movement.includes("right")){
+						return spokeArr[1]
+					} else {
+						return spokeArr[7]
+					}
+				case "right":
+					return spokeArr[2];
+				case "backward_diagonal":
+					if (body_movement.includes("right")){
+						return spokeArr[3]
+					} else {
+						return spokeArr[5]
+					}
+				case "backward":
+					return spokeArr[4];
+				case "left":
+					return spokeArr[6];
+			}
+		}
+
+		///////////////////////////////////////////////////////////////////////////
+		//////////////////////////// Create scales ////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////
+		// Playback time
+		// get the ymin of the same measure, subtract it from the step ymin, then add difference to measure num
+		dataset.forEach(function(d) {
+			measNum = +d.measure_num
+			meas_ymin = measures_artifact.filter(x=>+x.measure_num==measNum)[0].ymax
+			step_ymin = +d.ymax
+			d.playbackTime = measNum + (step_ymin)/100
+		});
+		min = Math.min.apply(Math, dataset.map(x=>x.playbackTime))
+		max = Math.max.apply(Math, dataset.map(x=>x.playbackTime))
+		dataset.forEach(function(d) {
+			d.playbackTime = d.playbackTime*4
+		});
+		// Normalize playback time from 0 to 1, so I can scale by total ballet lenth
+		// body_movement corresponds to THETA, pin to a spoke at a certain theta val
+		dataset.forEach(function(d) {
+			d.theta = bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50
+			d.thetaRad = degrees_to_radians( bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50 )
+		});
+
+
+		//Set the minimum inner radius and max outer radius of the chart
+		var	outerRadius = Math.min(width, height, 250)/2,
+			innerRadius = outerRadius * 0.4;
+
+		///////////////////////////////////////////////////////////////////////////
+		//////////////////////////// Radial line //////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////
+		var dataArr = []
+		var data = []
+		var dataStyling = []
+		var dataset = dataset.sort(({playbackTime:a}, {playbackTime:b}) => a-b);
+		
+		radArr = dataset.map(x=>(x.playbackTime)*radiusOutwardMult_Artifact)
+		// Nonzero radii
+		radArr = radArr.filter(x=>x>0)
+		
+		function findClosest(num, spoke){
+			if (Math.abs(num[0] - spoke) <= 0.03) return 1
+		}
+		for (ii = 0; ii < radArr.length; ii++) {
+			if(dataset[ii].body_movement!=null){
+				data = []
+				for (i = 0; i <= 2+lineRes; i=i+lineRes) {
+					if (randJitter) {data.push([Math.PI * i, radArr[ii] + getRandomNumber(-3.5, 3.5) ])}
+					if (!randJitter) {data.push([Math.PI * i, radArr[ii] ])}
+				}
+				dataStyling.push({'body_movement' : dataset[ii].body_movement,
+									'step_length' : dataset[ii].step_length * stepLengthMultipier,
+									'playback_time': dataset[ii].playbackTime})
+				arr = spokeArrRad
+				num = degrees_to_radians(dataset[ii].theta)
+				var closestSpoke = arr.reduce(function(prev, curr) {
+					return (Math.abs(curr - num) < Math.abs(prev - num) ? curr : prev);
+				});
+				// find theta closest to chosen spokeArr
+				if (dataset[ii].direction_movement!='place'){
+					index = data.findIndex(x => findClosest(x, closestSpoke));
+					data[index] = [data[index][0], radArr[ii]+dataset[ii].step_length * radiusMult]
+					dataArr.push({data})
+				}
+			// ignore PLACES
+
+			}
+		}
+		if (curveType == 'catmull'){var lineRadial = d3.lineRadial().curve(d3.curveCatmullRom.alpha(curveAlpha));}
+		if (curveType == 'basis'){var lineRadial = d3.lineRadial().curve(d3.curveBasis);}
+		
+		var radialWrapper = svg.append("g")
+		.attr("transform", "translate(" + 0 + "," + 0 + ")");
+
+		radialWrapper = svg.append("g")
+					.attr("transform", "translate(" + 0 + "," + 0 + ")");
+					for (i = 0; i < dataArr.length; i++) {
+						className = "radial_"+dataStyling[i].body_movement
+						curRadialLineWidth = dataStyling[i].step_length					
+						radialWrapper
+							.append("path")
+							.attr("d", lineRadial(dataArr[i].data))
+							.attr("class", className)
+							.attr("opacity", 0.7)
+							.attr("fill", "none")
+							.attr("stroke-width", curRadialLineWidth/2)
+							.attr("stroke", "black")
+							.style("filter", "url(#glow)")
+							.attr("transform", "rotate(" + ( -55 ) + ")")
+				}
+	});
+
 	$('#artifact-play-button').click(function(){
 		$('#artifact-choreo-radial').empty()
+		const ballet = 'artifact'
+		var measures_artifact = [{"index": 0, "ballet": "artifact", "ymin": 838.7689439141, "ymax": 1642.1331947345, "label": "measure_1", "step_length": 803.3642508204, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 1, "ballet": "artifact", "ymin": 33.6271162739, "ymax": 845.6937649165, "label": "measure_2", "step_length": 812.0666486426, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 39, "ballet": "artifact", "ymin": 8.1598672434, "ymax": 809.4435784606, "label": "measure_4", "step_length": 801.2837112172, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "4"}, {"index": 40, "ballet": "artifact", "ymin": 810.2366870525, "ymax": 1625.0795047733, "label": "measure_3", "step_length": 814.8428177208, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "3"}, {"index": 59, "ballet": "artifact", "ymin": 0.0, "ymax": 790.9936977924, "label": "measure_6", "step_length": 790.9936977924, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "6"}, {"index": 60, "ballet": "artifact", "ymin": 797.224138574, "ymax": 1604.0982529087, "label": "measure_5", "step_length": 806.8741143347, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "5"}, {"index": 79, "ballet": "artifact", "ymin": 826.0875400641, "ymax": 1638.8237179487, "label": "measure_7", "step_length": 812.7361778846, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "7"}, {"index": 80, "ballet": "artifact", "ymin": 4.3413461538, "ymax": 822.4697516026, "label": "measure_8", "step_length": 818.1284054487, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "8"}]
+
 		d3.json(datapath+'artifact'+".json", function(data) {
 			dataset = data;
 			var spokeArr = d3.range(10,359,359/numRadialSpokes)
@@ -484,7 +700,6 @@
 				d.playbackTime = d.playbackTime*4
 			});
 			// Normalize playback time from 0 to 1, so I can scale by total ballet lenth
-			console.log('NORMALIZED', dataset)
 			// body_movement corresponds to THETA, pin to a spoke at a certain theta val
 			dataset.forEach(function(d) {
 				d.theta = bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50
@@ -503,9 +718,8 @@
 			var data = []
 			var dataStyling = []
 			var dataset = dataset.sort(({playbackTime:a}, {playbackTime:b}) => a-b);
-			console.log('sorted', dataset)
 			
-			radArr = dataset.map(x=>(x.playbackTime)*radiusOutwardMult)
+			radArr = dataset.map(x=>(x.playbackTime)*radiusOutwardMult_Artifact)
 			// Nonzero radii
 			radArr = radArr.filter(x=>x>0)
 			
@@ -554,7 +768,6 @@
 				className = "radial_"+dataStyling[i].body_movement
 				curRadialLineWidth = dataStyling[i].step_length
 				curPlaybackTime = dataStyling[i].playback_time 
-				console.log(curPlaybackTime)
 				radialWrapper
 					.append("path")
 					.attr("d", lineRadial(dataArr[i].data))
@@ -575,7 +788,222 @@
 ///////////////////////////////////////////////////////////////////////////
 //////////////////////////// Songs, Anthony ///////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
-		$('#songs-play-button').click(function(){
+	d3.json(datapath+'songs'+".json", function(data) {
+				dataset = data;
+				var spokeArr = d3.range(10,359,359/numRadialSpokes)
+				var spokeArrRad = spokeArr.map(x => degrees_to_radians(x))
+				var bodyMovements = [
+										"head",
+										"right_hand",
+										"right_arm",
+										"right_body",
+										"right_leg",
+										"right_support",
+										"left_support",
+										"left_leg",
+										"left_body",
+										"left_arm",
+										"left_hand"
+									]
+
+				///////////////////////////////////////////////////////////////////////////
+				//////////////////// Set up and initiate svg containers ///////////////////
+				///////////////////////////////////////////////////////////////////////////	
+				var margin = {
+					top: 0,
+					right: 0,
+					bottom: 0,
+					left: 0
+				};
+				// var width = window.innerWidth - margin.left - margin.right - 20;
+				// var height = window.innerHeight - margin.top - margin.bottom - 20;
+				var width = 400 - margin.left - margin.right;
+				var height = 400 - margin.top - margin.bottom;
+				//SVG container
+				var songs_svg = d3.select("#songs-choreo-radial")
+					.append("svg")
+					.attr("width", width + margin.left + margin.right)
+					.attr("height", height + margin.top + margin.bottom)
+					.append("g")
+					.attr("transform", "translate(" + (margin.left + width/2) + "," + (margin.top + height/2) + ")");
+
+				//Container for the gradients
+				var defs = songs_svg.append("defs");
+
+				//Filter for the outside glow
+				var filter = defs.append("filter")
+					.attr("id","glow");
+				filter.append("feGaussianBlur")
+					.attr("stdDeviation","1.5")
+					.attr("result","coloredBlur");
+				var feMerge = filter.append("feMerge");
+				feMerge.append("feMergeNode")
+					.attr("in","coloredBlur");
+				feMerge.append("feMergeNode")
+					.attr("in","SourceGraphic");
+
+				///////////////////////////////////////////////////////////////////////////
+				//////////////////////////// Helper functions /////////////////////////////
+				///////////////////////////////////////////////////////////////////////////
+				function staffNumToRad(staff_num){
+					return parseInt(staff_num);
+				}
+				function bodyMovementToTheta(body_movement){
+					switch(body_movement){
+						case "right_arm":
+							return spokeArr[2];
+						case "left_arm":
+							return spokeArr[9];
+						case "right_leg":
+							return spokeArr[4];
+						case "left_leg":
+							return spokeArr[7];
+						case "right_support":
+							return spokeArr[5];
+						case "left_support":
+							return spokeArr[6];
+						case "right_hand":
+							return spokeArr[1];
+						case "left_hand":
+							return spokeArr[10];
+						case "right_body":
+							return spokeArr[3];
+						case "left_body":
+							return spokeArr[8];
+						case "head":
+							return spokeArr[0];
+					}
+				}
+				function bodyDirectionToTheta(body_movement, direction){
+					switch(direction){
+						case "place":
+							return -1;
+						case "forward":
+							return spokeArr[0]
+						case "forward_diagonal":
+							if (body_movement.includes("right")){
+								return spokeArr[1]
+							} else {
+								return spokeArr[7]
+							}
+						case "right":
+							return spokeArr[2];
+						case "backward_diagonal":
+							if (body_movement.includes("right")){
+								return spokeArr[3]
+							} else {
+								return spokeArr[5]
+							}
+						case "backward":
+							return spokeArr[4];
+						case "left":
+							return spokeArr[6];
+					}
+				}
+
+				///////////////////////////////////////////////////////////////////////////
+				//////////////////////////// Create scales ////////////////////////////////
+				///////////////////////////////////////////////////////////////////////////
+				var radiusOutwardMult_Songs = 0.9;
+				var measures = [{"index": 0, "ballet": "songs", "ymin": 34.0487954952, "ymax": 638.5292828908, "label": "measure_3", "step_length": 604.4804873956, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "3"}, {"index": 1, "ballet": "songs", "ymin": 1236.1019820257, "ymax": 1351.0379064737, "label": "measure_1", "step_length": 114.9359244481, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 2, "ballet": "songs", "ymin": 639.4572922882, "ymax": 1242.8006414081, "label": "measure_2", "step_length": 603.3433491199, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 21, "ballet": "songs", "ymin": 643.6398418854, "ymax": 1251.5226170943, "label": "measure_4", "step_length": 607.8827752088, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "4"}, {"index": 22, "ballet": "songs", "ymin": 23.0015848747, "ymax": 642.5905802506, "label": "measure_5", "step_length": 619.5889953759, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "5"}, {"index": 61, "ballet": "songs", "ymin": 641.0, "ymax": 1272.6895323687, "label": "measure_6", "step_length": 631.6895323687, "img_num": "2", "img_staff_num": "1", "staff_num": 3, "measure_num": "6"}, {"index": 62, "ballet": "songs", "ymin": 30.8058155579, "ymax": 639.2968656772, "label": "measure_7", "step_length": 608.4910501193, "img_num": "2", "img_staff_num": "1", "staff_num": 3, "measure_num": "7"}, {"index": 111, "ballet": "songs", "ymin": 45.1976051072, "ymax": 665.3705558691, "label": "measure_9", "step_length": 620.1729507619, "img_num": "2", "img_staff_num": "2", "staff_num": 4, "measure_num": "9"}, {"index": 112, "ballet": "songs", "ymin": 662.5951079289, "ymax": 1272.1298321106, "label": "measure_8", "step_length": 609.5347241817, "img_num": "2", "img_staff_num": "2", "staff_num": 4, "measure_num": "8"}, {"index": 151, "ballet": "songs", "ymin": 634.8149689616, "ymax": 1254.9913409989, "label": "measure_10", "step_length": 620.1763720372, "img_num": "3", "img_staff_num": "1", "staff_num": 5, "measure_num": "10"}, {"index": 152, "ballet": "songs", "ymin": 20.0345125564, "ymax": 635.5286223194, "label": "measure_11", "step_length": 615.494109763, "img_num": "3", "img_staff_num": "1", "staff_num": 5, "measure_num": "11"}, {"index": 189, "ballet": "songs", "ymin": 440.0932562077, "ymax": 833.080549873, "label": "measure_13", "step_length": 392.9872936653, "img_num": "3", "img_staff_num": "2", "staff_num": 6, "measure_num": "13"}, {"index": 190, "ballet": "songs", "ymin": 14.2452207957, "ymax": 436.316027088, "label": "measure_14", "step_length": 422.0708062923, "img_num": "3", "img_staff_num": "2", "staff_num": 6, "measure_num": "14"}, {"index": 191, "ballet": "songs", "ymin": 832.3723194131, "ymax": 1246.4395457111, "label": "measure_12", "step_length": 414.067226298, "img_num": "3", "img_staff_num": "2", "staff_num": 6, "measure_num": "12"}, {"index": 254, "ballet": "songs", "ymin": 661.3766489137, "ymax": 958.0045146727, "label": "measure_16", "step_length": 296.627865759, "img_num": "4", "img_staff_num": "1", "staff_num": 7, "measure_num": "16"}, {"index": 255, "ballet": "songs", "ymin": 960.9796839729, "ymax": 1268.9097065463, "label": "measure_15", "step_length": 307.9300225734, "img_num": "4", "img_staff_num": "1", "staff_num": 7, "measure_num": "15"}, {"index": 256, "ballet": "songs", "ymin": 358.9843926354, "ymax": 658.5002645316, "label": "measure_17", "step_length": 299.5158718962, "img_num": "4", "img_staff_num": "1", "staff_num": 7, "measure_num": "17"}, {"index": 257, "ballet": "songs", "ymin": 45.7722823787, "ymax": 353.7313593397, "label": "measure_18", "step_length": 307.9590769611, "img_num": "4", "img_staff_num": "1", "staff_num": 7, "measure_num": "18"}]
+
+				// Playback time
+				// get the ymin of the same measure, subtract it from the step ymin, then add difference to measure num
+				dataset.forEach(function(d) {
+					measNum = +d.measure_num
+					meas_ymin = measures.filter(x=>+x.measure_num==measNum)[0].ymax
+					step_ymin = +d.ymax
+					d.playbackTime = measNum + (step_ymin)/50
+					
+				});
+				min = Math.min.apply(Math, dataset.map(x=>x.playbackTime))
+				max = Math.max.apply(Math, dataset.map(x=>x.playbackTime))
+				dataset.forEach(function(d) {
+					// d.playbackTime = ((d.playbackTime-min)/(max-min))*total_len_sec
+					d.playbackTime = d.playbackTime*4
+				});
+				// Normalize playback time from 0 to 1, so I can scale by total ballet lenth
+				// body_movement corresponds to THETA, pin to a spoke at a certain theta val
+				dataset.forEach(function(d) {
+					d.theta = bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50
+					d.thetaRad = degrees_to_radians( bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50 )
+				});
+
+
+				//Set the minimum inner radius and max outer radius of the chart
+				var	outerRadius = Math.min(width, height, 250)/2,
+					innerRadius = outerRadius * 0.4;
+
+				///////////////////////////////////////////////////////////////////////////
+				//////////////////////////// Radial line //////////////////////////////////
+				///////////////////////////////////////////////////////////////////////////
+				var dataArr = []
+				var data = []
+				var dataStyling = []
+				radArr = []
+				var dataset = dataset.sort(({playbackTime:a}, {playbackTime:b}) => a-b);
+				
+				radArr = dataset.map(x=>(x.playbackTime)*radiusOutwardMult_Songs)
+				// Nonzero radii
+				radArr = radArr.filter(x=>x>0)
+				
+				function findClosest(num, spoke){
+					if (Math.abs(num[0] - spoke) <= 0.03) return 1
+				}
+				for (ii = 0; ii < radArr.length; ii++) {
+					if(dataset[ii].body_movement!=null){
+						data = []
+						for (i = 0; i <= 2+lineRes; i=i+lineRes) {
+						if (randJitter) {data.push([Math.PI * i, radArr[ii] + getRandomNumber(-3.5, 3.5) ])}
+						if (!randJitter) {data.push([Math.PI * i, radArr[ii] ])}
+						}
+						dataStyling.push({'body_movement' : dataset[ii].body_movement,
+										'step_length' : dataset[ii].step_length * stepLengthMultipier,
+										'playback_time': dataset[ii].playbackTime})
+						arr = spokeArrRad
+						num = degrees_to_radians(dataset[ii].theta)
+						var closestSpoke = arr.reduce(function(prev, curr) {
+							return (Math.abs(curr - num) < Math.abs(prev - num) ? curr : prev);
+						});
+						
+						// find theta closest to chosen spokeArr
+						if (dataset[ii].direction_movement!='place'){
+							index = data.findIndex(x => findClosest(x, closestSpoke));
+							data[index] = [data[index][0], radArr[ii]+dataset[ii].step_length * radiusMult]
+							dataArr.push({data})
+						}
+						// if (dataset[ii].direction_movement=='place'){
+						// 	index = data.findIndex(x => findClosest(x, closestSpoke));
+						// 	data[index] = [data[index][0], radArr[ii]]
+						// 	dataArr.push({data})
+						// }
+
+					}
+				}
+				if (curveType == 'catmull'){var lineRadial = d3.lineRadial().curve(d3.curveCatmullRom.alpha(curveAlpha));}
+				if (curveType == 'basis'){var lineRadial = d3.lineRadial().curve(d3.curveBasis);}
+				
+				var radialWrapperSongs = songs_svg.append("g")
+					.attr("transform", "translate(" + 0 + "," + 0 + ")");
+
+				for (i = 0; i < dataArr.length; i++) {
+					className = "radial_"+dataStyling[i].body_movement
+					curRadialLineWidth = dataStyling[i].step_length
+					curPlaybackTime = dataStyling[i].playback_time
+					radialWrapperSongs
+						.append("path")
+						.attr("d", lineRadial(dataArr[i].data))
+						.attr("class", className)
+						.attr("transform", "rotate(" + ( -55 ) + ")")
+						.attr("fill", "none")
+						.attr("stroke-width", curRadialLineWidth/2)
+						.attr("stroke", "black")
+						.style("filter", "url(#glow)")
+						.attr("opacity", 0.7)
+				}
+			})
+		
+	$('#songs-play-button').click(function(){
 			$('#songs-choreo-radial').empty()
 			d3.json(datapath+'songs'+".json", function(data) {
 				dataset = data;
@@ -693,7 +1121,7 @@
 				///////////////////////////////////////////////////////////////////////////
 				//////////////////////////// Create scales ////////////////////////////////
 				///////////////////////////////////////////////////////////////////////////
-				var radiusOutwardMult_Songs = 1;
+				var radiusOutwardMult_Songs = 0.9;
 				var measures = [{"index": 0, "ballet": "songs", "ymin": 34.0487954952, "ymax": 638.5292828908, "label": "measure_3", "step_length": 604.4804873956, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "3"}, {"index": 1, "ballet": "songs", "ymin": 1236.1019820257, "ymax": 1351.0379064737, "label": "measure_1", "step_length": 114.9359244481, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 2, "ballet": "songs", "ymin": 639.4572922882, "ymax": 1242.8006414081, "label": "measure_2", "step_length": 603.3433491199, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 21, "ballet": "songs", "ymin": 643.6398418854, "ymax": 1251.5226170943, "label": "measure_4", "step_length": 607.8827752088, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "4"}, {"index": 22, "ballet": "songs", "ymin": 23.0015848747, "ymax": 642.5905802506, "label": "measure_5", "step_length": 619.5889953759, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "5"}, {"index": 61, "ballet": "songs", "ymin": 641.0, "ymax": 1272.6895323687, "label": "measure_6", "step_length": 631.6895323687, "img_num": "2", "img_staff_num": "1", "staff_num": 3, "measure_num": "6"}, {"index": 62, "ballet": "songs", "ymin": 30.8058155579, "ymax": 639.2968656772, "label": "measure_7", "step_length": 608.4910501193, "img_num": "2", "img_staff_num": "1", "staff_num": 3, "measure_num": "7"}, {"index": 111, "ballet": "songs", "ymin": 45.1976051072, "ymax": 665.3705558691, "label": "measure_9", "step_length": 620.1729507619, "img_num": "2", "img_staff_num": "2", "staff_num": 4, "measure_num": "9"}, {"index": 112, "ballet": "songs", "ymin": 662.5951079289, "ymax": 1272.1298321106, "label": "measure_8", "step_length": 609.5347241817, "img_num": "2", "img_staff_num": "2", "staff_num": 4, "measure_num": "8"}, {"index": 151, "ballet": "songs", "ymin": 634.8149689616, "ymax": 1254.9913409989, "label": "measure_10", "step_length": 620.1763720372, "img_num": "3", "img_staff_num": "1", "staff_num": 5, "measure_num": "10"}, {"index": 152, "ballet": "songs", "ymin": 20.0345125564, "ymax": 635.5286223194, "label": "measure_11", "step_length": 615.494109763, "img_num": "3", "img_staff_num": "1", "staff_num": 5, "measure_num": "11"}, {"index": 189, "ballet": "songs", "ymin": 440.0932562077, "ymax": 833.080549873, "label": "measure_13", "step_length": 392.9872936653, "img_num": "3", "img_staff_num": "2", "staff_num": 6, "measure_num": "13"}, {"index": 190, "ballet": "songs", "ymin": 14.2452207957, "ymax": 436.316027088, "label": "measure_14", "step_length": 422.0708062923, "img_num": "3", "img_staff_num": "2", "staff_num": 6, "measure_num": "14"}, {"index": 191, "ballet": "songs", "ymin": 832.3723194131, "ymax": 1246.4395457111, "label": "measure_12", "step_length": 414.067226298, "img_num": "3", "img_staff_num": "2", "staff_num": 6, "measure_num": "12"}, {"index": 254, "ballet": "songs", "ymin": 661.3766489137, "ymax": 958.0045146727, "label": "measure_16", "step_length": 296.627865759, "img_num": "4", "img_staff_num": "1", "staff_num": 7, "measure_num": "16"}, {"index": 255, "ballet": "songs", "ymin": 960.9796839729, "ymax": 1268.9097065463, "label": "measure_15", "step_length": 307.9300225734, "img_num": "4", "img_staff_num": "1", "staff_num": 7, "measure_num": "15"}, {"index": 256, "ballet": "songs", "ymin": 358.9843926354, "ymax": 658.5002645316, "label": "measure_17", "step_length": 299.5158718962, "img_num": "4", "img_staff_num": "1", "staff_num": 7, "measure_num": "17"}, {"index": 257, "ballet": "songs", "ymin": 45.7722823787, "ymax": 353.7313593397, "label": "measure_18", "step_length": 307.9590769611, "img_num": "4", "img_staff_num": "1", "staff_num": 7, "measure_num": "18"}]
 
 				// Playback time
@@ -712,7 +1140,7 @@
 					d.playbackTime = d.playbackTime*4
 				});
 				// Normalize playback time from 0 to 1, so I can scale by total ballet lenth
-				console.log('NORMALIZED', dataset)
+				
 				// body_movement corresponds to THETA, pin to a spoke at a certain theta val
 				dataset.forEach(function(d) {
 					d.theta = bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50
@@ -732,7 +1160,6 @@
 				var dataStyling = []
 				radArr = []
 				var dataset = dataset.sort(({playbackTime:a}, {playbackTime:b}) => a-b);
-				console.log('sorted', dataset)
 				
 				radArr = dataset.map(x=>(x.playbackTime)*radiusOutwardMult_Songs)
 				// Nonzero radii
@@ -759,7 +1186,6 @@
 						
 						// find theta closest to chosen spokeArr
 						if (dataset[ii].direction_movement!='place'){
-							console.log(dataset[ii].direction_movement)
 							index = data.findIndex(x => findClosest(x, closestSpoke));
 							data[index] = [data[index][0], radArr[ii]+dataset[ii].step_length * radiusMult]
 							dataArr.push({data})
@@ -788,7 +1214,6 @@
 					className = "radial_"+dataStyling[i].body_movement
 					curRadialLineWidth = dataStyling[i].step_length
 					curPlaybackTime = dataStyling[i].playback_time
-					console.log(curPlaybackTime)
 					radialWrapperSongs
 						.append("path")
 						.attr("d", lineRadial(dataArr[i].data))
@@ -809,7 +1234,221 @@
 ///////////////////////////////////////////////////////////////////////////
 //////////////////////////// En Dolor, Winter ///////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
-		$('#endolor-play-button').click(function(){
+	d3.json(datapath+'endolor'+".json", function(data) {
+		dataset = data;
+		var spokeArr = d3.range(10,359,359/numRadialSpokes)
+		var spokeArrRad = spokeArr.map(x => degrees_to_radians(x))
+		var bodyMovements = [
+								"head",
+								"right_hand",
+								"right_arm",
+								"right_body",
+								"right_leg",
+								"right_support",
+								"left_support",
+								"left_leg",
+								"left_body",
+								"left_arm",
+								"left_hand"
+							]
+
+		///////////////////////////////////////////////////////////////////////////
+		//////////////////// Set up and initiate svg containers ///////////////////
+		///////////////////////////////////////////////////////////////////////////	
+		var margin = {
+			top: 0,
+			right: 0,
+			bottom: 0,
+			left: 0
+		};
+		// var width = window.innerWidth - margin.left - margin.right - 20;
+		// var height = window.innerHeight - margin.top - margin.bottom - 20;
+		var width = 400 - margin.left - margin.right;
+		var height = 400 - margin.top - margin.bottom;
+		//SVG container
+		var endolor_svg = d3.select("#endolor-choreo-radial")
+			.append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform", "translate(" + (margin.left + width/2) + "," + (margin.top + height/2) + ")");
+
+		//Container for the gradients
+		var defs = endolor_svg.append("defs");
+
+		//Filter for the outside glow
+		var filter = defs.append("filter")
+			.attr("id","glow");
+		filter.append("feGaussianBlur")
+			.attr("stdDeviation","1.5")
+			.attr("result","coloredBlur");
+		var feMerge = filter.append("feMerge");
+		feMerge.append("feMergeNode")
+			.attr("in","coloredBlur");
+		feMerge.append("feMergeNode")
+			.attr("in","SourceGraphic");
+
+		///////////////////////////////////////////////////////////////////////////
+		//////////////////////////// Helper functions /////////////////////////////
+		///////////////////////////////////////////////////////////////////////////
+		function staffNumToRad(staff_num){
+			return parseInt(staff_num);
+		}
+		function bodyMovementToTheta(body_movement){
+			switch(body_movement){
+				case "right_arm":
+					return spokeArr[2];
+				case "left_arm":
+					return spokeArr[9];
+				case "right_leg":
+					return spokeArr[4];
+				case "left_leg":
+					return spokeArr[7];
+				case "right_support":
+					return spokeArr[5];
+				case "left_support":
+					return spokeArr[6];
+				case "right_hand":
+					return spokeArr[1];
+				case "left_hand":
+					return spokeArr[10];
+				case "right_body":
+					return spokeArr[3];
+				case "left_body":
+					return spokeArr[8];
+				case "head":
+					return spokeArr[0];
+			}
+		}
+		function bodyDirectionToTheta(body_movement, direction){
+			switch(direction){
+				case "place":
+					return -1;
+				case "forward":
+					return spokeArr[0]
+				case "forward_diagonal":
+					if (body_movement.includes("right")){
+						return spokeArr[1]
+					} else {
+						return spokeArr[7]
+					}
+				case "right":
+					return spokeArr[2];
+				case "backward_diagonal":
+					if (body_movement.includes("right")){
+						return spokeArr[3]
+					} else {
+						return spokeArr[5]
+					}
+				case "backward":
+					return spokeArr[4];
+				case "left":
+					return spokeArr[6];
+			}
+		}
+
+		///////////////////////////////////////////////////////////////////////////
+		//////////////////////////// Create scales ////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////
+		var radiusOutwardMult_Endolor = 1.2;
+		var measures = [{"index": 0, "ballet": "endolor", "ymin": 36.6393376129, "ymax": 337.4905826749, "label": "measure_4", "step_length": 300.8512450621, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "4"}, {"index": 1, "ballet": "endolor", "ymin": 635.6952772291, "ymax": 928.7115018341, "label": "measure_2", "step_length": 293.016224605, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 2, "ballet": "endolor", "ymin": 335.9765095937, "ymax": 637.0247072517, "label": "measure_3", "step_length": 301.048197658, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "3"}, {"index": 3, "ballet": "endolor", "ymin": 934.0107576185, "ymax": 1347.2726968115, "label": "measure_1", "step_length": 413.261939193, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 35, "ballet": "endolor", "ymin": 32.4303047404, "ymax": 335.881489842, "label": "measure_8", "step_length": 303.4511851016, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "8"}, {"index": 36, "ballet": "endolor", "ymin": 928.8529909707, "ymax": 1236.2979683973, "label": "measure_5", "step_length": 307.4449774266, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "5"}, {"index": 37, "ballet": "endolor", "ymin": 333.7957110609, "ymax": 632.085778781, "label": "measure_7", "step_length": 298.2900677201, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "7"}, {"index": 38, "ballet": "endolor", "ymin": 634.4856094808, "ymax": 929.6173814898, "label": "measure_6", "step_length": 295.131772009, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "6"}, {"index": 85, "ballet": "endolor", "ymin": 252.4544123871, "ymax": 550.50560807, "label": "measure_11", "step_length": 298.0511956828, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "11"}, {"index": 86, "ballet": "endolor", "ymin": 549.1168171558, "ymax": 845.3348088318, "label": "measure_10", "step_length": 296.2179916761, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "10"}, {"index": 87, "ballet": "endolor", "ymin": 48.1299379233, "ymax": 251.4267071106, "label": "measure_12", "step_length": 203.2967691874, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "12"}, {"index": 88, "ballet": "endolor", "ymin": 846.1458627257, "ymax": 1148.9078371896, "label": "measure_9", "step_length": 302.7619744639, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "9"}, {"index": 113, "ballet": "endolor", "ymin": 742.7405033155, "ymax": 939.7297545147, "label": "measure_14", "step_length": 196.9892511992, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "14"}, {"index": 114, "ballet": "endolor", "ymin": 937.3291214024, "ymax": 1142.9650465576, "label": "measure_13", "step_length": 205.6359251552, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "13"}, {"index": 115, "ballet": "endolor", "ymin": 149.5534001129, "ymax": 446.2156197094, "label": "measure_16", "step_length": 296.6622195965, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "16"}, {"index": 116, "ballet": "endolor", "ymin": 444.9905826749, "ymax": 739.8949015942, "label": "measure_15", "step_length": 294.9043189193, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "15"}, {"index": 138, "ballet": "endolor", "ymin": 328.9226156885, "ymax": 629.2440480389, "label": "measure_19", "step_length": 300.3214323505, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "19"}, {"index": 139, "ballet": "endolor", "ymin": 924.9057033014, "ymax": 1226.3740653217, "label": "measure_17", "step_length": 301.4683620203, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "17"}, {"index": 140, "ballet": "endolor", "ymin": 626.0734780615, "ymax": 925.5482241112, "label": "measure_18", "step_length": 299.4747460497, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "18"}, {"index": 141, "ballet": "endolor", "ymin": 24.7520633465, "ymax": 331.8349763685, "label": "measure_20", "step_length": 307.082913022, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "20"}]
+
+		///////////////////////////////////////////////////////////////////////////
+		//////////////////////////// Create scales ////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////
+		// Playback time
+		// get the ymin of the same measure, subtract it from the step ymin, then add difference to measure num
+		dataset.forEach(function(d) {
+			measNum = +d.measure_num
+			meas_ymin = measures.filter(x=>+x.measure_num==measNum)[0].ymax
+			step_ymin = +d.ymax
+			d.playbackTime = measNum + (step_ymin)/100
+		});
+		min = Math.min.apply(Math, dataset.map(x=>x.playbackTime))
+		max = Math.max.apply(Math, dataset.map(x=>x.playbackTime))
+		dataset.forEach(function(d) {
+			d.playbackTime = d.playbackTime*4
+		});
+		// Normalize playback time from 0 to 1, so I can scale by total ballet lenth
+		// body_movement corresponds to THETA, pin to a spoke at a certain theta val
+		dataset.forEach(function(d) {
+			d.theta = bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50
+			d.thetaRad = degrees_to_radians( bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50 )
+		});
+
+
+		//Set the minimum inner radius and max outer radius of the chart
+		var	outerRadius = Math.min(width, height, 250)/2,
+			innerRadius = outerRadius * 0.4;
+
+		///////////////////////////////////////////////////////////////////////////
+		//////////////////////////// Radial line //////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////
+		var dataArr = []
+		var data = []
+		var dataStyling = []
+		var dataset = dataset.sort(({playbackTime:a}, {playbackTime:b}) => a-b);
+		
+		radArr = dataset.map(x=>(x.playbackTime)*radiusOutwardMult_Endolor)
+		// Nonzero radii
+		radArr = radArr.filter(x=>x>0)
+		
+		function findClosest(num, spoke){
+			if (Math.abs(num[0] - spoke) <= 0.03) return 1
+		}
+		for (ii = 0; ii < radArr.length; ii++) {
+			if(dataset[ii].body_movement!=null){
+				data = []
+				for (i = 0; i <= 2+lineRes; i=i+lineRes) {
+				if (randJitter) {data.push([Math.PI * i, radArr[ii] + getRandomNumber(-3.5, 3.5) ])}
+				if (!randJitter) {data.push([Math.PI * i, radArr[ii] ])}
+				}
+				dataStyling.push({'body_movement' : dataset[ii].body_movement,
+								'step_length' : dataset[ii].step_length * stepLengthMultipier,
+								'playback_time': dataset[ii].playbackTime})
+				arr = spokeArrRad
+				num = degrees_to_radians(dataset[ii].theta)
+				var closestSpoke = arr.reduce(function(prev, curr) {
+					return (Math.abs(curr - num) < Math.abs(prev - num) ? curr : prev);
+				});
+				// find theta closest to chosen spokeArr
+				if (dataset[ii].direction_movement!='place'){
+					index = data.findIndex(x => findClosest(x, closestSpoke));
+					data[index] = [data[index][0], radArr[ii]+dataset[ii].step_length * radiusMult]
+					dataArr.push({data})
+				}
+				if (dataset[ii].direction_movement=='place'){
+					// index = data.findIndex(x => findClosest(x, closestSpoke));
+					// data[index] = [data[index][0], radArr[ii]]
+					// dataArr.push({data})
+				}
+
+			}
+		}
+		if (curveType == 'catmull'){var lineRadial = d3.lineRadial().curve(d3.curveCatmullRom.alpha(curveAlpha));}
+		if (curveType == 'basis'){var lineRadial = d3.lineRadial().curve(d3.curveBasis);}
+		
+		var radialWrapperEndolor = endolor_svg.append("g")
+			.attr("transform", "translate(" + 0 + "," + 0 + ")");
+
+		for (i = 0; i < dataArr.length; i++) {
+			className = "radial_"+dataStyling[i].body_movement
+			curRadialLineWidth = dataStyling[i].step_length
+			curPlaybackTime = dataStyling[i].playback_time
+			radialWrapperEndolor
+				.append("path")
+				.attr("d", lineRadial(dataArr[i].data))
+				.attr("class", className)
+				.attr("transform", "rotate(" + ( -55 ) + ")")
+				.attr("fill", "none")
+				.attr("stroke-width", curRadialLineWidth/2)
+				.attr("stroke", "black")
+				.style("filter", "url(#glow)")
+				.attr("opacity", 0.7)
+		}
+	})
+
+	$('#endolor-play-button').click(function(){
 			$('#endolor-choreo-radial').empty()
 			d3.json(datapath+'endolor'+".json", function(data) {
 				dataset = data;
@@ -857,7 +1496,7 @@
 				var filter = defs.append("filter")
 					.attr("id","glow");
 				filter.append("feGaussianBlur")
-					.attr("stdDeviation","1.2")
+					.attr("stdDeviation","1.5")
 					.attr("result","coloredBlur");
 				var feMerge = filter.append("feMerge");
 				feMerge.append("feMergeNode")
@@ -947,7 +1586,6 @@
 					d.playbackTime = d.playbackTime*4
 				});
 				// Normalize playback time from 0 to 1, so I can scale by total ballet lenth
-				console.log('NORMALIZED', dataset)
 				// body_movement corresponds to THETA, pin to a spoke at a certain theta val
 				dataset.forEach(function(d) {
 					d.theta = bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50
@@ -966,7 +1604,6 @@
 				var data = []
 				var dataStyling = []
 				var dataset = dataset.sort(({playbackTime:a}, {playbackTime:b}) => a-b);
-				console.log('sorted', dataset)
 				
 				radArr = dataset.map(x=>(x.playbackTime)*radiusOutwardMult_Endolor)
 				// Nonzero radii
@@ -997,9 +1634,9 @@
 							dataArr.push({data})
 						}
 						if (dataset[ii].direction_movement=='place'){
-							index = data.findIndex(x => findClosest(x, closestSpoke));
-							data[index] = [data[index][0], radArr[ii]]
-							dataArr.push({data})
+							// index = data.findIndex(x => findClosest(x, closestSpoke));
+							// data[index] = [data[index][0], radArr[ii]]
+							// dataArr.push({data})
 						}
 
 					}
@@ -1020,7 +1657,6 @@
 					className = "radial_"+dataStyling[i].body_movement
 					curRadialLineWidth = dataStyling[i].step_length
 					curPlaybackTime = dataStyling[i].playback_time
-					console.log(curPlaybackTime)
 					radialWrapperEndolor
 						.append("path")
 						.attr("d", lineRadial(dataArr[i].data))
@@ -1037,5 +1673,6 @@
 				}
 			})
 		});
+
 </script>
 </html>
