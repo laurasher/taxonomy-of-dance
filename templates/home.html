@@ -95,7 +95,7 @@
 			display: grid;
 			grid-gap: 3%;
 			grid-template-columns: auto auto auto;
-			padding: 3%;
+			/* padding: 3%; */
 			width: 80%;
 			height: 90%;
 			margin-top: 0px;
@@ -125,13 +125,17 @@
 		.mobile{
 			display:none;
 		}
-		#play-button {
+		.play-button {
         	border-radius: 3px;
 	  		background: black;
 			color: white;
 			border: 1px solid black;
 			padding: 5px;
       	}
+		svg {
+			height: 100%;
+			width: 100%;
+		}
 		@media (max-width: 720px) and (min-width: 0px){
 			.desktop{
 				display:none;
@@ -180,11 +184,16 @@
 				grid-row: 3;
 				grid-column: 1 / 3;
 			}
+			.choreo-radial{
+				width: 100%;
+    			height: 50%;
+			}
 		}
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<audio id="artifact-audio" src="{{ url_for('static', filename='audio/artifact.mp3') }}"></audio>
 	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
 	<meta http-equiv="Pragma" content="no-cache"/>
 	<meta http-equiv="Expires" content="0"/>
@@ -221,9 +230,9 @@
 	<div id='classical-era-vis-spread' class='blade'>
 			<div class='spread-container'>
 				<div id='coppelia-column' class="column-within-blade a">
-					<button id="play-button" onclick="document.getElementById('audioElement').play()">Play &#9658;</button>
+					<button id="coppelia-play-button" class='play-button' onclick="document.getElementById('artifact-audio').play()">Play &#9658;</button>
 					<p class='column-title'>Coppélia 1870</p>
-					<div id="coppelia-choreo-radial"></div>
+					<div id="coppelia-choreo-radial" class='choreo-radial'></div>
 					<p class='column-paragraph'>Coppélia was originally choreographed by Arthur Saint-Léon for the St. Petersburg Imperial Ballet in 
 						Russia, though it debuted in Paris in 1870. The ballet tells the comic story of an inventor who creates a doll so lifelike 
 						that a village boy becomes infatuated with it. Coppélia is still frequently performed today, and is known for its fast 
@@ -231,7 +240,7 @@
 				</div>
 				<div id='sleepingbeauty-column' class="column-within-blade b">
 						<p class='column-title'>Sleeping Beauty 1890</p>
-						<div id="sleepingbeauty-choreo-radial"></div>
+						<div id='sleepingbeauty-choreo-radial' class='choreo-radial'></div>
 						<p class='column-paragraph'>Coppélia was originally choreographed by Arthur Saint-Léon for the St. Petersburg Imperial Ballet in 
 							Russia, though it debuted in Paris in 1870. The ballet tells the comic story of an inventor who creates a doll so lifelike 
 							that a village boy becomes infatuated with it. Coppélia is still frequently performed today, and is known for its fast 
@@ -239,7 +248,7 @@
 				</div>
 				<div id='raymonda-column' class="column-within-blade c">
 						<p class='column-title'>Raymonda 1898</p>
-						<div id="raymonda-choreo-radial"></div>
+						<div id='raymonda-choreo-radial' class='choreo-radial'></div>
 						<p class='column-paragraph'>Set in Hungary, Raymonda tells a typically romantic story for a classical ballet about royalty, magic, 
 							vision and drama. It was choreographed by the renowned ballet master Marius Petipa of the St. Petersburg Imperial ballet and 
 							debuted in 1898 at the Mariinsky Theater in St. Petersburg.  Raymonda is a foundational and strongly classic ballet, though 
@@ -268,7 +277,7 @@
 	var curveAlpha = 0.55
 	var radialLineWidth = 0.5
 	var radiusMult = 100 //this has to do with the spikes
-	var radiusOutwardMult = 1 //scaling to the page
+	var radiusOutwardMult = 1.8 //scaling to the page
 	var curveType = 'basis'
 	var stepLengthMultipier = 2
 	function getRandomNumber(start, end) {
@@ -308,15 +317,15 @@
 		//////////////////// Set up and initiate svg containers ///////////////////
 		///////////////////////////////////////////////////////////////////////////	
 		var margin = {
-			top: 150,
-			right: 20,
-			bottom: 120,
-			left: 20
+			top: 0,
+			right: 0,
+			bottom: 0,
+			left: 0
 		};
 		// var width = window.innerWidth - margin.left - margin.right - 20;
 		// var height = window.innerHeight - margin.top - margin.bottom - 20;
-		var width = 200 - margin.left - margin.right - 20;
-		var height = 200 - margin.top - margin.bottom - 20;
+		var width = 400 - margin.left - margin.right;
+		var height = 400 - margin.top - margin.bottom;
 		//SVG container
 		var svg = d3.select("#coppelia-choreo-radial")
 			.append("svg")
@@ -332,7 +341,7 @@
 		var filter = defs.append("filter")
 			.attr("id","glow");
 		filter.append("feGaussianBlur")
-			.attr("stdDeviation","4")
+			.attr("stdDeviation","1.5")
 			.attr("result","coloredBlur");
 		var feMerge = filter.append("feMerge");
 		feMerge.append("feMergeNode")
@@ -483,8 +492,8 @@
 		
 		var radialWrapper = svg.append("g")
 			.attr("transform", "translate(" + 0 + "," + 0 + ")");
-		$('#play-button').click(function(){
-			$('#play-button').addClass('enabled')
+		$('#coppelia-play-button').click(function(){
+			$('#coppelia-play-button').addClass('enabled')
 			for (i = 0; i < dataArr.length; i++) {
 				className = "radial_"+dataStyling[i].body_movement
 				curRadialLineWidth = dataStyling[i].step_length
@@ -500,7 +509,7 @@
 					.attr("stroke-width", curRadialLineWidth/2)
 					.attr("stroke", "black")
 					.transition()
-					.delay( (curPlaybackTime-19)*700)
+					.delay( (curPlaybackTime-14)*1000)
 					.attr("opacity", 0.7)
 			}
 		})
