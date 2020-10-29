@@ -36,6 +36,7 @@
 			font-weight: 400;
 			font-style: normal;
 			background: #F7EDDA;
+			background: #f4eee1;
 			margin-top: 0px;
 			margin-left: 0px;
 			margin-right: 0px;
@@ -356,8 +357,26 @@
 ////////////////////////// Artifact, Forsythe /////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 var radiusOutwardMult_Artifact = 1.4
-	const ballet = 'artifact'
-	var measures_artifact = [{"index": 0, "ballet": "artifact", "ymin": 838.7689439141, "ymax": 1642.1331947345, "label": "measure_1", "step_length": 803.3642508204, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 1, "ballet": "artifact", "ymin": 33.6271162739, "ymax": 845.6937649165, "label": "measure_2", "step_length": 812.0666486426, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 39, "ballet": "artifact", "ymin": 8.1598672434, "ymax": 809.4435784606, "label": "measure_4", "step_length": 801.2837112172, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "4"}, {"index": 40, "ballet": "artifact", "ymin": 810.2366870525, "ymax": 1625.0795047733, "label": "measure_3", "step_length": 814.8428177208, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "3"}, {"index": 59, "ballet": "artifact", "ymin": 0.0, "ymax": 790.9936977924, "label": "measure_6", "step_length": 790.9936977924, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "6"}, {"index": 60, "ballet": "artifact", "ymin": 797.224138574, "ymax": 1604.0982529087, "label": "measure_5", "step_length": 806.8741143347, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "5"}, {"index": 79, "ballet": "artifact", "ymin": 826.0875400641, "ymax": 1638.8237179487, "label": "measure_7", "step_length": 812.7361778846, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "7"}, {"index": 80, "ballet": "artifact", "ymin": 4.3413461538, "ymax": 822.4697516026, "label": "measure_8", "step_length": 818.1284054487, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "8"}]
+const ballet = 'artifact'
+var measures_artifact = [{"index": 0, "ballet": "artifact", "ymin": 838.7689439141, "ymax": 1642.1331947345, "label": "measure_1", "step_length": 803.3642508204, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 1, "ballet": "artifact", "ymin": 33.6271162739, "ymax": 845.6937649165, "label": "measure_2", "step_length": 812.0666486426, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 39, "ballet": "artifact", "ymin": 8.1598672434, "ymax": 809.4435784606, "label": "measure_4", "step_length": 801.2837112172, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "4"}, {"index": 40, "ballet": "artifact", "ymin": 810.2366870525, "ymax": 1625.0795047733, "label": "measure_3", "step_length": 814.8428177208, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "3"}, {"index": 59, "ballet": "artifact", "ymin": 0.0, "ymax": 790.9936977924, "label": "measure_6", "step_length": 790.9936977924, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "6"}, {"index": 60, "ballet": "artifact", "ymin": 797.224138574, "ymax": 1604.0982529087, "label": "measure_5", "step_length": 806.8741143347, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "5"}, {"index": 79, "ballet": "artifact", "ymin": 826.0875400641, "ymax": 1638.8237179487, "label": "measure_7", "step_length": 812.7361778846, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "7"}, {"index": 80, "ballet": "artifact", "ymin": 4.3413461538, "ymax": 822.4697516026, "label": "measure_8", "step_length": 818.1284054487, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "8"}]
+///////////////////////////////////////////////////////////////////////////
+//////////////////// Set up and initiate svg containers ///////////////////
+///////////////////////////////////////////////////////////////////////////	
+var margin = {
+	top: 0,
+	right: 0,
+	bottom: 0,
+	left: 0
+};
+
+var width = 400 - margin.left - margin.right;
+var height = 400 - margin.top - margin.bottom;
+//SVG container
+var svg = d3.select("#artifact-choreo-radial")
+	.append("svg")
+	.attr("viewBox", `0 0 400 400`)
+	.append("g")
+	.attr("transform", "translate(" + 200 + "," + 200 + ")");
 
 	d3.json(datapath+'artifact'+".json", function(data) {
 		dataset = data;
@@ -377,27 +396,6 @@ var radiusOutwardMult_Artifact = 1.4
 								"left_hand"
 							]
 
-		///////////////////////////////////////////////////////////////////////////
-		//////////////////// Set up and initiate svg containers ///////////////////
-		///////////////////////////////////////////////////////////////////////////	
-		var margin = {
-			top: 0,
-			right: 0,
-			bottom: 0,
-			left: 0
-		};
-		// var width = window.innerWidth - margin.left - margin.right - 20;
-		// var height = window.innerHeight - margin.top - margin.bottom - 20;
-		var width = 400 - margin.left - margin.right;
-		var height = 400 - margin.top - margin.bottom;
-		//SVG container
-		var svg = d3.select("#artifact-choreo-radial")
-			.append("svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
-			.append("g")
-			.attr("transform", "translate(" + (margin.left + width/2) + "," + (margin.top + height/2) + ")");
-
 		//Container for the gradients
 		var defs = svg.append("defs");
 
@@ -412,6 +410,11 @@ var radiusOutwardMult_Artifact = 1.4
 			.attr("in","coloredBlur");
 		feMerge.append("feMergeNode")
 			.attr("in","SourceGraphic");
+
+		// Define the div for the tooltip
+		var div = d3.select("svg").append("div")	
+			.attr("class", "tooltip")				
+			.style("opacity", 0);
 
 		///////////////////////////////////////////////////////////////////////////
 		//////////////////////////// Helper functions /////////////////////////////
@@ -544,7 +547,7 @@ var radiusOutwardMult_Artifact = 1.4
 		if (curveType == 'basis'){var lineRadial = d3.lineRadial().curve(d3.curveBasis);}
 		
 		var radialWrapper = svg.append("g")
-		.attr("transform", "translate(" + 0 + "," + 0 + ")");
+			.attr("transform", "translate(" + 0 + "," + 0 + ")");
 
 		radialWrapper = svg.append("g")
 					.attr("transform", "translate(" + 0 + "," + 0 + ")");
@@ -561,6 +564,25 @@ var radiusOutwardMult_Artifact = 1.4
 							.attr("stroke", "black")
 							.style("filter", "url(#glow)")
 							.attr("transform", "rotate(" + ( -55 ) + ")")
+							// .on("mouseover", function(d) {
+							// 	d3.select(this)
+							// 		.transition()
+							// 		.attr('stroke', '#ff0000');	
+							// 	div.transition()		
+							// 		.duration(100)		
+							// 		.style("opacity", .9);		
+							// 	div	.html("class here" + "<br/>")	
+							// 		.style("left", (d3.event.pageX) + "px")	
+							// 		.style("width", "100px")		
+							// 		.style("width", "50px")
+							// 		.style("background", "red")			
+							// 		.style("top", (d3.event.pageY) + "px");	
+							// 	})					
+							// .on("mouseout", function(d) {		
+							// 	div.transition()		
+							// 		.duration(500)		
+							// 		.style("opacity", 0.2);	
+							// });
 				}
 	});
 
@@ -570,6 +592,11 @@ var radiusOutwardMult_Artifact = 1.4
 		var measures_artifact = [{"index": 0, "ballet": "artifact", "ymin": 838.7689439141, "ymax": 1642.1331947345, "label": "measure_1", "step_length": 803.3642508204, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 1, "ballet": "artifact", "ymin": 33.6271162739, "ymax": 845.6937649165, "label": "measure_2", "step_length": 812.0666486426, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 39, "ballet": "artifact", "ymin": 8.1598672434, "ymax": 809.4435784606, "label": "measure_4", "step_length": 801.2837112172, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "4"}, {"index": 40, "ballet": "artifact", "ymin": 810.2366870525, "ymax": 1625.0795047733, "label": "measure_3", "step_length": 814.8428177208, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "3"}, {"index": 59, "ballet": "artifact", "ymin": 0.0, "ymax": 790.9936977924, "label": "measure_6", "step_length": 790.9936977924, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "6"}, {"index": 60, "ballet": "artifact", "ymin": 797.224138574, "ymax": 1604.0982529087, "label": "measure_5", "step_length": 806.8741143347, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "5"}, {"index": 79, "ballet": "artifact", "ymin": 826.0875400641, "ymax": 1638.8237179487, "label": "measure_7", "step_length": 812.7361778846, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "7"}, {"index": 80, "ballet": "artifact", "ymin": 4.3413461538, "ymax": 822.4697516026, "label": "measure_8", "step_length": 818.1284054487, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "8"}]
 
 		d3.json(datapath+'artifact'+".json", function(data) {
+			var svg = d3.select("#artifact-choreo-radial")
+				.append("svg")
+				.attr("viewBox", `0 0 400 400`)
+				.append("g")
+				.attr("transform", "translate(" + (margin.left + width/2) + "," + (margin.top + height/2) + ")");
 			dataset = data;
 			var spokeArr = d3.range(10,359,359/numRadialSpokes)
 			var spokeArrRad = spokeArr.map(x => degrees_to_radians(x))
@@ -590,38 +617,38 @@ var radiusOutwardMult_Artifact = 1.4
 			///////////////////////////////////////////////////////////////////////////
 			//////////////////// Set up and initiate svg containers ///////////////////
 			///////////////////////////////////////////////////////////////////////////	
-			var margin = {
-				top: 0,
-				right: 0,
-				bottom: 0,
-				left: 0
-			};
-			// var width = window.innerWidth - margin.left - margin.right - 20;
-			// var height = window.innerHeight - margin.top - margin.bottom - 20;
-			var width = 400 - margin.left - margin.right;
-			var height = 400 - margin.top - margin.bottom;
+			// var margin = {
+			// 	top: 0,
+			// 	right: 0,
+			// 	bottom: 0,
+			// 	left: 0
+			// };
+			// // var width = window.innerWidth - margin.left - margin.right - 20;
+			// // var height = window.innerHeight - margin.top - margin.bottom - 20;
+			// var width = 400 - margin.left - margin.right;
+			// var height = 400 - margin.top - margin.bottom;
 			//SVG container
-			var svg = d3.select("#artifact-choreo-radial")
-				.append("svg")
-				.attr("width", width + margin.left + margin.right)
-				.attr("height", height + margin.top + margin.bottom)
-				.append("g")
-				.attr("transform", "translate(" + (margin.left + width/2) + "," + (margin.top + height/2) + ")");
+			// var svg = d3.select("#artifact-choreo-radial")
+			// 	.append("svg")
+			// 	// .attr("width", width + margin.left + margin.right)
+			// 	// .attr("height", height + margin.top + margin.bottom)
+			// 	.append("g")
+			// 	.attr("transform", "translate(" + (margin.left + width/2) + "," + (margin.top + height/2) + ")");
 
-			//Container for the gradients
-			var defs = svg.append("defs");
+			// //Container for the gradients
+			// var defs = svg.append("defs");
 
-			//Filter for the outside glow
-			var filter = defs.append("filter")
-				.attr("id","glow");
-			filter.append("feGaussianBlur")
-				.attr("stdDeviation","1.5")
-				.attr("result","coloredBlur");
-			var feMerge = filter.append("feMerge");
-			feMerge.append("feMergeNode")
-				.attr("in","coloredBlur");
-			feMerge.append("feMergeNode")
-				.attr("in","SourceGraphic");
+			// //Filter for the outside glow
+			// var filter = defs.append("filter")
+			// 	.attr("id","glow");
+			// filter.append("feGaussianBlur")
+			// 	.attr("stdDeviation","1.5")
+			// 	.attr("result","coloredBlur");
+			// var feMerge = filter.append("feMerge");
+			// feMerge.append("feMergeNode")
+			// 	.attr("in","coloredBlur");
+			// feMerge.append("feMergeNode")
+			// 	.attr("in","SourceGraphic");
 
 			///////////////////////////////////////////////////////////////////////////
 			//////////////////////////// Helper functions /////////////////////////////
@@ -708,8 +735,8 @@ var radiusOutwardMult_Artifact = 1.4
 
 
 			//Set the minimum inner radius and max outer radius of the chart
-			var	outerRadius = Math.min(width, height, 250)/2,
-				innerRadius = outerRadius * 0.4;
+			// var	outerRadius = Math.min(width, height, 250)/2,
+			// 	innerRadius = outerRadius * 0.4;
 
 			///////////////////////////////////////////////////////////////////////////
 			//////////////////////////// Radial line //////////////////////////////////
@@ -776,11 +803,15 @@ var radiusOutwardMult_Artifact = 1.4
 					.style("filter", "url(#glow)")
 					.attr("transform", "rotate(" + ( -55 ) + ")")
 					.attr("fill", "none")
-					.attr("stroke-width", curRadialLineWidth/2)
-					.attr("stroke", "black")
+					.attr("stroke-width", curRadialLineWidth/1.2)
+					.attr("stroke", "red")
 					.transition()
-					.delay( (curPlaybackTime-14)*1000)
-					.attr("opacity", 0.7)
+						.delay( (curPlaybackTime-14)*1000)
+						.attr("opacity", 0.9)
+						.transition()
+							.ease(d3.easeLinear)
+							.duration(500)
+							.attr("stroke", "black")
 			}
 		})
 	});
@@ -806,26 +837,12 @@ var radiusOutwardMult_Artifact = 1.4
 										"left_hand"
 									]
 
-				///////////////////////////////////////////////////////////////////////////
-				//////////////////// Set up and initiate svg containers ///////////////////
-				///////////////////////////////////////////////////////////////////////////	
-				var margin = {
-					top: 0,
-					right: 0,
-					bottom: 0,
-					left: 0
-				};
-				// var width = window.innerWidth - margin.left - margin.right - 20;
-				// var height = window.innerHeight - margin.top - margin.bottom - 20;
-				var width = 400 - margin.left - margin.right;
-				var height = 400 - margin.top - margin.bottom;
 				//SVG container
 				var songs_svg = d3.select("#songs-choreo-radial")
 					.append("svg")
-					.attr("width", width + margin.left + margin.right)
-					.attr("height", height + margin.top + margin.bottom)
+					.attr("viewBox", `0 0 400 400`)
 					.append("g")
-					.attr("transform", "translate(" + (margin.left + width/2) + "," + (margin.top + height/2) + ")");
+					.attr("transform", "translate(" + 200 + "," + 200 + ")");
 
 				//Container for the gradients
 				var defs = songs_svg.append("defs");
@@ -990,6 +1007,7 @@ var radiusOutwardMult_Artifact = 1.4
 					className = "radial_"+dataStyling[i].body_movement
 					curRadialLineWidth = dataStyling[i].step_length
 					curPlaybackTime = dataStyling[i].playback_time
+					// console.log(dataArr[i].data)
 					radialWrapperSongs
 						.append("path")
 						.attr("d", lineRadial(dataArr[i].data))
@@ -1001,6 +1019,16 @@ var radiusOutwardMult_Artifact = 1.4
 						.style("filter", "url(#glow)")
 						.attr("opacity", 0.7)
 				}
+				// console.log(dataArr[dataArr.length-1].data[40][0])
+				// radialWrapperSongs
+				// 	.select('circle')
+				// 	.append('circle')
+				// 		.attr({
+				// 			r:10,
+				// 			cx:dataArr[dataArr.length-1].data[40][0],
+				// 			cy:dataArr[dataArr.length-1].data[40][1],
+				// 			fill:'red',
+				// 		});
 			})
 		
 	$('#songs-play-button').click(function(){
@@ -1026,23 +1054,13 @@ var radiusOutwardMult_Artifact = 1.4
 				///////////////////////////////////////////////////////////////////////////
 				//////////////////// Set up and initiate svg containers ///////////////////
 				///////////////////////////////////////////////////////////////////////////	
-				var margin = {
-					top: 0,
-					right: 0,
-					bottom: 0,
-					left: 0
-				};
-				// var width = window.innerWidth - margin.left - margin.right - 20;
-				// var height = window.innerHeight - margin.top - margin.bottom - 20;
-				var width = 400 - margin.left - margin.right;
-				var height = 400 - margin.top - margin.bottom;
+
 				//SVG container
 				var songs_svg = d3.select("#songs-choreo-radial")
-					.append("svg")
-					.attr("width", width + margin.left + margin.right)
-					.attr("height", height + margin.top + margin.bottom)
-					.append("g")
-					.attr("transform", "translate(" + (margin.left + width/2) + "," + (margin.top + height/2) + ")");
+				.append("svg")
+				.attr("viewBox", `0 0 400 400`)
+				.append("g")
+				.attr("transform", "translate(" + 200 + "," + 200 + ")");
 
 				//Container for the gradients
 				var defs = songs_svg.append("defs");
@@ -1222,11 +1240,15 @@ var radiusOutwardMult_Artifact = 1.4
 						.attr("transform", "rotate(" + ( -55 ) + ")")
 						.attr("fill", "none")
 						.attr("stroke-width", curRadialLineWidth/2)
-						.attr("stroke", "black")
+						.attr("stroke", "red")
 						.style("filter", "url(#glow)")
 						.transition()
 						.delay(((curPlaybackTime-18))*800)
 						.attr("opacity", 0.7)
+						.transition()
+							.ease(d3.easeLinear)
+							.duration(200)
+							.attr("stroke", "black")
 				}
 			})
 		});
@@ -1255,23 +1277,12 @@ var radiusOutwardMult_Artifact = 1.4
 		///////////////////////////////////////////////////////////////////////////
 		//////////////////// Set up and initiate svg containers ///////////////////
 		///////////////////////////////////////////////////////////////////////////	
-		var margin = {
-			top: 0,
-			right: 0,
-			bottom: 0,
-			left: 0
-		};
-		// var width = window.innerWidth - margin.left - margin.right - 20;
-		// var height = window.innerHeight - margin.top - margin.bottom - 20;
-		var width = 400 - margin.left - margin.right;
-		var height = 400 - margin.top - margin.bottom;
 		//SVG container
 		var endolor_svg = d3.select("#endolor-choreo-radial")
-			.append("svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
-			.append("g")
-			.attr("transform", "translate(" + (margin.left + width/2) + "," + (margin.top + height/2) + ")");
+		.append("svg")
+		.attr("viewBox", `0 0 400 400`)
+		.append("g")
+		.attr("transform", "translate(" + 200 + "," + 200 + ")");
 
 		//Container for the gradients
 		var defs = endolor_svg.append("defs");
@@ -1471,23 +1482,12 @@ var radiusOutwardMult_Artifact = 1.4
 				///////////////////////////////////////////////////////////////////////////
 				//////////////////// Set up and initiate svg containers ///////////////////
 				///////////////////////////////////////////////////////////////////////////	
-				var margin = {
-					top: 0,
-					right: 0,
-					bottom: 0,
-					left: 0
-				};
-				// var width = window.innerWidth - margin.left - margin.right - 20;
-				// var height = window.innerHeight - margin.top - margin.bottom - 20;
-				var width = 400 - margin.left - margin.right;
-				var height = 400 - margin.top - margin.bottom;
 				//SVG container
 				var endolor_svg = d3.select("#endolor-choreo-radial")
-					.append("svg")
-					.attr("width", width + margin.left + margin.right)
-					.attr("height", height + margin.top + margin.bottom)
-					.append("g")
-					.attr("transform", "translate(" + (margin.left + width/2) + "," + (margin.top + height/2) + ")");
+				.append("svg")
+				.attr("viewBox", `0 0 400 400`)
+				.append("g")
+				.attr("transform", "translate(" + 200 + "," + 200 + ")");
 
 				//Container for the gradients
 				var defs = endolor_svg.append("defs");
