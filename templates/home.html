@@ -352,34 +352,9 @@
 		var pi = Math.PI;
 		return rad * (180/pi);
 	}
-	
-///////////////////////////////////////////////////////////////////////////
-////////////////////////// Artifact, Forsythe /////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-var radiusOutwardMult_Artifact = 1.4
-const ballet = 'artifact'
-var measures_artifact = [{"index": 0, "ballet": "artifact", "ymin": 838.7689439141, "ymax": 1642.1331947345, "label": "measure_1", "step_length": 803.3642508204, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 1, "ballet": "artifact", "ymin": 33.6271162739, "ymax": 845.6937649165, "label": "measure_2", "step_length": 812.0666486426, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 39, "ballet": "artifact", "ymin": 8.1598672434, "ymax": 809.4435784606, "label": "measure_4", "step_length": 801.2837112172, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "4"}, {"index": 40, "ballet": "artifact", "ymin": 810.2366870525, "ymax": 1625.0795047733, "label": "measure_3", "step_length": 814.8428177208, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "3"}, {"index": 59, "ballet": "artifact", "ymin": 0.0, "ymax": 790.9936977924, "label": "measure_6", "step_length": 790.9936977924, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "6"}, {"index": 60, "ballet": "artifact", "ymin": 797.224138574, "ymax": 1604.0982529087, "label": "measure_5", "step_length": 806.8741143347, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "5"}, {"index": 79, "ballet": "artifact", "ymin": 826.0875400641, "ymax": 1638.8237179487, "label": "measure_7", "step_length": 812.7361778846, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "7"}, {"index": 80, "ballet": "artifact", "ymin": 4.3413461538, "ymax": 822.4697516026, "label": "measure_8", "step_length": 818.1284054487, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "8"}]
-///////////////////////////////////////////////////////////////////////////
-//////////////////// Set up and initiate svg containers ///////////////////
-///////////////////////////////////////////////////////////////////////////	
-var margin = {
-	top: 0,
-	right: 0,
-	bottom: 0,
-	left: 0
-};
-
-var width = 400 - margin.left - margin.right;
-var height = 400 - margin.top - margin.bottom;
-//SVG container
-var svg = d3.select("#artifact-choreo-radial")
-	.append("svg")
-	.attr("viewBox", `0 0 400 400`)
-	.append("g")
-	.attr("transform", "translate(" + 200 + "," + 200 + ")");
-
-	d3.json(datapath+'artifact'+".json", function(data) {
-		dataset = data;
+	///////////////////////////////////////////////////////////////////////////
+	//////////////////////////// Helper functions /////////////////////////////
+	///////////////////////////////////////////////////////////////////////////
 		var spokeArr = d3.range(10,359,359/numRadialSpokes)
 		var spokeArrRad = spokeArr.map(x => degrees_to_radians(x))
 		var bodyMovements = [
@@ -395,30 +370,6 @@ var svg = d3.select("#artifact-choreo-radial")
 								"left_arm",
 								"left_hand"
 							]
-
-		//Container for the gradients
-		var defs = svg.append("defs");
-
-		//Filter for the outside glow
-		var filter = defs.append("filter")
-			.attr("id","glow");
-		filter.append("feGaussianBlur")
-			.attr("stdDeviation","1.5")
-			.attr("result","coloredBlur");
-		var feMerge = filter.append("feMerge");
-		feMerge.append("feMergeNode")
-			.attr("in","coloredBlur");
-		feMerge.append("feMergeNode")
-			.attr("in","SourceGraphic");
-
-		// Define the div for the tooltip
-		var div = d3.select("svg").append("div")	
-			.attr("class", "tooltip")				
-			.style("opacity", 0);
-
-		///////////////////////////////////////////////////////////////////////////
-		//////////////////////////// Helper functions /////////////////////////////
-		///////////////////////////////////////////////////////////////////////////
 		function staffNumToRad(staff_num){
 			return parseInt(staff_num);
 		}
@@ -474,7 +425,55 @@ var svg = d3.select("#artifact-choreo-radial")
 					return spokeArr[6];
 			}
 		}
+///////////////////////////////////////////////////////////////////////////
+////////////////////////// Artifact, Forsythe /////////////////////////////
+///////////////////////////////////////////////////////////////////////////
+var radiusOutwardMult_Artifact = 1.4
+const ballet = 'artifact'
+var measures_artifact = [{"index": 0, "ballet": "artifact", "ymin": 838.7689439141, "ymax": 1642.1331947345, "label": "measure_1", "step_length": 803.3642508204, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 1, "ballet": "artifact", "ymin": 33.6271162739, "ymax": 845.6937649165, "label": "measure_2", "step_length": 812.0666486426, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 39, "ballet": "artifact", "ymin": 8.1598672434, "ymax": 809.4435784606, "label": "measure_4", "step_length": 801.2837112172, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "4"}, {"index": 40, "ballet": "artifact", "ymin": 810.2366870525, "ymax": 1625.0795047733, "label": "measure_3", "step_length": 814.8428177208, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "3"}, {"index": 59, "ballet": "artifact", "ymin": 0.0, "ymax": 790.9936977924, "label": "measure_6", "step_length": 790.9936977924, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "6"}, {"index": 60, "ballet": "artifact", "ymin": 797.224138574, "ymax": 1604.0982529087, "label": "measure_5", "step_length": 806.8741143347, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "5"}, {"index": 79, "ballet": "artifact", "ymin": 826.0875400641, "ymax": 1638.8237179487, "label": "measure_7", "step_length": 812.7361778846, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "7"}, {"index": 80, "ballet": "artifact", "ymin": 4.3413461538, "ymax": 822.4697516026, "label": "measure_8", "step_length": 818.1284054487, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "8"}]
+///////////////////////////////////////////////////////////////////////////
+//////////////////// Set up and initiate svg containers ///////////////////
+///////////////////////////////////////////////////////////////////////////	
+var margin = {
+	top: 0,
+	right: 0,
+	bottom: 0,
+	left: 0
+};
 
+var width = 400 - margin.left - margin.right;
+var height = 400 - margin.top - margin.bottom;
+
+//SVG container
+var svg = d3.select("#artifact-choreo-radial")
+	.append("svg")
+	.attr("viewBox", `0 0 400 400`)
+	.append("g")
+	.attr("transform", "translate(" + 200 + "," + 200 + ")");
+
+	d3.json(datapath+'artifact'+".json", function(data) {
+		dataset = data;
+
+		//Container for the gradients
+		var defs = svg.append("defs");
+
+		//Filter for the outside glow
+		var filter = defs.append("filter")
+			.attr("id","glow");
+		filter.append("feGaussianBlur")
+			.attr("stdDeviation","1.5")
+			.attr("result","coloredBlur");
+		var feMerge = filter.append("feMerge");
+		feMerge.append("feMergeNode")
+			.attr("in","coloredBlur");
+		feMerge.append("feMergeNode")
+			.attr("in","SourceGraphic");
+
+		// Define the div for the tooltip
+		var div = d3.select("svg").append("div")	
+			.attr("class", "tooltip")				
+			.style("opacity", 0);
+		
 		///////////////////////////////////////////////////////////////////////////
 		//////////////////////////// Create scales ////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////
@@ -564,25 +563,6 @@ var svg = d3.select("#artifact-choreo-radial")
 							.attr("stroke", "black")
 							.style("filter", "url(#glow)")
 							.attr("transform", "rotate(" + ( -55 ) + ")")
-							// .on("mouseover", function(d) {
-							// 	d3.select(this)
-							// 		.transition()
-							// 		.attr('stroke', '#ff0000');	
-							// 	div.transition()		
-							// 		.duration(100)		
-							// 		.style("opacity", .9);		
-							// 	div	.html("class here" + "<br/>")	
-							// 		.style("left", (d3.event.pageX) + "px")	
-							// 		.style("width", "100px")		
-							// 		.style("width", "50px")
-							// 		.style("background", "red")			
-							// 		.style("top", (d3.event.pageY) + "px");	
-							// 	})					
-							// .on("mouseout", function(d) {		
-							// 	div.transition()		
-							// 		.duration(500)		
-							// 		.style("opacity", 0.2);	
-							// });
 				}
 	});
 
@@ -598,21 +578,6 @@ var svg = d3.select("#artifact-choreo-radial")
 				.append("g")
 				.attr("transform", "translate(" + (margin.left + width/2) + "," + (margin.top + height/2) + ")");
 			dataset = data;
-			var spokeArr = d3.range(10,359,359/numRadialSpokes)
-			var spokeArrRad = spokeArr.map(x => degrees_to_radians(x))
-			var bodyMovements = [
-									"head",
-									"right_hand",
-									"right_arm",
-									"right_body",
-									"right_leg",
-									"right_support",
-									"left_support",
-									"left_leg",
-									"left_body",
-									"left_arm",
-									"left_hand"
-								]
 
 			///////////////////////////////////////////////////////////////////////////
 			//////////////////// Set up and initiate svg containers ///////////////////
@@ -650,65 +615,7 @@ var svg = d3.select("#artifact-choreo-radial")
 			// feMerge.append("feMergeNode")
 			// 	.attr("in","SourceGraphic");
 
-			///////////////////////////////////////////////////////////////////////////
-			//////////////////////////// Helper functions /////////////////////////////
-			///////////////////////////////////////////////////////////////////////////
-			function staffNumToRad(staff_num){
-				return parseInt(staff_num);
-			}
-			function bodyMovementToTheta(body_movement){
-				switch(body_movement){
-					case "right_arm":
-						return spokeArr[2];
-					case "left_arm":
-						return spokeArr[9];
-					case "right_leg":
-						return spokeArr[4];
-					case "left_leg":
-						return spokeArr[7];
-					case "right_support":
-						return spokeArr[5];
-					case "left_support":
-						return spokeArr[6];
-					case "right_hand":
-						return spokeArr[1];
-					case "left_hand":
-						return spokeArr[10];
-					case "right_body":
-						return spokeArr[3];
-					case "left_body":
-						return spokeArr[8];
-					case "head":
-						return spokeArr[0];
-				}
-			}
-			function bodyDirectionToTheta(body_movement, direction){
-				switch(direction){
-					case "place":
-						return -1;
-					case "forward":
-						return spokeArr[0]
-					case "forward_diagonal":
-						if (body_movement.includes("right")){
-							return spokeArr[1]
-						} else {
-							return spokeArr[7]
-						}
-					case "right":
-						return spokeArr[2];
-					case "backward_diagonal":
-						if (body_movement.includes("right")){
-							return spokeArr[3]
-						} else {
-							return spokeArr[5]
-						}
-					case "backward":
-						return spokeArr[4];
-					case "left":
-						return spokeArr[6];
-				}
-			}
-
+		
 			///////////////////////////////////////////////////////////////////////////
 			//////////////////////////// Create scales ////////////////////////////////
 			///////////////////////////////////////////////////////////////////////////
@@ -858,65 +765,6 @@ var svg = d3.select("#artifact-choreo-radial")
 					.attr("in","coloredBlur");
 				feMerge.append("feMergeNode")
 					.attr("in","SourceGraphic");
-
-				///////////////////////////////////////////////////////////////////////////
-				//////////////////////////// Helper functions /////////////////////////////
-				///////////////////////////////////////////////////////////////////////////
-				function staffNumToRad(staff_num){
-					return parseInt(staff_num);
-				}
-				function bodyMovementToTheta(body_movement){
-					switch(body_movement){
-						case "right_arm":
-							return spokeArr[2];
-						case "left_arm":
-							return spokeArr[9];
-						case "right_leg":
-							return spokeArr[4];
-						case "left_leg":
-							return spokeArr[7];
-						case "right_support":
-							return spokeArr[5];
-						case "left_support":
-							return spokeArr[6];
-						case "right_hand":
-							return spokeArr[1];
-						case "left_hand":
-							return spokeArr[10];
-						case "right_body":
-							return spokeArr[3];
-						case "left_body":
-							return spokeArr[8];
-						case "head":
-							return spokeArr[0];
-					}
-				}
-				function bodyDirectionToTheta(body_movement, direction){
-					switch(direction){
-						case "place":
-							return -1;
-						case "forward":
-							return spokeArr[0]
-						case "forward_diagonal":
-							if (body_movement.includes("right")){
-								return spokeArr[1]
-							} else {
-								return spokeArr[7]
-							}
-						case "right":
-							return spokeArr[2];
-						case "backward_diagonal":
-							if (body_movement.includes("right")){
-								return spokeArr[3]
-							} else {
-								return spokeArr[5]
-							}
-						case "backward":
-							return spokeArr[4];
-						case "left":
-							return spokeArr[6];
-					}
-				}
 
 				///////////////////////////////////////////////////////////////////////////
 				//////////////////////////// Create scales ////////////////////////////////
@@ -1078,65 +926,6 @@ var svg = d3.select("#artifact-choreo-radial")
 					.attr("in","SourceGraphic");
 
 				///////////////////////////////////////////////////////////////////////////
-				//////////////////////////// Helper functions /////////////////////////////
-				///////////////////////////////////////////////////////////////////////////
-				function staffNumToRad(staff_num){
-					return parseInt(staff_num);
-				}
-				function bodyMovementToTheta(body_movement){
-					switch(body_movement){
-						case "right_arm":
-							return spokeArr[2];
-						case "left_arm":
-							return spokeArr[9];
-						case "right_leg":
-							return spokeArr[4];
-						case "left_leg":
-							return spokeArr[7];
-						case "right_support":
-							return spokeArr[5];
-						case "left_support":
-							return spokeArr[6];
-						case "right_hand":
-							return spokeArr[1];
-						case "left_hand":
-							return spokeArr[10];
-						case "right_body":
-							return spokeArr[3];
-						case "left_body":
-							return spokeArr[8];
-						case "head":
-							return spokeArr[0];
-					}
-				}
-				function bodyDirectionToTheta(body_movement, direction){
-					switch(direction){
-						case "place":
-							return -1;
-						case "forward":
-							return spokeArr[0]
-						case "forward_diagonal":
-							if (body_movement.includes("right")){
-								return spokeArr[1]
-							} else {
-								return spokeArr[7]
-							}
-						case "right":
-							return spokeArr[2];
-						case "backward_diagonal":
-							if (body_movement.includes("right")){
-								return spokeArr[3]
-							} else {
-								return spokeArr[5]
-							}
-						case "backward":
-							return spokeArr[4];
-						case "left":
-							return spokeArr[6];
-					}
-				}
-
-				///////////////////////////////////////////////////////////////////////////
 				//////////////////////////// Create scales ////////////////////////////////
 				///////////////////////////////////////////////////////////////////////////
 				var radiusOutwardMult_Songs = 0.9;
@@ -1254,35 +1043,20 @@ var svg = d3.select("#artifact-choreo-radial")
 		});
 
 ///////////////////////////////////////////////////////////////////////////
-//////////////////////////// En Dolor, Winter ///////////////////////////////
+/////////////////////////// En Dolor, Winter ///////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 	d3.json(datapath+'endolor'+".json", function(data) {
 		dataset = data;
-		var spokeArr = d3.range(10,359,359/numRadialSpokes)
-		var spokeArrRad = spokeArr.map(x => degrees_to_radians(x))
-		var bodyMovements = [
-								"head",
-								"right_hand",
-								"right_arm",
-								"right_body",
-								"right_leg",
-								"right_support",
-								"left_support",
-								"left_leg",
-								"left_body",
-								"left_arm",
-								"left_hand"
-							]
-
 		///////////////////////////////////////////////////////////////////////////
 		//////////////////// Set up and initiate svg containers ///////////////////
 		///////////////////////////////////////////////////////////////////////////	
 		//SVG container
 		var endolor_svg = d3.select("#endolor-choreo-radial")
-		.append("svg")
-		.attr("viewBox", `0 0 400 400`)
-		.append("g")
-		.attr("transform", "translate(" + 200 + "," + 200 + ")");
+			.append("svg")
+			.attr("viewBox", `0 0 400 400`)
+			.append("g")
+			.attr("transform", "translate(" + 200 + "," + 200 + ")");
 
 		//Container for the gradients
 		var defs = endolor_svg.append("defs");
@@ -1299,69 +1073,11 @@ var svg = d3.select("#artifact-choreo-radial")
 		feMerge.append("feMergeNode")
 			.attr("in","SourceGraphic");
 
-		///////////////////////////////////////////////////////////////////////////
-		//////////////////////////// Helper functions /////////////////////////////
-		///////////////////////////////////////////////////////////////////////////
-		function staffNumToRad(staff_num){
-			return parseInt(staff_num);
-		}
-		function bodyMovementToTheta(body_movement){
-			switch(body_movement){
-				case "right_arm":
-					return spokeArr[2];
-				case "left_arm":
-					return spokeArr[9];
-				case "right_leg":
-					return spokeArr[4];
-				case "left_leg":
-					return spokeArr[7];
-				case "right_support":
-					return spokeArr[5];
-				case "left_support":
-					return spokeArr[6];
-				case "right_hand":
-					return spokeArr[1];
-				case "left_hand":
-					return spokeArr[10];
-				case "right_body":
-					return spokeArr[3];
-				case "left_body":
-					return spokeArr[8];
-				case "head":
-					return spokeArr[0];
-			}
-		}
-		function bodyDirectionToTheta(body_movement, direction){
-			switch(direction){
-				case "place":
-					return -1;
-				case "forward":
-					return spokeArr[0]
-				case "forward_diagonal":
-					if (body_movement.includes("right")){
-						return spokeArr[1]
-					} else {
-						return spokeArr[7]
-					}
-				case "right":
-					return spokeArr[2];
-				case "backward_diagonal":
-					if (body_movement.includes("right")){
-						return spokeArr[3]
-					} else {
-						return spokeArr[5]
-					}
-				case "backward":
-					return spokeArr[4];
-				case "left":
-					return spokeArr[6];
-			}
-		}
 
 		///////////////////////////////////////////////////////////////////////////
 		//////////////////////////// Create scales ////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////
-		var radiusOutwardMult_Endolor = 1.2;
+		var radiusOutwardMult_Endolor = 1.4;
 		var measures = [{"index": 0, "ballet": "endolor", "ymin": 36.6393376129, "ymax": 337.4905826749, "label": "measure_4", "step_length": 300.8512450621, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "4"}, {"index": 1, "ballet": "endolor", "ymin": 635.6952772291, "ymax": 928.7115018341, "label": "measure_2", "step_length": 293.016224605, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 2, "ballet": "endolor", "ymin": 335.9765095937, "ymax": 637.0247072517, "label": "measure_3", "step_length": 301.048197658, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "3"}, {"index": 3, "ballet": "endolor", "ymin": 934.0107576185, "ymax": 1347.2726968115, "label": "measure_1", "step_length": 413.261939193, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 35, "ballet": "endolor", "ymin": 32.4303047404, "ymax": 335.881489842, "label": "measure_8", "step_length": 303.4511851016, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "8"}, {"index": 36, "ballet": "endolor", "ymin": 928.8529909707, "ymax": 1236.2979683973, "label": "measure_5", "step_length": 307.4449774266, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "5"}, {"index": 37, "ballet": "endolor", "ymin": 333.7957110609, "ymax": 632.085778781, "label": "measure_7", "step_length": 298.2900677201, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "7"}, {"index": 38, "ballet": "endolor", "ymin": 634.4856094808, "ymax": 929.6173814898, "label": "measure_6", "step_length": 295.131772009, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "6"}, {"index": 85, "ballet": "endolor", "ymin": 252.4544123871, "ymax": 550.50560807, "label": "measure_11", "step_length": 298.0511956828, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "11"}, {"index": 86, "ballet": "endolor", "ymin": 549.1168171558, "ymax": 845.3348088318, "label": "measure_10", "step_length": 296.2179916761, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "10"}, {"index": 87, "ballet": "endolor", "ymin": 48.1299379233, "ymax": 251.4267071106, "label": "measure_12", "step_length": 203.2967691874, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "12"}, {"index": 88, "ballet": "endolor", "ymin": 846.1458627257, "ymax": 1148.9078371896, "label": "measure_9", "step_length": 302.7619744639, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "9"}, {"index": 113, "ballet": "endolor", "ymin": 742.7405033155, "ymax": 939.7297545147, "label": "measure_14", "step_length": 196.9892511992, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "14"}, {"index": 114, "ballet": "endolor", "ymin": 937.3291214024, "ymax": 1142.9650465576, "label": "measure_13", "step_length": 205.6359251552, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "13"}, {"index": 115, "ballet": "endolor", "ymin": 149.5534001129, "ymax": 446.2156197094, "label": "measure_16", "step_length": 296.6622195965, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "16"}, {"index": 116, "ballet": "endolor", "ymin": 444.9905826749, "ymax": 739.8949015942, "label": "measure_15", "step_length": 294.9043189193, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "15"}, {"index": 138, "ballet": "endolor", "ymin": 328.9226156885, "ymax": 629.2440480389, "label": "measure_19", "step_length": 300.3214323505, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "19"}, {"index": 139, "ballet": "endolor", "ymin": 924.9057033014, "ymax": 1226.3740653217, "label": "measure_17", "step_length": 301.4683620203, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "17"}, {"index": 140, "ballet": "endolor", "ymin": 626.0734780615, "ymax": 925.5482241112, "label": "measure_18", "step_length": 299.4747460497, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "18"}, {"index": 141, "ballet": "endolor", "ymin": 24.7520633465, "ymax": 331.8349763685, "label": "measure_20", "step_length": 307.082913022, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "20"}]
 
 		///////////////////////////////////////////////////////////////////////////
@@ -1428,11 +1144,11 @@ var svg = d3.select("#artifact-choreo-radial")
 					data[index] = [data[index][0], radArr[ii]+dataset[ii].step_length * radiusMult]
 					dataArr.push({data})
 				}
-				if (dataset[ii].direction_movement=='place'){
+				// if (dataset[ii].direction_movement=='place'){
 					// index = data.findIndex(x => findClosest(x, closestSpoke));
 					// data[index] = [data[index][0], radArr[ii]]
 					// dataArr.push({data})
-				}
+				// }
 
 			}
 		}
@@ -1463,22 +1179,7 @@ var svg = d3.select("#artifact-choreo-radial")
 			$('#endolor-choreo-radial').empty()
 			d3.json(datapath+'endolor'+".json", function(data) {
 				dataset = data;
-				var spokeArr = d3.range(10,359,359/numRadialSpokes)
-				var spokeArrRad = spokeArr.map(x => degrees_to_radians(x))
-				var bodyMovements = [
-										"head",
-										"right_hand",
-										"right_arm",
-										"right_body",
-										"right_leg",
-										"right_support",
-										"left_support",
-										"left_leg",
-										"left_body",
-										"left_arm",
-										"left_hand"
-									]
-
+				
 				///////////////////////////////////////////////////////////////////////////
 				//////////////////// Set up and initiate svg containers ///////////////////
 				///////////////////////////////////////////////////////////////////////////	
@@ -1505,68 +1206,9 @@ var svg = d3.select("#artifact-choreo-radial")
 					.attr("in","SourceGraphic");
 
 				///////////////////////////////////////////////////////////////////////////
-				//////////////////////////// Helper functions /////////////////////////////
-				///////////////////////////////////////////////////////////////////////////
-				function staffNumToRad(staff_num){
-					return parseInt(staff_num);
-				}
-				function bodyMovementToTheta(body_movement){
-					switch(body_movement){
-						case "right_arm":
-							return spokeArr[2];
-						case "left_arm":
-							return spokeArr[9];
-						case "right_leg":
-							return spokeArr[4];
-						case "left_leg":
-							return spokeArr[7];
-						case "right_support":
-							return spokeArr[5];
-						case "left_support":
-							return spokeArr[6];
-						case "right_hand":
-							return spokeArr[1];
-						case "left_hand":
-							return spokeArr[10];
-						case "right_body":
-							return spokeArr[3];
-						case "left_body":
-							return spokeArr[8];
-						case "head":
-							return spokeArr[0];
-					}
-				}
-				function bodyDirectionToTheta(body_movement, direction){
-					switch(direction){
-						case "place":
-							return -1;
-						case "forward":
-							return spokeArr[0]
-						case "forward_diagonal":
-							if (body_movement.includes("right")){
-								return spokeArr[1]
-							} else {
-								return spokeArr[7]
-							}
-						case "right":
-							return spokeArr[2];
-						case "backward_diagonal":
-							if (body_movement.includes("right")){
-								return spokeArr[3]
-							} else {
-								return spokeArr[5]
-							}
-						case "backward":
-							return spokeArr[4];
-						case "left":
-							return spokeArr[6];
-					}
-				}
-
-				///////////////////////////////////////////////////////////////////////////
 				//////////////////////////// Create scales ////////////////////////////////
 				///////////////////////////////////////////////////////////////////////////
-				var radiusOutwardMult_Endolor = 1.2;
+				var radiusOutwardMult_Endolor = 1.4;
 				var measures = [{"index": 0, "ballet": "endolor", "ymin": 36.6393376129, "ymax": 337.4905826749, "label": "measure_4", "step_length": 300.8512450621, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "4"}, {"index": 1, "ballet": "endolor", "ymin": 635.6952772291, "ymax": 928.7115018341, "label": "measure_2", "step_length": 293.016224605, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 2, "ballet": "endolor", "ymin": 335.9765095937, "ymax": 637.0247072517, "label": "measure_3", "step_length": 301.048197658, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "3"}, {"index": 3, "ballet": "endolor", "ymin": 934.0107576185, "ymax": 1347.2726968115, "label": "measure_1", "step_length": 413.261939193, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 35, "ballet": "endolor", "ymin": 32.4303047404, "ymax": 335.881489842, "label": "measure_8", "step_length": 303.4511851016, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "8"}, {"index": 36, "ballet": "endolor", "ymin": 928.8529909707, "ymax": 1236.2979683973, "label": "measure_5", "step_length": 307.4449774266, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "5"}, {"index": 37, "ballet": "endolor", "ymin": 333.7957110609, "ymax": 632.085778781, "label": "measure_7", "step_length": 298.2900677201, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "7"}, {"index": 38, "ballet": "endolor", "ymin": 634.4856094808, "ymax": 929.6173814898, "label": "measure_6", "step_length": 295.131772009, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "6"}, {"index": 85, "ballet": "endolor", "ymin": 252.4544123871, "ymax": 550.50560807, "label": "measure_11", "step_length": 298.0511956828, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "11"}, {"index": 86, "ballet": "endolor", "ymin": 549.1168171558, "ymax": 845.3348088318, "label": "measure_10", "step_length": 296.2179916761, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "10"}, {"index": 87, "ballet": "endolor", "ymin": 48.1299379233, "ymax": 251.4267071106, "label": "measure_12", "step_length": 203.2967691874, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "12"}, {"index": 88, "ballet": "endolor", "ymin": 846.1458627257, "ymax": 1148.9078371896, "label": "measure_9", "step_length": 302.7619744639, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "9"}, {"index": 113, "ballet": "endolor", "ymin": 742.7405033155, "ymax": 939.7297545147, "label": "measure_14", "step_length": 196.9892511992, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "14"}, {"index": 114, "ballet": "endolor", "ymin": 937.3291214024, "ymax": 1142.9650465576, "label": "measure_13", "step_length": 205.6359251552, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "13"}, {"index": 115, "ballet": "endolor", "ymin": 149.5534001129, "ymax": 446.2156197094, "label": "measure_16", "step_length": 296.6622195965, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "16"}, {"index": 116, "ballet": "endolor", "ymin": 444.9905826749, "ymax": 739.8949015942, "label": "measure_15", "step_length": 294.9043189193, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "15"}, {"index": 138, "ballet": "endolor", "ymin": 328.9226156885, "ymax": 629.2440480389, "label": "measure_19", "step_length": 300.3214323505, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "19"}, {"index": 139, "ballet": "endolor", "ymin": 924.9057033014, "ymax": 1226.3740653217, "label": "measure_17", "step_length": 301.4683620203, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "17"}, {"index": 140, "ballet": "endolor", "ymin": 626.0734780615, "ymax": 925.5482241112, "label": "measure_18", "step_length": 299.4747460497, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "18"}, {"index": 141, "ballet": "endolor", "ymin": 24.7520633465, "ymax": 331.8349763685, "label": "measure_20", "step_length": 307.082913022, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "20"}]
 
 				///////////////////////////////////////////////////////////////////////////
@@ -1591,7 +1233,6 @@ var svg = d3.select("#artifact-choreo-radial")
 					d.theta = bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50
 					d.thetaRad = degrees_to_radians( bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50 )
 				});
-
 
 				//Set the minimum inner radius and max outer radius of the chart
 				var	outerRadius = Math.min(width, height, 250)/2,
@@ -1633,12 +1274,6 @@ var svg = d3.select("#artifact-choreo-radial")
 							data[index] = [data[index][0], radArr[ii]+dataset[ii].step_length * radiusMult]
 							dataArr.push({data})
 						}
-						if (dataset[ii].direction_movement=='place'){
-							// index = data.findIndex(x => findClosest(x, closestSpoke));
-							// data[index] = [data[index][0], radArr[ii]]
-							// dataArr.push({data})
-						}
-
 					}
 				}
 				if (curveType == 'catmull'){var lineRadial = d3.lineRadial().curve(d3.curveCatmullRom.alpha(curveAlpha));}
@@ -1665,11 +1300,14 @@ var svg = d3.select("#artifact-choreo-radial")
 						.attr("transform", "rotate(" + ( -55 ) + ")")
 						.attr("fill", "none")
 						.attr("stroke-width", curRadialLineWidth/2)
-						.attr("stroke", "black")
+						.attr("stroke", "red")
 						.style("filter", "url(#glow)")
 						.transition()
-						.delay( (curPlaybackTime-19)*700)
-						.attr("opacity", 0.7)
+							.delay( (curPlaybackTime-19)*1000)
+							.attr("opacity", 0.7)
+							.transition()
+								.duration(200)
+								.attr("stroke", "black")
 				}
 			})
 		});
