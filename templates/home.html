@@ -5,7 +5,7 @@
 	<style type="text/css">
 		:root {
 			--black-line-width: 6px;
-			--general-margin: 20%;
+			--general-margin: 10%;
 		}
 		.bely-display{
 			font-family: bely-display,sans-serif;
@@ -32,6 +32,11 @@
 			font-weight: 700;
 			font-style: italic;
 		}
+		@font-face {
+		  font-family: 'League';
+		  /* src:  url('./static/fonts/leaguespartan-bold.woff2') format('woff2'), */
+		  src:  url('./static/fonts/leaguespartan-bold.woff') format('woff');
+		}
 		body{
 			font-family: bely,serif;
 			font-weight: 400;
@@ -48,6 +53,7 @@
 		.blade{
 			width: 100vw;
 			height: 90vh;
+			margin-bottom: 8vh;
 			/* min-height: 2000px; */
 			border-top: black;
 			border-width: 0px;
@@ -94,23 +100,25 @@
 			height: 105vh;
 		}
 		#intro-text{
-			width: 32vw;
+			width: 36vw;
 			font-size: 2.1vh !important;
 			line-height: 2.8vh !important;
 		}
 		#choreo-radial-explainer {
-			width: 220%;
+			width: 100%;
 			margin-top: var(--general-margin);
 		}
 		#choreo-radial-explainer-body {
-			width: 290%;
-			margin-top: 150%;
+			width: 70%;
+			margin-top: 40%;
 		}
 		.left-column {
 			width: 40%;
+			float: left;
 		}
 		.right-column {
-			width: 40%;
+			width: 50%;
+			float: right;
 		}
 		.centered {
 			display: block;
@@ -136,6 +144,12 @@
 			grid-gap: 3%;
 			grid-template-columns: auto auto auto;
 			/* padding: 3%; */
+			width: 80%;
+			height: 90%;
+			margin-top: 0px;
+			margin-left: 12%;
+		}
+		.two-column-spread {
 			width: 80%;
 			height: 90%;
 			margin-top: 0px;
@@ -188,7 +202,17 @@
 			width: 100%;
 			height: 50%;
 		}
-		@media (max-width: 750px) and (min-width: 0px){
+		.feature-title {
+			font-family: 'League', Fallback, sans-serif;
+			font-size: 3.5vh !important;
+			margin-top: 0px;
+		}
+		.feature-para {
+			width: 42vw;
+			font-size: 2vh !important;
+			line-height: 2.5vh !important;
+		}
+		@media (max-width: 1000px) and (min-width: 0px){
 			.desktop{
 				display:none;
 			}
@@ -239,6 +263,9 @@
 				grid-row: 3;
 				grid-column: 1 / 3;
 			}
+			.right-column {
+				float: none;
+			}
 			.choreo-radial{
 				width: 100%;
     			height: 50%;
@@ -280,7 +307,8 @@
 			</div>	
 		</div>
 		<div style='margin-top: -5vh;'>
-			<div class='spread-container'>
+			<!-- <div class='spread-container'> -->
+			<div class='two-column-spread'>
 				<div class='left-column'>
 					<p id='intro-text' class='para'>
 						Using a method of dance notation called <b>Labanotation</b>, it is possible to translate dance choreography into 
@@ -289,22 +317,29 @@
 						<b>how long</b> a body part moves during a dance.
 					</p>
 					<img id='choreo-radial-explainer' src="{{ url_for('static', filename='assets/explainer-choreo-radial.svg') }}" alt="choreo-radial explainer graphic">
+					<!-- <img id='choreo-radial-explainer-body' src="{{ url_for('static', filename='assets/explainer-choreo-radial-body.svg') }}" alt="choreo-radial-body explainer graphic"> -->
 				</div>
 				<div class='right-column'>
 					<img id='choreo-radial-explainer-body' src="{{ url_for('static', filename='assets/explainer-choreo-radial-body.svg') }}" alt="choreo-radial-body explainer graphic">
 				</div>
 			</div>
+			<!-- </div> -->
 		</div>
 	</div>
 	<!-- <div id='methodology' class='blade'>
 		<p class='left-margin'>METHODOLOGY</p>
 	</div> -->
-	<!-- <div id='classical-era-illustration-spread' class='blade'>
+	<div id='classical-era-illustration-spread' class='blade'>
 		<div class='spread-container'>
-			FEATURE ONE HIGHLY ILLUSTRATED HERE
-			<br>TALK ABOUT CLASSICAL DANCE IN GENERAL
+			<div>
+				<p class='feature-title'>Artifact 1984</p>
+				<p class='feature-para'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
+						in lacinia porttitor, leo metus vehicula turpis, et consequat felis lorem nec elit. Fusce augue arcu, facilisis nec 
+						posuere quis, ullamcorper sed neque. Pellentesque et eros tellus. Suspendisse id ex scelerisque, venenatis tortor nec, 
+						sodales tellus. Praesent dui libero, vehicula placerat consequat et, laoreet vitae justo. Sed in dignissim dolor.</p>
+			</div>
 		</div>
-	</div> -->
+	</div>
 	<div id='postmodern-era-vis-spread' class='blade'>
 			<div class='spread-container'>
 				<div id='endolor-column' class="column-within-blade a">
