@@ -5,7 +5,7 @@
 	<style type="text/css">
 		:root {
 			--black-line-width: 6px;
-			--general-margin: 10%;
+			--general-margin: 8%;
 		}
 		.bely-display{
 			font-family: bely-display,sans-serif;
@@ -48,13 +48,12 @@
 			margin-right: 0px;
 		}
 		.left-margin{
-			margin-left: 10%;
+			margin-left: 12%;
 		}
 		.blade{
 			width: 100vw;
 			height: 90vh;
-			margin-bottom: 8vh;
-			/* min-height: 2000px; */
+			margin-bottom: 15vh;
 			border-top: black;
 			border-width: 0px;
 			border-left-width: 0px;
@@ -65,6 +64,7 @@
 		}
 		#title {
 			min-height: 0px !important;
+			height: 80vh;
 		}
 		#taxonomy-title {
 			padding-top: 8vh;
@@ -101,7 +101,7 @@
 		}
 		#intro-text{
 			width: 36vw;
-			font-size: 2.1vh !important;
+			font-size: 2.3vh !important;
 			line-height: 2.8vh !important;
 		}
 		#choreo-radial-explainer {
@@ -109,7 +109,7 @@
 			margin-top: var(--general-margin);
 		}
 		#choreo-radial-explainer-body {
-			width: 70%;
+			width: 80%;
 			margin-top: 40%;
 		}
 		.left-column {
@@ -155,6 +155,12 @@
 			margin-top: 0px;
 			margin-left: 12%;
 		}
+		.feature-spread-container {
+			width: 80%;
+			height: 90%;
+			margin-top: 0px;
+			margin-left: 12%;
+		}
 		.column-within-blade {
 			text-align: center;
 			padding: 2%;
@@ -175,10 +181,10 @@
 			grid-row: 1 / 3;
 		}
 		.desktop{
-			display:block;
+			display: block !important;
 		}
 		.mobile{
-			display:none;
+			display: none !important;
 		}
 		.play-button {
         	border-radius: 3px;
@@ -207,25 +213,49 @@
 			font-size: 3.5vh !important;
 			margin-top: 0px;
 		}
+		.era-title {
+			font-family: 'League', Fallback, sans-serif;
+			font-size: 2.5vh !important;
+			margin-top: 0px;
+		}
 		.feature-para {
 			width: 42vw;
 			font-size: 2vh !important;
 			line-height: 2.5vh !important;
 		}
-		@media (max-width: 1000px) and (min-width: 0px){
+		#artifact-feature-choreo-radials {
+			display: block;
+			width: 70vw;
+			margin-top: var(--general-margin);
+		}
+
+		/************ CAUTION: MOBILE STYLES ***************
+		****************************************************
+		***************************************************/
+		@media (max-width: 1040px) and (min-width: 0px){
 			.desktop{
-				display:none;
+				display: none !important;
 			}
 			.mobile{
-				display:block;
+				display: block !important;
 			}
 			.blade {
-				min-height: 2500px;
+				height: 82vh !important;
+				margin-top: 20vh !important;
+				margin-bottom: 20vh !important;
+			}
+			#modern-era-vis-spread {
+				min-height: 200vh;
+			}
+			#title {
+				height: 70vh !important;
+				margin-bottom: 10vh !important;
+				margin-top: 0 !important;
 			}
 			#taxonomy-title {
 				padding-top: .5vh;
 				height: 95vh;
-				width: 95vw;
+				width: 90vw;
 				background: 
 				linear-gradient(black, black) right / var(--black-line-width) 25%;
 				background-repeat: no-repeat;
@@ -263,18 +293,42 @@
 				grid-row: 3;
 				grid-column: 1 / 3;
 			}
+			.left-column {
+				float: none;
+				width: 80vw;
+			}
 			.right-column {
 				float: none;
+				width: 80vw;
 			}
 			.choreo-radial{
 				width: 100%;
     			height: 50%;
 			}
+			#choreo-radial-explainer-body {
+				width: 60vw;
+				margin-top: 10vh;
+			}
 			#intro-text{
 				width: 80vw;
 			}
-			#choreo-radial-explainer {
-				width: 90%;
+			#intro {
+				min-height: 140vh !important;
+			}
+			.feature-para {
+				width: 80vw;
+			}
+			.two-column-spread {
+				margin-top: 10vh !important;
+			}
+			.feature-spread-container {
+				margin-top: 10vh !important;
+			}
+			#artifact-feature-choreo-radials {
+				height: 55vh;
+				margin-top: 5vh;
+				float: left;
+				width: 20vh;
 			}
 		}
 	</style>
@@ -299,15 +353,14 @@
 			<div class='child'>
 				<div id='subtitle' class='bely-regular'>
 					Using Labanotation, Taxonomy of Dance attempts to discover an underlying visual
-					structure in western choreography across three periods of dance: <b>classical</b>, <b>contemporary</b>, and <b>postmodern</b>.
+					structure in western choreography across two periods of dance: <b>classical</b> and <b>contemporary</b>.
 				</div>
 				<div id='learn-more'>
 					<img src="{{ url_for('static', filename='assets/learn-more-2.svg') }}">
 				</div>
 			</div>	
 		</div>
-		<div style='margin-top: -5vh;'>
-			<!-- <div class='spread-container'> -->
+		<div >
 			<div class='two-column-spread'>
 				<div class='left-column'>
 					<p id='intro-text' class='para'>
@@ -317,30 +370,29 @@
 						<b>how long</b> a body part moves during a dance.
 					</p>
 					<img id='choreo-radial-explainer' src="{{ url_for('static', filename='assets/explainer-choreo-radial.svg') }}" alt="choreo-radial explainer graphic">
-					<!-- <img id='choreo-radial-explainer-body' src="{{ url_for('static', filename='assets/explainer-choreo-radial-body.svg') }}" alt="choreo-radial-body explainer graphic"> -->
 				</div>
 				<div class='right-column'>
 					<img id='choreo-radial-explainer-body' src="{{ url_for('static', filename='assets/explainer-choreo-radial-body.svg') }}" alt="choreo-radial-body explainer graphic">
 				</div>
 			</div>
-			<!-- </div> -->
 		</div>
 	</div>
-	<!-- <div id='methodology' class='blade'>
-		<p class='left-margin'>METHODOLOGY</p>
-	</div> -->
-	<div id='classical-era-illustration-spread' class='blade'>
-		<div class='spread-container'>
+	<div id='modern-era-feature-spread' class='blade'>
+		<div class='feature-spread-container'>
 			<div>
+				<p class='era-title'>The Contemporary Era</p>
 				<p class='feature-title'>Artifact 1984</p>
 				<p class='feature-para'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
 						in lacinia porttitor, leo metus vehicula turpis, et consequat felis lorem nec elit. Fusce augue arcu, facilisis nec 
 						posuere quis, ullamcorper sed neque. Pellentesque et eros tellus. Suspendisse id ex scelerisque, venenatis tortor nec, 
 						sodales tellus. Praesent dui libero, vehicula placerat consequat et, laoreet vitae justo. Sed in dignissim dolor.</p>
 			</div>
+			<img id='artifact-feature-choreo-radials' class='desktop' src="{{ url_for('static', filename='assets/artifact-radials-names-below-illus.svg') }}" alt="artifact 1984 choreo radials">
+			<img id='artifact-feature-choreo-radials' class='mobile' src="{{ url_for('static', filename='assets/artifact-radials-vert-names-right-illus.svg') }}" alt="artifact 1984 choreo radials">
 		</div>
 	</div>
-	<div id='postmodern-era-vis-spread' class='blade'>
+	<div id='modern-era-vis-spread' class='blade'>
+			<p class='era-title left-margin' style='margin-bottom: 5vh;'>The Contemporary Era</p>
 			<div class='spread-container'>
 				<div id='endolor-column' class="column-within-blade a">
 						<button id="endolor-play-button" class='play-button' onclick="document.getElementById('endolor-audio').play()">&#9658;</button>
@@ -376,14 +428,14 @@
 				</div>
 			</div>
 	</div>
-	<div id='classical-era-vis-spread' class='blade'>
+	<!-- <div id='classical-era-vis-spread' class='blade'>
 			<div class='spread-container'>
-				<div id='coppelia-column' class="column-within-blade a">
+				<div id='coppelia-column' class="column-within-blade a"> -->
 					<!-- <button id="coppelia-play-button" class='play-button' onclick="document.getElementById('coppelia-audio').play()">&#9658;</button> -->
 					<!-- TODO ADD SLIDER -->
 					<!-- TODO ADD PAUSE -->
 					<!-- TODO ADD MARKER FOR AVG CUMULATIVE WEIGHT DIST-->
-					<p class='column-title'>Coppélia 1870</p>
+					<!-- <p class='column-title'>Coppélia 1870</p>
 					<div id="coppelia-choreo-radial" class='choreo-radial'></div>
 					<p class='column-paragraph para' style='text-align: left;'>Arthur Michel Saint-Leon<br><br>Coppélia was originally choreographed by Arthur Saint-Léon for the St. Petersburg Imperial Ballet in 
 						Russia, though it debuted in Paris in 1870. The ballet tells the comic story of an inventor who creates a doll so lifelike 
@@ -408,7 +460,7 @@
 						</p>
 				</div>
 			</div>
-	</div>
+	</div> -->
 	<main>
 	{% block main %}{% endblock %}
 	</main>
