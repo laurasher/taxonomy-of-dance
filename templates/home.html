@@ -484,6 +484,8 @@
 	var radiusOutwardMult = 1.8 //scaling to the page
 	var curveType = 'basis'
 	var stepLengthMultipier = 2
+	var animateColor = "#D2D627"
+
 	function getRandomNumber(start, end) {
 		return (Math.random() * (end-start) * 100)/100 + start;
 	}
@@ -816,8 +818,8 @@ var svg = d3.select("#artifact-choreo-radial")
 					.style("filter", "url(#glow)")
 					.attr("transform", "rotate(" + ( -55 ) + ")")
 					.attr("fill", "none")
-					.attr("stroke-width", curRadialLineWidth/1.2)
-					.attr("stroke", "red")
+					.attr("stroke-width", curRadialLineWidth/2)
+					.attr("stroke", animateColor)
 					.transition()
 						.delay( (curPlaybackTime-14)*1000)
 						.attr("opacity", 0.9)
@@ -1135,7 +1137,7 @@ var svg = d3.select("#artifact-choreo-radial")
 						.attr("transform", "rotate(" + ( -55 ) + ")")
 						.attr("fill", "none")
 						.attr("stroke-width", curRadialLineWidth/2)
-						.attr("stroke", "red")
+						.attr("stroke", animateColor)
 						.style("filter", "url(#glow)")
 						.transition()
 						.delay(((curPlaybackTime-18))*800)
@@ -1406,7 +1408,7 @@ var svg = d3.select("#artifact-choreo-radial")
 						.attr("transform", "rotate(" + ( -55 ) + ")")
 						.attr("fill", "none")
 						.attr("stroke-width", curRadialLineWidth/2)
-						.attr("stroke", "red")
+						.attr("stroke", animateColor)
 						.style("filter", "url(#glow)")
 						.transition()
 							.delay( (curPlaybackTime-19)*1000)
