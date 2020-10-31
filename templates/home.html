@@ -5,6 +5,7 @@
 	<style type="text/css">
 		:root {
 			--black-line-width: 6px;
+			--general-margin: 20%;
 		}
 		.bely-display{
 			font-family: bely-display,sans-serif;
@@ -47,6 +48,7 @@
 		.blade{
 			width: 100vw;
 			height: 90vh;
+			/* min-height: 2000px; */
 			border-top: black;
 			border-width: 0px;
 			border-left-width: 0px;
@@ -54,6 +56,9 @@
 			border-bottom-width: 1px;
 			border-style: dashed;
 			border-width: 0px;
+		}
+		#title {
+			min-height: 0px !important;
 		}
 		#taxonomy-title {
 			padding-top: 8vh;
@@ -71,6 +76,7 @@
 			font-size: 2vh;
 		}
 		.column-title {
+			font-size: 2vh;
 			display: inline;
 		}
 		#learn-more {
@@ -78,6 +84,33 @@
 			margin-top: 10vh;
 			display: block;
 			margin-left: 1vw;
+		}
+		.para {
+			/* font-size: 1.9vh; */
+			font-size: 1.7vh;
+			line-height: 2.2vh;
+		}
+		#intro {
+			height: 105vh;
+		}
+		#intro-text{
+			width: 32vw;
+			font-size: 2.1vh !important;
+			line-height: 2.8vh !important;
+		}
+		#choreo-radial-explainer {
+			width: 220%;
+			margin-top: var(--general-margin);
+		}
+		#choreo-radial-explainer-body {
+			width: 290%;
+			margin-top: 150%;
+		}
+		.left-column {
+			width: 40%;
+		}
+		.right-column {
+			width: 40%;
 		}
 		.centered {
 			display: block;
@@ -155,12 +188,15 @@
 			width: 100%;
 			height: 50%;
 		}
-		@media (max-width: 720px) and (min-width: 0px){
+		@media (max-width: 750px) and (min-width: 0px){
 			.desktop{
 				display:none;
 			}
 			.mobile{
 				display:block;
+			}
+			.blade {
+				min-height: 2500px;
 			}
 			#taxonomy-title {
 				padding-top: .5vh;
@@ -207,6 +243,12 @@
 				width: 100%;
     			height: 50%;
 			}
+			#intro-text{
+				width: 80vw;
+			}
+			#choreo-radial-explainer {
+				width: 90%;
+			}
 		}
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="https://d3js.org/d3.v4.min.js"></script>
@@ -237,9 +279,22 @@
 				</div>
 			</div>	
 		</div>
-		<!-- <div style='margin-top: -5vh;'>
-			<p class='left-margin'>INTRODUCTION</p>
-		</div> -->
+		<div style='margin-top: -5vh;'>
+			<div class='spread-container'>
+				<div class='left-column'>
+					<p id='intro-text' class='para'>
+						Using a method of dance notation called <b>Labanotation</b>, it is possible to translate dance choreography into 
+						machine-parseable data by labeling x,y bounding boxes around each movement in a dance score. 
+						<br><br>The visualization paradigm below was developed to show <b>when</b>, in which <b>direction</b>, and 
+						<b>how long</b> a body part moves during a dance.
+					</p>
+					<img id='choreo-radial-explainer' src="{{ url_for('static', filename='assets/explainer-choreo-radial.svg') }}" alt="choreo-radial explainer graphic">
+				</div>
+				<div class='right-column'>
+					<img id='choreo-radial-explainer-body' src="{{ url_for('static', filename='assets/explainer-choreo-radial-body.svg') }}" alt="choreo-radial-body explainer graphic">
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- <div id='methodology' class='blade'>
 		<p class='left-margin'>METHODOLOGY</p>
@@ -256,7 +311,7 @@
 						<button id="endolor-play-button" class='play-button' onclick="document.getElementById('endolor-audio').play()">&#9658;</button>
 						<p class='column-title'>En Dolor 1944</p>
 						<div id='endolor-choreo-radial' class='choreo-radial'></div>
-						<p class='column-paragraph' style='text-align: left;'>Ethel Winter<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
+						<p class='column-paragraph para' style='text-align: left;'>Ethel Winter<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
 							in lacinia porttitor, leo metus vehicula turpis, et consequat felis lorem nec elit. Fusce augue arcu, facilisis nec 
 							posuere quis, ullamcorper sed neque. Pellentesque et eros tellus. Suspendisse id ex scelerisque, venenatis tortor nec, 
 							sodales tellus. Praesent dui libero, vehicula placerat consequat et, laoreet vitae justo. Sed in dignissim dolor. 
@@ -266,7 +321,7 @@
 						<button id="songs-play-button" class='play-button' onclick="document.getElementById('songs-audio').play()">&#9658;</button>
 						<p class='column-title'>Songs 1956</p>
 						<div id='songs-choreo-radial' class='choreo-radial'></div>
-						<p class='column-paragraph' style='text-align: left;'>Mary Anthony<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
+						<p class='column-paragraph para' style='text-align: left;'>Mary Anthony<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
 							in lacinia porttitor, leo metus vehicula turpis, et consequat felis lorem nec elit. Fusce augue arcu, facilisis nec 
 							posuere quis, ullamcorper sed neque. Pellentesque et eros tellus. Suspendisse id ex scelerisque, venenatis tortor nec, 
 							sodales tellus. Praesent dui libero, vehicula placerat consequat et, laoreet vitae justo. Sed in dignissim dolor. 
@@ -278,7 +333,7 @@
 							<p class='column-title'>Artifact 1984</p>
 						</span>
 						<div id="artifact-choreo-radial" class='choreo-radial'></div>
-						<p class='column-paragraph' style='text-align: left;'>William Forsythe<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
+						<p class='column-paragraph para' style='text-align: left;'>William Forsythe<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
 							in lacinia porttitor, leo metus vehicula turpis, et consequat felis lorem nec elit. Fusce augue arcu, facilisis nec 
 							posuere quis, ullamcorper sed neque. Pellentesque et eros tellus. Suspendisse id ex scelerisque, venenatis tortor nec, 
 							sodales tellus. Praesent dui libero, vehicula placerat consequat et, laoreet vitae justo. Sed in dignissim dolor. 
@@ -292,9 +347,10 @@
 					<!-- <button id="coppelia-play-button" class='play-button' onclick="document.getElementById('coppelia-audio').play()">&#9658;</button> -->
 					<!-- TODO ADD SLIDER -->
 					<!-- TODO ADD PAUSE -->
+					<!-- TODO ADD MARKER FOR AVG CUMULATIVE WEIGHT DIST-->
 					<p class='column-title'>Coppélia 1870</p>
 					<div id="coppelia-choreo-radial" class='choreo-radial'></div>
-					<p class='column-paragraph' style='text-align: left;'>Arthur Michel Saint-Leon<br><br>Coppélia was originally choreographed by Arthur Saint-Léon for the St. Petersburg Imperial Ballet in 
+					<p class='column-paragraph para' style='text-align: left;'>Arthur Michel Saint-Leon<br><br>Coppélia was originally choreographed by Arthur Saint-Léon for the St. Petersburg Imperial Ballet in 
 						Russia, though it debuted in Paris in 1870. The ballet tells the comic story of an inventor who creates a doll so lifelike 
 						that a village boy becomes infatuated with it. Coppélia is still frequently performed today, and is known for its fast 
 						footwork as well as its historic use of mime and visual motif to tell a story.</p>
@@ -302,7 +358,7 @@
 				<div id='sleepingbeauty-column' class="column-within-blade b">
 						<p class='column-title'>Sleeping Beauty 1890</p>
 						<div id='sleepingbeauty-choreo-radial' class='choreo-radial'></div>
-						<p class='column-paragraph' style='text-align: left;'>Marius Petipa<br><br>Coppélia was originally choreographed by Arthur Saint-Léon for the St. Petersburg Imperial Ballet in 
+						<p class='column-paragraph para' style='text-align: left;'>Marius Petipa<br><br>Coppélia was originally choreographed by Arthur Saint-Léon for the St. Petersburg Imperial Ballet in 
 							Russia, though it debuted in Paris in 1870. The ballet tells the comic story of an inventor who creates a doll so lifelike 
 							that a village boy becomes infatuated with it. Coppélia is still frequently performed today, and is known for its fast 
 							footwork as well as its historic use of mime and visual motif to tell a story.</p>
@@ -310,7 +366,7 @@
 				<div id='raymonda-column' class="column-within-blade c">
 						<p class='column-title'>Raymonda 1898</p>
 						<div id='raymonda-choreo-radial' class='choreo-radial'></div>
-						<p class='column-paragraph' style='text-align: left;'>Marius Petipa<br><br>Set in Hungary, Raymonda tells a typically romantic story for a classical ballet about royalty, magic, 
+						<p class='column-paragraph para' style='text-align: left;'>Marius Petipa<br><br>Set in Hungary, Raymonda tells a typically romantic story for a classical ballet about royalty, magic, 
 							vision and drama. It was choreographed by the renowned ballet master Marius Petipa of the St. Petersburg Imperial ballet and 
 							debuted in 1898 at the Mariinsky Theater in St. Petersburg.  Raymonda is a foundational and strongly classic ballet, though 
 							in its many productions since the late 19th century it has been greatly altered to suit modern taste and dancers. 
@@ -578,43 +634,6 @@ var svg = d3.select("#artifact-choreo-radial")
 				.append("g")
 				.attr("transform", "translate(" + (margin.left + width/2) + "," + (margin.top + height/2) + ")");
 			dataset = data;
-
-			///////////////////////////////////////////////////////////////////////////
-			//////////////////// Set up and initiate svg containers ///////////////////
-			///////////////////////////////////////////////////////////////////////////	
-			// var margin = {
-			// 	top: 0,
-			// 	right: 0,
-			// 	bottom: 0,
-			// 	left: 0
-			// };
-			// // var width = window.innerWidth - margin.left - margin.right - 20;
-			// // var height = window.innerHeight - margin.top - margin.bottom - 20;
-			// var width = 400 - margin.left - margin.right;
-			// var height = 400 - margin.top - margin.bottom;
-			//SVG container
-			// var svg = d3.select("#artifact-choreo-radial")
-			// 	.append("svg")
-			// 	// .attr("width", width + margin.left + margin.right)
-			// 	// .attr("height", height + margin.top + margin.bottom)
-			// 	.append("g")
-			// 	.attr("transform", "translate(" + (margin.left + width/2) + "," + (margin.top + height/2) + ")");
-
-			// //Container for the gradients
-			// var defs = svg.append("defs");
-
-			// //Filter for the outside glow
-			// var filter = defs.append("filter")
-			// 	.attr("id","glow");
-			// filter.append("feGaussianBlur")
-			// 	.attr("stdDeviation","1.5")
-			// 	.attr("result","coloredBlur");
-			// var feMerge = filter.append("feMerge");
-			// feMerge.append("feMergeNode")
-			// 	.attr("in","coloredBlur");
-			// feMerge.append("feMergeNode")
-			// 	.attr("in","SourceGraphic");
-
 		
 			///////////////////////////////////////////////////////////////////////////
 			//////////////////////////// Create scales ////////////////////////////////
