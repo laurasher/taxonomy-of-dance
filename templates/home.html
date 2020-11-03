@@ -468,7 +468,7 @@
 						<br><br>The visualization paradigm below was developed to show <b>when</b>, in which <b>direction</b>, and 
 						<b>how long</b> a body part moves during a dance.
 					</p>
-					<img id='choreo-radial-explainer' src="{{ url_for('static', filename='assets/explainer-choreo-radial.svg') }}" alt="choreo-radial explainer graphic">
+					<img id='choreo-radial-explainer' src="{{ url_for('static', filename='assets/explainer-choreo-radial-green.svg') }}" alt="choreo-radial explainer graphic">
 				</div>
 				<div class='right-column'>
 					<img id='choreo-radial-explainer-body' src="{{ url_for('static', filename='assets/explainer-choreo-radial-body.svg') }}" alt="choreo-radial-body explainer graphic">
@@ -698,11 +698,11 @@ var width = 400 - margin.left - margin.right;
 var height = 400 - margin.top - margin.bottom;
 
 //SVG container
-var svg = d3.select("#artifact-choreo-radial")
-	.append("svg")
-	.attr("viewBox", `0 0 400 400`)
-	.append("g")
-	.attr("transform", "translate(" + 200 + "," + 200 + ")");
+// var svg = d3.select("#artifact-choreo-radial")
+// 	.append("svg")
+// 	.attr("viewBox", `0 0 400 400`)
+// 	.append("g")
+// 	.attr("transform", "translate(" + 200 + "," + 200 + ")");
 
 	d3.json(datapath+'artifact'+".json", function(data) {
 		var radiusOutwardMult_Artifact = 1.4
