@@ -113,13 +113,22 @@
 			margin-top: 20vh;
 		}
 		#year_1944_solid {
-			margin-top: 40vh;
+			margin-top: 32vh;
 		}
 		#year_1956_solid {
 			margin-top: 20vh;
 		}
 		#year_1984_solid {
 			margin-top: 20vh;
+		}
+		#year_1944_solid_2 {
+			margin-top: 65vh;
+		}
+		#year_1956_solid_2 {
+			margin-top: 15vh;
+		}
+		#year_1984_solid_2 {
+			margin-top: 17vh;
 		}
 		#intro {
 			height: 105vh;
@@ -159,7 +168,7 @@
 		.child {
 			grid-area: 1 / 1 / 2 / 2;
 			/* opacity: 0.9; */
-			height: 380vh;
+			height: 480vh;
 			width: 20px;
 			border-left: var(--black-line-width) solid black;
 			margin-top: -18vw;
@@ -256,6 +265,10 @@
 			width: 65vw;
 			margin-top: var(--general-margin);
 		}
+		.grid-radials {
+			margin-top: var(--general-margin);
+			height:	80%;
+		}
 
 		/************ CAUTION: MOBILE STYLES ***************
 		****************************************************
@@ -305,7 +318,7 @@
 			.child {
 				grid-area: 1 / 1 / 2 / 2;
 				/* opacity: 0.8; */
-				height: 600vh;
+				height: 700vh;
 				width: 20px;
 				border-left: 5px solid black;
 				margin: -30vw 5vw;
@@ -395,7 +408,18 @@
 				float: left;
 				width: 20vh;
 			}
+			#modern-era-vis-overview-spread {
+				margin-top: 70vh !important;
+			}
+			.grid-radials {
+				width: 90%;
+				height: auto;
+				margin-top: 10%;
+			}
 		}
+		/************ CAUTION: MOBILE STYLES ***************
+		****************************************************
+		***************************************************/
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous"></script>
@@ -430,6 +454,9 @@
 				<img id="year_1944_solid" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1944_solid_expand.svg') }}">
 				<img id="year_1956_solid" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1956_solid_expand.svg') }}">
 				<img id="year_1984_solid" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1984_solid_expand.svg') }}">
+				<img id="year_1944_solid_2" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1944_solid_expand.svg') }}">
+				<img id="year_1956_solid_2" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1956_solid_expand.svg') }}">
+				<img id="year_1984_solid_2" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1984_solid_expand.svg') }}">
 			</div>	
 		</div>
 		<div >
@@ -500,6 +527,16 @@
 						</p>
 				</div>
 			</div>
+	</div>
+	<div id='modern-era-vis-overview-spread' class='blade'>
+	<div class='feature-spread-container'>
+			<div>
+				<p class='era-title'>The Contemporary Era</p>
+				<p class='feature-para'>Plotting measures in a feature space representing movement diversity and repetition, we can get a sense of the nature of the movement of each dance.</p>
+			</div>
+			<img id='modern-era-choreo-radials' class='desktop grid-radials' src="{{ url_for('static', filename='assets/contemporary-era-radial-grid.svg') }}" alt="contemporary choreo radials">
+			<img id='modern-era-choreo-radials' class='mobile grid-radials' src="{{ url_for('static', filename='assets/contemporary-era-radial-grid-mobile.svg') }}" alt="contemporary choreo radials">
+		</div>
 	</div>
 	<!-- <div id='classical-era-vis-spread' class='blade'>
 			<div class='spread-container'>
