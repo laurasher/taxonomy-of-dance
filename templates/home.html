@@ -296,7 +296,7 @@
 				margin-top: 40vh !important;
 			}
 			#title {
-				margin-top: -10% !important;
+				margin-top: -15% !important;
 			}
 			#taxonomy-title {
 				height: 95% !important;
@@ -1126,12 +1126,6 @@
 					data[index] = [data[index][0], radArr[ii]+dataset[ii].step_length * radiusMult]
 					dataArr.push({data})
 				}
-				// if (dataset[ii].direction_movement=='place'){
-					// index = data.findIndex(x => findClosest(x, closestSpoke));
-					// data[index] = [data[index][0], radArr[ii]]
-					// dataArr.push({data})
-				// }
-
 			}
 		}
 		if (curveType == 'catmull'){var lineRadial = d3.lineRadial().curve(d3.curveCatmullRom.alpha(curveAlpha));}
@@ -1140,6 +1134,7 @@
 		var radialWrapperEndolor = endolor_svg.append("g")
 			.attr("transform", "translate(" + 0 + "," + 0 + ")");
 
+		//save off data styling, dataArr
 		for (i = 0; i < dataArr.length; i++) {
 			className = "radial_"+dataStyling[i].body_movement
 			curRadialLineWidth = dataStyling[i].step_length
