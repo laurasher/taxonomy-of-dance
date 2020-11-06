@@ -1157,142 +1157,142 @@
 		}
 	})
 
-	$('#endolor-play-button').click(function(){
-			$('#endolor-choreo-radial').empty()
-			d3.json(datapath+'endolor'+".json", function(data) {
-				dataset = data;
+	// $('#endolor-play-button').click(function(){
+	// 		$('#endolor-choreo-radial').empty()
+	// 		d3.json(datapath+'endolor'+".json", function(data) {
+	// 			dataset = data;
 				
-				///////////////////////////////////////////////////////////////////////////
-				//////////////////// Set up and initiate svg containers ///////////////////
-				///////////////////////////////////////////////////////////////////////////	
-				//SVG container
-				var endolor_svg = d3.select("#endolor-choreo-radial")
-				.append("svg")
-				.attr("viewBox", `0 0 400 400`)
-				.append("g")
-				.attr("transform", "translate(" + 200 + "," + 200 + ")");
+	// 			///////////////////////////////////////////////////////////////////////////
+	// 			//////////////////// Set up and initiate svg containers ///////////////////
+	// 			///////////////////////////////////////////////////////////////////////////	
+	// 			//SVG container
+	// 			var endolor_svg = d3.select("#endolor-choreo-radial")
+	// 			.append("svg")
+	// 			.attr("viewBox", `0 0 400 400`)
+	// 			.append("g")
+	// 			.attr("transform", "translate(" + 200 + "," + 200 + ")");
 
-				//Container for the gradients
-				var defs = endolor_svg.append("defs");
+	// 			//Container for the gradients
+	// 			var defs = endolor_svg.append("defs");
 
-				//Filter for the outside glow
-				var filter = defs.append("filter")
-					.attr("id","glow");
-				filter.append("feGaussianBlur")
-					.attr("stdDeviation","1.5")
-					.attr("result","coloredBlur");
-				var feMerge = filter.append("feMerge");
-				feMerge.append("feMergeNode")
-					.attr("in","coloredBlur");
-				feMerge.append("feMergeNode")
-					.attr("in","SourceGraphic");
+	// 			//Filter for the outside glow
+	// 			var filter = defs.append("filter")
+	// 				.attr("id","glow");
+	// 			filter.append("feGaussianBlur")
+	// 				.attr("stdDeviation","1.5")
+	// 				.attr("result","coloredBlur");
+	// 			var feMerge = filter.append("feMerge");
+	// 			feMerge.append("feMergeNode")
+	// 				.attr("in","coloredBlur");
+	// 			feMerge.append("feMergeNode")
+	// 				.attr("in","SourceGraphic");
 
-				///////////////////////////////////////////////////////////////////////////
-				//////////////////////////// Create scales ////////////////////////////////
-				///////////////////////////////////////////////////////////////////////////
-				var radiusOutwardMult_Endolor = 1.4;
-				var measures = [{"index": 0, "ballet": "endolor", "ymin": 36.6393376129, "ymax": 337.4905826749, "label": "measure_4", "step_length": 300.8512450621, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "4"}, {"index": 1, "ballet": "endolor", "ymin": 635.6952772291, "ymax": 928.7115018341, "label": "measure_2", "step_length": 293.016224605, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 2, "ballet": "endolor", "ymin": 335.9765095937, "ymax": 637.0247072517, "label": "measure_3", "step_length": 301.048197658, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "3"}, {"index": 3, "ballet": "endolor", "ymin": 934.0107576185, "ymax": 1347.2726968115, "label": "measure_1", "step_length": 413.261939193, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 35, "ballet": "endolor", "ymin": 32.4303047404, "ymax": 335.881489842, "label": "measure_8", "step_length": 303.4511851016, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "8"}, {"index": 36, "ballet": "endolor", "ymin": 928.8529909707, "ymax": 1236.2979683973, "label": "measure_5", "step_length": 307.4449774266, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "5"}, {"index": 37, "ballet": "endolor", "ymin": 333.7957110609, "ymax": 632.085778781, "label": "measure_7", "step_length": 298.2900677201, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "7"}, {"index": 38, "ballet": "endolor", "ymin": 634.4856094808, "ymax": 929.6173814898, "label": "measure_6", "step_length": 295.131772009, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "6"}, {"index": 85, "ballet": "endolor", "ymin": 252.4544123871, "ymax": 550.50560807, "label": "measure_11", "step_length": 298.0511956828, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "11"}, {"index": 86, "ballet": "endolor", "ymin": 549.1168171558, "ymax": 845.3348088318, "label": "measure_10", "step_length": 296.2179916761, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "10"}, {"index": 87, "ballet": "endolor", "ymin": 48.1299379233, "ymax": 251.4267071106, "label": "measure_12", "step_length": 203.2967691874, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "12"}, {"index": 88, "ballet": "endolor", "ymin": 846.1458627257, "ymax": 1148.9078371896, "label": "measure_9", "step_length": 302.7619744639, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "9"}, {"index": 113, "ballet": "endolor", "ymin": 742.7405033155, "ymax": 939.7297545147, "label": "measure_14", "step_length": 196.9892511992, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "14"}, {"index": 114, "ballet": "endolor", "ymin": 937.3291214024, "ymax": 1142.9650465576, "label": "measure_13", "step_length": 205.6359251552, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "13"}, {"index": 115, "ballet": "endolor", "ymin": 149.5534001129, "ymax": 446.2156197094, "label": "measure_16", "step_length": 296.6622195965, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "16"}, {"index": 116, "ballet": "endolor", "ymin": 444.9905826749, "ymax": 739.8949015942, "label": "measure_15", "step_length": 294.9043189193, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "15"}, {"index": 138, "ballet": "endolor", "ymin": 328.9226156885, "ymax": 629.2440480389, "label": "measure_19", "step_length": 300.3214323505, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "19"}, {"index": 139, "ballet": "endolor", "ymin": 924.9057033014, "ymax": 1226.3740653217, "label": "measure_17", "step_length": 301.4683620203, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "17"}, {"index": 140, "ballet": "endolor", "ymin": 626.0734780615, "ymax": 925.5482241112, "label": "measure_18", "step_length": 299.4747460497, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "18"}, {"index": 141, "ballet": "endolor", "ymin": 24.7520633465, "ymax": 331.8349763685, "label": "measure_20", "step_length": 307.082913022, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "20"}]
+	// 			///////////////////////////////////////////////////////////////////////////
+	// 			//////////////////////////// Create scales ////////////////////////////////
+	// 			///////////////////////////////////////////////////////////////////////////
+	// 			var radiusOutwardMult_Endolor = 1.4;
+	// 			var measures = [{"index": 0, "ballet": "endolor", "ymin": 36.6393376129, "ymax": 337.4905826749, "label": "measure_4", "step_length": 300.8512450621, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "4"}, {"index": 1, "ballet": "endolor", "ymin": 635.6952772291, "ymax": 928.7115018341, "label": "measure_2", "step_length": 293.016224605, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 2, "ballet": "endolor", "ymin": 335.9765095937, "ymax": 637.0247072517, "label": "measure_3", "step_length": 301.048197658, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "3"}, {"index": 3, "ballet": "endolor", "ymin": 934.0107576185, "ymax": 1347.2726968115, "label": "measure_1", "step_length": 413.261939193, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 35, "ballet": "endolor", "ymin": 32.4303047404, "ymax": 335.881489842, "label": "measure_8", "step_length": 303.4511851016, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "8"}, {"index": 36, "ballet": "endolor", "ymin": 928.8529909707, "ymax": 1236.2979683973, "label": "measure_5", "step_length": 307.4449774266, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "5"}, {"index": 37, "ballet": "endolor", "ymin": 333.7957110609, "ymax": 632.085778781, "label": "measure_7", "step_length": 298.2900677201, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "7"}, {"index": 38, "ballet": "endolor", "ymin": 634.4856094808, "ymax": 929.6173814898, "label": "measure_6", "step_length": 295.131772009, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "6"}, {"index": 85, "ballet": "endolor", "ymin": 252.4544123871, "ymax": 550.50560807, "label": "measure_11", "step_length": 298.0511956828, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "11"}, {"index": 86, "ballet": "endolor", "ymin": 549.1168171558, "ymax": 845.3348088318, "label": "measure_10", "step_length": 296.2179916761, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "10"}, {"index": 87, "ballet": "endolor", "ymin": 48.1299379233, "ymax": 251.4267071106, "label": "measure_12", "step_length": 203.2967691874, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "12"}, {"index": 88, "ballet": "endolor", "ymin": 846.1458627257, "ymax": 1148.9078371896, "label": "measure_9", "step_length": 302.7619744639, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "9"}, {"index": 113, "ballet": "endolor", "ymin": 742.7405033155, "ymax": 939.7297545147, "label": "measure_14", "step_length": 196.9892511992, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "14"}, {"index": 114, "ballet": "endolor", "ymin": 937.3291214024, "ymax": 1142.9650465576, "label": "measure_13", "step_length": 205.6359251552, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "13"}, {"index": 115, "ballet": "endolor", "ymin": 149.5534001129, "ymax": 446.2156197094, "label": "measure_16", "step_length": 296.6622195965, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "16"}, {"index": 116, "ballet": "endolor", "ymin": 444.9905826749, "ymax": 739.8949015942, "label": "measure_15", "step_length": 294.9043189193, "img_num": "3", "img_staff_num": "1", "staff_num": 9, "measure_num": "15"}, {"index": 138, "ballet": "endolor", "ymin": 328.9226156885, "ymax": 629.2440480389, "label": "measure_19", "step_length": 300.3214323505, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "19"}, {"index": 139, "ballet": "endolor", "ymin": 924.9057033014, "ymax": 1226.3740653217, "label": "measure_17", "step_length": 301.4683620203, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "17"}, {"index": 140, "ballet": "endolor", "ymin": 626.0734780615, "ymax": 925.5482241112, "label": "measure_18", "step_length": 299.4747460497, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "18"}, {"index": 141, "ballet": "endolor", "ymin": 24.7520633465, "ymax": 331.8349763685, "label": "measure_20", "step_length": 307.082913022, "img_num": "3", "img_staff_num": "2", "staff_num": 10, "measure_num": "20"}]
 
-				///////////////////////////////////////////////////////////////////////////
-				//////////////////////////// Create scales ////////////////////////////////
-				///////////////////////////////////////////////////////////////////////////
-				// Playback time
-				// get the ymin of the same measure, subtract it from the step ymin, then add difference to measure num
-				dataset.forEach(function(d) {
-					measNum = +d.measure_num
-					meas_ymin = measures.filter(x=>+x.measure_num==measNum)[0].ymax
-					step_ymin = +d.ymax
-					d.playbackTime = measNum + (step_ymin)/100
-				});
-				min = Math.min.apply(Math, dataset.map(x=>x.playbackTime))
-				max = Math.max.apply(Math, dataset.map(x=>x.playbackTime))
-				dataset.forEach(function(d) {
-					d.playbackTime = d.playbackTime*4
-				});
-				// Normalize playback time from 0 to 1, so I can scale by total ballet lenth
-				// body_movement corresponds to THETA, pin to a spoke at a certain theta val
-				dataset.forEach(function(d) {
-					d.theta = bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50
-					d.thetaRad = degrees_to_radians( bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50 )
-				});
+	// 			///////////////////////////////////////////////////////////////////////////
+	// 			//////////////////////////// Create scales ////////////////////////////////
+	// 			///////////////////////////////////////////////////////////////////////////
+	// 			// Playback time
+	// 			// get the ymin of the same measure, subtract it from the step ymin, then add difference to measure num
+	// 			dataset.forEach(function(d) {
+	// 				measNum = +d.measure_num
+	// 				meas_ymin = measures.filter(x=>+x.measure_num==measNum)[0].ymax
+	// 				step_ymin = +d.ymax
+	// 				d.playbackTime = measNum + (step_ymin)/100
+	// 			});
+	// 			min = Math.min.apply(Math, dataset.map(x=>x.playbackTime))
+	// 			max = Math.max.apply(Math, dataset.map(x=>x.playbackTime))
+	// 			dataset.forEach(function(d) {
+	// 				d.playbackTime = d.playbackTime*4
+	// 			});
+	// 			// Normalize playback time from 0 to 1, so I can scale by total ballet lenth
+	// 			// body_movement corresponds to THETA, pin to a spoke at a certain theta val
+	// 			dataset.forEach(function(d) {
+	// 				d.theta = bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50
+	// 				d.thetaRad = degrees_to_radians( bodyDirectionToTheta(d.body_movement, d.direction_movement) + 50 )
+	// 			});
 
-				//Set the minimum inner radius and max outer radius of the chart
-				var	outerRadius = Math.min(width, height, 250)/2,
-					innerRadius = outerRadius * 0.4;
+	// 			//Set the minimum inner radius and max outer radius of the chart
+	// 			var	outerRadius = Math.min(width, height, 250)/2,
+	// 				innerRadius = outerRadius * 0.4;
 
-				///////////////////////////////////////////////////////////////////////////
-				//////////////////////////// Radial line //////////////////////////////////
-				///////////////////////////////////////////////////////////////////////////
-				var dataArr = []
-				var data = []
-				var dataStyling = []
-				var dataset = dataset.sort(({playbackTime:a}, {playbackTime:b}) => a-b);
+	// 			///////////////////////////////////////////////////////////////////////////
+	// 			//////////////////////////// Radial line //////////////////////////////////
+	// 			///////////////////////////////////////////////////////////////////////////
+	// 			var dataArr = []
+	// 			var data = []
+	// 			var dataStyling = []
+	// 			var dataset = dataset.sort(({playbackTime:a}, {playbackTime:b}) => a-b);
 				
-				radArr = dataset.map(x=>(x.playbackTime)*radiusOutwardMult_Endolor)
-				// Nonzero radii
-				radArr = radArr.filter(x=>x>0)
+	// 			radArr = dataset.map(x=>(x.playbackTime)*radiusOutwardMult_Endolor)
+	// 			// Nonzero radii
+	// 			radArr = radArr.filter(x=>x>0)
 				
-				function findClosest(num, spoke){
-					if (Math.abs(num[0] - spoke) <= 0.03) return 1
-				}
-				for (ii = 0; ii < radArr.length; ii++) {
-					if(dataset[ii].body_movement!=null){
-						data = []
-						for (i = 0; i <= 2+lineRes; i=i+lineRes) {
-						if (randJitter) {data.push([Math.PI * i, radArr[ii] + getRandomNumber(-3.5, 3.5) ])}
-						if (!randJitter) {data.push([Math.PI * i, radArr[ii] ])}
-						}
-						dataStyling.push({'body_movement' : dataset[ii].body_movement,
-										'step_length' : dataset[ii].step_length * stepLengthMultipier,
-										'playback_time': dataset[ii].playbackTime})
-						arr = spokeArrRad
-						num = degrees_to_radians(dataset[ii].theta)
-						var closestSpoke = arr.reduce(function(prev, curr) {
-							return (Math.abs(curr - num) < Math.abs(prev - num) ? curr : prev);
-						});
-						// find theta closest to chosen spokeArr
-						if (dataset[ii].direction_movement!='place'){
-							index = data.findIndex(x => findClosest(x, closestSpoke));
-							data[index] = [data[index][0], radArr[ii]+dataset[ii].step_length * radiusMult]
-							dataArr.push({data})
-						}
-					}
-				}
-				if (curveType == 'catmull'){var lineRadial = d3.lineRadial().curve(d3.curveCatmullRom.alpha(curveAlpha));}
-				if (curveType == 'basis'){var lineRadial = d3.lineRadial().curve(d3.curveBasis);}
+	// 			function findClosest(num, spoke){
+	// 				if (Math.abs(num[0] - spoke) <= 0.03) return 1
+	// 			}
+	// 			for (ii = 0; ii < radArr.length; ii++) {
+	// 				if(dataset[ii].body_movement!=null){
+	// 					data = []
+	// 					for (i = 0; i <= 2+lineRes; i=i+lineRes) {
+	// 					if (randJitter) {data.push([Math.PI * i, radArr[ii] + getRandomNumber(-3.5, 3.5) ])}
+	// 					if (!randJitter) {data.push([Math.PI * i, radArr[ii] ])}
+	// 					}
+	// 					dataStyling.push({'body_movement' : dataset[ii].body_movement,
+	// 									'step_length' : dataset[ii].step_length * stepLengthMultipier,
+	// 									'playback_time': dataset[ii].playbackTime})
+	// 					arr = spokeArrRad
+	// 					num = degrees_to_radians(dataset[ii].theta)
+	// 					var closestSpoke = arr.reduce(function(prev, curr) {
+	// 						return (Math.abs(curr - num) < Math.abs(prev - num) ? curr : prev);
+	// 					});
+	// 					// find theta closest to chosen spokeArr
+	// 					if (dataset[ii].direction_movement!='place'){
+	// 						index = data.findIndex(x => findClosest(x, closestSpoke));
+	// 						data[index] = [data[index][0], radArr[ii]+dataset[ii].step_length * radiusMult]
+	// 						dataArr.push({data})
+	// 					}
+	// 				}
+	// 			}
+	// 			if (curveType == 'catmull'){var lineRadial = d3.lineRadial().curve(d3.curveCatmullRom.alpha(curveAlpha));}
+	// 			if (curveType == 'basis'){var lineRadial = d3.lineRadial().curve(d3.curveBasis);}
 				
-				var radialWrapperEndolor = endolor_svg.append("g")
-					.attr("transform", "translate(" + 0 + "," + 0 + ")");
+	// 			var radialWrapperEndolor = endolor_svg.append("g")
+	// 				.attr("transform", "translate(" + 0 + "," + 0 + ")");
 
-				$('#endolor-play-button').addClass('enabled')
-				if ($('#endolor-play-button').hasClass('enabled')){
-					$('#endolor-play-button').html("❚❚")
-				}else{
-					$('#endolor-play-button').html("&#9658;")
-				}
-				for (i = 0; i < dataArr.length; i++) {
-					className = "radial_"+dataStyling[i].body_movement
-					curRadialLineWidth = dataStyling[i].step_length
-					curPlaybackTime = dataStyling[i].playback_time
-					radialWrapperEndolor
-						.append("path")
-						.attr("d", lineRadial(dataArr[i].data))
-						.attr("class", className)
-						.attr("opacity", 0)
-						.attr("transform", "rotate(" + ( -55 ) + ")")
-						.attr("fill", "none")
-						.attr("stroke-width", curRadialLineWidth/2)
-						.attr("stroke", animateColor)
-						.style("filter", "url(#glow)")
-						.transition()
-							.delay( (curPlaybackTime-19)*1000)
-							.attr("opacity", 0.7)
-							.transition()
-								.duration(200)
-								.attr("stroke", "black")
-				}
-			})
-		});
+	// 			$('#endolor-play-button').addClass('enabled')
+	// 			if ($('#endolor-play-button').hasClass('enabled')){
+	// 				$('#endolor-play-button').html("❚❚")
+	// 			}else{
+	// 				$('#endolor-play-button').html("&#9658;")
+	// 			}
+	// 			for (i = 0; i < dataArr.length; i++) {
+	// 				className = "radial_"+dataStyling[i].body_movement
+	// 				curRadialLineWidth = dataStyling[i].step_length
+	// 				curPlaybackTime = dataStyling[i].playback_time
+	// 				radialWrapperEndolor
+	// 					.append("path")
+	// 					.attr("d", lineRadial(dataArr[i].data))
+	// 					.attr("class", className)
+	// 					.attr("opacity", 0)
+	// 					.attr("transform", "rotate(" + ( -55 ) + ")")
+	// 					.attr("fill", "none")
+	// 					.attr("stroke-width", curRadialLineWidth/2)
+	// 					.attr("stroke", animateColor)
+	// 					.style("filter", "url(#glow)")
+	// 					.transition()
+	// 						.delay( (curPlaybackTime-19)*1000)
+	// 						.attr("opacity", 0.7)
+	// 						.transition()
+	// 							.duration(200)
+	// 							.attr("stroke", "black")
+	// 			}
+	// 		})
+	// 	});
 
 </script>
 </html>
