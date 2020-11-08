@@ -795,7 +795,7 @@
 				//SVG container
 				artifact_svg = d3.select("#artifact-choreo-radial")
 					.append("svg")
-					.attr("viewBox", `0 0 400 400`)
+					// .attr("viewBox", `0 0 400 400`)
 					.append("g")
 					.attr("transform", "translate(" + 200 + "," + 200 + ")");
 
@@ -912,7 +912,7 @@
 						.attr("d", lineRadial(artifact_dataArr[timePoint].artifact_data))
 						.attr("class", className)
 						.attr("opacity", 0)
-						// .attr("transform", "rotate(" + ( -55 ) + ")")
+						.attr("transform", "rotate(" + ( -55 ) + ")")
 						.attr("fill", "none")
 						.attr("stroke-width", curRadialLineWidth/2)
 						.attr("stroke", animateColor)
