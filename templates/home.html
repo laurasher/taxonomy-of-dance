@@ -272,7 +272,33 @@
 			margin-top: var(--general-margin);
 			height:	80%;
 		}
+		.ticks {
+			font-size: 10px;
+		}
 
+		.track {
+			stroke: #000;
+			stroke-opacity: 0.8;
+			stroke-width: 3px;
+		}
+
+		.track-overlay {
+			pointer-events: stroke;
+			stroke-width: 50px;
+			stroke: transparent;
+			cursor: crosshair;
+		}
+
+		.handle {
+			fill: #000;
+			stroke: #000;
+			stroke-opacity: 0.5;
+			stroke-width: 1.25px;
+		}
+		.button-enabled {
+			color: lightgray;
+			display: none;
+		}
 		/************ CAUTION: MOBILE STYLES ***************
 		****************************************************
 		***************************************************/
@@ -420,7 +446,8 @@
 		****************************************************
 		***************************************************/
 	</style>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<audio id="songs-audio" src="{{ url_for('static', filename='audio/songs.mp3') }}"></audio>
@@ -467,7 +494,7 @@
 						<br><br>The visualization paradigm below was developed to show <b>when</b>, in which <b>direction</b>, and 
 						<b>how long</b> a body part moves during a dance.
 					</p>
-					<img id='choreo-radial-explainer' src="{{ url_for('static', filename='assets/explainer-choreo-radial-green.svg') }}" alt="choreo-radial explainer graphic">
+					<img id='choreo-radial-explainer' src="{{ url_for('static', filename='assets/explainer-choreo-radial-black.svg') }}" alt="choreo-radial explainer graphic">
 				</div>
 				<div class='right-column'>
 					<img id='choreo-radial-explainer-body' src="{{ url_for('static', filename='assets/explainer-choreo-radial-body.svg') }}" alt="choreo-radial-body explainer graphic">
@@ -515,9 +542,14 @@
 				</div>
 				<div id='artifact-column' class="column-within-blade c">
 						<span>
-							<button id="artifact-play-button" class='play-button' onclick="document.getElementById('artifact-audio').play()">&#9658;</button>
+							<!-- <button id="artifact-play-button" class='play-button' onclick="document.getElementById('artifact-audio').play()">&#9658;</button> -->
+							<button id="artifact-play-button" class='play-button'>&#9658;</button>
+							<button id="artifact-pause-button" class='play-button button-enabled'>❚❚</button>
 							<p class='column-title'>Artifact, 1984</p>
 						</span>
+						<div id="slider">
+							<input type='range' min='0' max='61' step='1' value='0' id='artifact-slider' /> 
+						</div>
 						<div id="artifact-choreo-radial" class='choreo-radial'></div>
 						<p class='column-paragraph para' style='text-align: left;'>William Forsythe<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
 							in lacinia porttitor, leo metus vehicula turpis, et consequat felis lorem nec elit. Fusce augue arcu, facilisis nec 
@@ -593,9 +625,9 @@
 	var radiusOutwardMult = 1.8 //scaling to the page
 	var curveType = 'basis'
 	var stepLengthMultipier = 2
-	// var animateColor = "gray"
 	var weightCircleColor = "black"
-	var animateColor = "#D2D627"
+	// var animateColor = "#D2D627"
+	var animateColor = "red"
 
 	function getRandomNumber(start, end) {
 		return (Math.random() * (end-start) * 100)/100 + start;
@@ -698,6 +730,7 @@
 	var width = 200 - margin.left - margin.right;
 	var height = 200 - margin.top - margin.bottom;
 
+
 ///////////////////////////////////////////////////////////////////////////
 ////////////////////////// Artifact, Forsythe /////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
@@ -714,6 +747,18 @@
 	var radialWrapperartifact;
 	var circleWrapperartifact; 
 
+	var artifactButton = document.getElementById("artifact-play-button");
+	var artifactAudio = document.getElementById("artifact-audio");
+	// artifactButton.addEventListener("click", function(){
+	// 	if(artifactAudio.paused){
+	// 		artifactAudio.play();
+	// 		artifactButton.innerHTML = "❚❚";
+	// 	} else {
+	// 		artifactAudio.pause();
+	// 		artifactButton.innerHTML = "&#9658;";
+	// 	}
+	// });
+
 	d3.json(datapath+'artifact'+".json", function(artifact_data) {
 			artifact_dataset = artifact_data;
 
@@ -723,6 +768,7 @@
 					.attr("viewBox", `0 0 400 400`)
 					.append("g")
 					.attr("transform", "translate(" + 200 + "," + 200 + ")");
+
 
 				//Container for the gradients
 				artifact_defs = artifact_svg.append("defs");
@@ -787,6 +833,11 @@
 					}
 				}
 				
+				artifact_dataset.forEach(function(d, i) {
+					d.slider_time = i;
+				})
+
+				
 				radialWrapperartifact = artifact_svg.append("g")
 					.attr("transform", "translate(" + 0 + "," + 0 + ")");
 				circleWrapperartifact = artifact_svg.append("g")
@@ -816,50 +867,86 @@
 							.style("filter", "url(#glow)")
 							.style('fill', weightCircleColor)
 				}
+
+				function update(timePoint) {
+					if(timePoint == 1){
+						d3.selectAll('.artifact')
+							.remove()
+					}
+					// for (i = 0; i < artifact_dataArr.length; i++) {
+					className = "artifact"
+					curRadialLineWidth = artifact_dataStyling[timePoint].step_length
+					curPlaybackTime = artifact_dataStyling[timePoint].playback_time
+					radialWrapperartifact
+						.append("path")
+						.attr("d", lineRadial(artifact_dataArr[timePoint].artifact_data))
+						.attr("class", className)
+						.attr("opacity", 0)
+						.attr("transform", "rotate(" + ( -55 ) + ")")
+						.attr("fill", "none")
+						.attr("stroke-width", curRadialLineWidth/2)
+						.attr("stroke", animateColor)
+						.style("filter", "url(#glow)")
+						.transition()
+						// .delay( (curPlaybackTime-14)*900)
+						.delay( (curPlaybackTime-25))
+						.attr("opacity", 0.7)
+						.transition()
+							.ease(d3.easeLinear)
+							.duration(200)
+							.attr("stroke", "black")
+					circleWrapperartifact
+						.append("circle")
+							.attr("opacity", 0)
+							.attr("cy", artifact_dataArr[timePoint].artifact_data[0][1]*Math.sin(artifact_dataStyling[timePoint].weight_dist))
+							.attr("cx", artifact_dataArr[timePoint].artifact_data[0][1]*Math.cos(artifact_dataStyling[timePoint].weight_dist))
+							.attr("r", 1)
+							.attr("class", className)
+							.style('fill', weightCircleColor)
+							.transition()
+							// .delay( (curPlaybackTime-14)*900)
+							.delay( (curPlaybackTime-25))
+								.attr("opacity", 0.5)
+				// }
+				};
+
+				//Run the update function when the slider is changed
+				d3.select('#artifact-slider').on('input', function() {
+					update(this.value);
+				});
+
+				var myTimer;
+				var t = 0;
+				d3.select("#artifact-play-button").on("click", function() {
+					$("#artifact-play-button").addClass('button-enabled')
+					$("#artifact-pause-button").removeClass('button-enabled')
+					artifactAudio.play();
+					clearInterval (myTimer);
+					myTimer = setInterval (function() {
+						var b = d3.select("#artifact-slider");
+						t = (+b.property("value") + 1) % (+b.property("max") + 1);
+						curPlaybackTime = (artifact_dataset.filter(x=>x.slider_time==t)[0].playbackTime)*2000
+						if (t == 0) { t = +b.property("min"); }
+						if (t >= 61){
+							$("#artifact-pause-button").addClass('button-enabled')
+							$("#artifact-play-button").removeClass('button-enabled')
+							// artifactAudio.pause();
+							clearInterval (myTimer);
+							return
+						}
+						b.property("value", t);
+						update (t);
+					}, 950);
+				});
+
+				d3.select("#artifact-pause-button").on("click", function() {
+					$("#artifact-pause-button").addClass('button-enabled')
+					$("#artifact-play-button").removeClass('button-enabled')
+					artifactAudio.pause();
+					clearInterval (myTimer);
+				});
 			})
-	
-	$('#artifact-play-button').click(function(){
-		d3.selectAll('.artifact')
-			.remove()
-		$('#artifact-play-button').addClass('enabled')
-		if ($('#artifact-play-button').hasClass('enabled')){
-			$('#artifact-play-button').html("❚❚")
-		}else{
-			$('#artifact-play-button').html("&#9658;")
-		}
-		for (i = 0; i < artifact_dataArr.length; i++) {
-			className = "artifact"
-			curRadialLineWidth = artifact_dataStyling[i].step_length
-			curPlaybackTime = artifact_dataStyling[i].playback_time
-			radialWrapperartifact
-				.append("path")
-				.attr("d", lineRadial(artifact_dataArr[i].artifact_data))
-				.attr("class", className)
-				.attr("opacity", 0)
-				.attr("transform", "rotate(" + ( -55 ) + ")")
-				.attr("fill", "none")
-				.attr("stroke-width", curRadialLineWidth/2)
-				.attr("stroke", animateColor)
-				.style("filter", "url(#glow)")
-				.transition()
-				.delay( (curPlaybackTime-14)*900)
-				.attr("opacity", 0.7)
-				.transition()
-					.ease(d3.easeLinear)
-					.duration(200)
-					.attr("stroke", "black")
-			circleWrapperartifact
-				.append("circle")
-					.attr("opacity", 0)
-					.attr("cy", artifact_dataArr[i].artifact_data[0][1]*Math.sin(artifact_dataStyling[i].weight_dist))
-					.attr("cx", artifact_dataArr[i].artifact_data[0][1]*Math.cos(artifact_dataStyling[i].weight_dist))
-					.attr("r", 1)
-					.style('fill', weightCircleColor)
-					.transition()
-					.delay( (curPlaybackTime-14)*900)
-						.attr("opacity", 0.5)
-		}
-	});
+
 
 ///////////////////////////////////////////////////////////////////////////
 //////////////////////////// Songs, Anthony ///////////////////////////////
