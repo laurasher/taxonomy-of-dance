@@ -560,7 +560,7 @@
 			<p class='era-title left-margin' style='margin-bottom: 5vh;'>The Contemporary Era</p>
 			<div class='spread-container'>
 				<div id='endolor-column' class="column-within-blade a">
-						<button id="endolor-play-button" class='play-button' onclick="document.getElementById('endolor-audio').play()">▶</button>
+						<button id="endolor-play-button" class='play-button' onclick="document.getElementById('endolor-audio').play()">&#9658;</button>
 						<p class='column-title'>En Dolor, 1944</p>
 						<div id='endolor-choreo-radial' class='choreo-radial'></div>
 						<p class='column-paragraph para' style='text-align: left;'>Ethel Winter<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
@@ -570,7 +570,7 @@
 						</p>
 				</div>
 				<div id='songs-column' class="column-within-blade b">
-						<button id="songs-play-button" class='play-button' onclick="document.getElementById('songs-audio').play()">▶</button>
+						<button id="songs-play-button" class='play-button' onclick="document.getElementById('songs-audio').play()">&#9658;</button>
 						<p class='column-title'>Songs, 1956</p>
 						<div id='songs-choreo-radial' class='choreo-radial'></div>
 						<p class='column-paragraph para' style='text-align: left;'>Mary Anthony<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
@@ -582,7 +582,7 @@
 				<div id='artifact-column' class="column-within-blade c">
 						<span>
 							<!-- <button id="artifact-play-button" class='play-button' onclick="document.getElementById('artifact-audio').play()">&#9658;</button> -->
-							<button id="artifact-play-button" class='play-button'>▶</button>
+							<button id="artifact-play-button" class='play-button'>&#9658;</button>
 							<button id="artifact-pause-button" class='play-button button-enabled'>❚❚</button>
 							<p class='column-title'>Artifact, 1984</p>
 						</span>
@@ -776,7 +776,8 @@
 	var artifact_dataset;
 	var artifact_svg;
 	var artifact_defs;
-	var radiusOutwardMult_artifact = 1.4;
+	// var radiusOutwardMult_artifact = 1.4;
+	var radiusOutwardMult_artifact = .8;
 	var artifact_measures = [{"index": 0, "ballet": "artifact", "ymin": 838.7689439141, "ymax": 1642.1331947345, "label": "measure_1", "step_length": 803.3642508204, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "1"}, {"index": 1, "ballet": "artifact", "ymin": 33.6271162739, "ymax": 845.6937649165, "label": "measure_2", "step_length": 812.0666486426, "img_num": "1", "img_staff_num": "1", "staff_num": 1, "measure_num": "2"}, {"index": 39, "ballet": "artifact", "ymin": 8.1598672434, "ymax": 809.4435784606, "label": "measure_4", "step_length": 801.2837112172, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "4"}, {"index": 40, "ballet": "artifact", "ymin": 810.2366870525, "ymax": 1625.0795047733, "label": "measure_3", "step_length": 814.8428177208, "img_num": "1", "img_staff_num": "2", "staff_num": 2, "measure_num": "3"}, {"index": 59, "ballet": "artifact", "ymin": 0.0, "ymax": 790.9936977924, "label": "measure_6", "step_length": 790.9936977924, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "6"}, {"index": 60, "ballet": "artifact", "ymin": 797.224138574, "ymax": 1604.0982529087, "label": "measure_5", "step_length": 806.8741143347, "img_num": "2", "img_staff_num": "1", "staff_num": 5, "measure_num": "5"}, {"index": 79, "ballet": "artifact", "ymin": 826.0875400641, "ymax": 1638.8237179487, "label": "measure_7", "step_length": 812.7361778846, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "7"}, {"index": 80, "ballet": "artifact", "ymin": 4.3413461538, "ymax": 822.4697516026, "label": "measure_8", "step_length": 818.1284054487, "img_num": "2", "img_staff_num": "2", "staff_num": 6, "measure_num": "8"}]
 
 	var artifact_radArr = [];
@@ -795,9 +796,13 @@
 				//SVG container
 				artifact_svg = d3.select("#artifact-choreo-radial")
 					.append("svg")
+					.attr("width", 200)
+					.attr("height", 200)
 					// .attr("viewBox", `0 0 400 400`)
 					.append("g")
-					.attr("transform", "translate(" + 200 + "," + 200 + ")");
+					// .attr("transform", "translate(" + 200 + "," + 200 + ")");
+					.attr("transform", "translate(" + 150 + "," + 100 + ")");
+
 
 
 				//Container for the gradients
@@ -1105,7 +1110,7 @@
 		if ($('#songs-play-button').hasClass('enabled')){
 			$('#songs-play-button').html("❚❚")
 		}else{
-			$('#songs-play-button').html("▶")
+			$('#songs-play-button').html("&#9658;")
 		}
 		for (i = 0; i < songs_dataArr.length; i++) {
 			className = "songs"
