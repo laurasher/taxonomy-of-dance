@@ -235,7 +235,7 @@
 			border: 2px solid black;
 			padding: 2px;
 			display: inline;
-			margin-right: 5px;
+			margin-left: 5px;
 			background: black;
 			color: white;
 			font-size: 9px;
@@ -272,6 +272,9 @@
 			font-size: 2vh !important;
 			line-height: 2.5vh !important;
 		}
+		.column-paragraph{
+			width: 50%;
+		}
 		#artifact-feature-choreo-radials {
 			display: block;
 			width: 65vw;
@@ -285,6 +288,10 @@
 			color: lightgray;
 			display: none;
 		}
+		.slider-container{
+			margin-bottom: 40px;
+			margin-top: 20px;
+		}
 		.slider {
 			-webkit-appearance: none;  /* Override default CSS styles */
 			appearance: none;
@@ -294,8 +301,8 @@
 			opacity: 0.8; /* Set transparency (for mouse-over effects on hover) */
 			-webkit-transition: .2s; /* 0.2 seconds transition on hover */
 			transition: opacity .2s;
-			margin-top: 20px;
-			margin-bottom: 20px;
+			width: 50%;
+			vertical-align: middle;
 		}
 		.slider::-webkit-slider-thumb {
 			-webkit-appearance: none;
@@ -518,12 +525,12 @@
 				<img id="year_1944" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1944_expand.svg') }}">
 				<img id="year_1956" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1956_expand.svg') }}">
 				<img id="year_1984" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1984_solid_expand.svg') }}">
-				<img id="year_1944_solid" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1944_solid_expand.svg') }}">
+				<!-- <img id="year_1944_solid" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1944_solid_expand.svg') }}">
 				<img id="year_1956_solid" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1956_solid_expand.svg') }}">
 				<img id="year_1984_solid" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1984_solid_expand.svg') }}">
 				<img id="year_1944_solid_2" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1944_solid_expand.svg') }}">
 				<img id="year_1956_solid_2" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1956_solid_expand.svg') }}">
-				<img id="year_1984_solid_2" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1984_solid_expand.svg') }}">
+				<img id="year_1984_solid_2" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1984_solid_expand.svg') }}"> -->
 			</div>	
 		</div>
 		<div >
@@ -563,51 +570,40 @@
 			<div class='spread-container'>
 				<div id='endolor-column' class="column-within-blade a">
 						<span>
-							<button id="endolor-play-button" class='play-button'>&#9658;</button>
-							<button id="endolor-pause-button" class='play-button button-enabled'>❚❚</button>
 							<p class='column-title'>En Dolor, 1944</p>
 						</span>
-						<div id="endolor-slider-container">
+						<p class='column-paragraph para centered'>Ethel Winter<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						<div id="endolor-slider-container" class='slider-container'>
+							<button id="endolor-play-button" class='play-button'>&#9658;</button>
+							<button id="endolor-pause-button" class='play-button button-enabled'>❚❚</button>
 							<input type='range' min='0' max='80' step='1' value='0' id='endolor-slider' class='slider'/> 
 						</div>
 						<div id='endolor-choreo-radial' class='choreo-radial'></div>
-						<p class='column-paragraph para' style='text-align: left;'>Ethel Winter<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
-							in lacinia porttitor, leo metus vehicula turpis, et consequat felis lorem nec elit. Fusce augue arcu, facilisis nec 
-							posuere quis, ullamcorper sed neque. Pellentesque et eros tellus. Suspendisse id ex scelerisque, venenatis tortor nec, 
-							sodales tellus. Praesent dui libero, vehicula placerat consequat et, laoreet vitae justo. Sed in dignissim dolor. 
-						</p>
 				</div>
 				<div id='songs-column' class="column-within-blade b">
 						<span>
-							<button id="songs-play-button" class='play-button'>&#9658;</button>
-							<button id="songs-pause-button" class='play-button button-enabled'>❚❚</button>
 							<p class='column-title'>Songs, 1956</p>
 						</span>
-						<div id="songs-slider-container">
+						<p class='column-paragraph para centered'>Mary Anthony<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						<div id="songs-slider-container" class='slider-container'>
+								<button id="songs-play-button" class='play-button'>&#9658;</button>
+								<button id="songs-pause-button" class='play-button button-enabled'>❚❚</button>
 							<input type='range' min='0' max='175' step='1' value='0' id='songs-slider' class='slider'/> 
 						</div>
 						<div id='songs-choreo-radial' class='choreo-radial'></div>
-						<p class='column-paragraph para' style='text-align: left;'>Mary Anthony<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
-							in lacinia porttitor, leo metus vehicula turpis, et consequat felis lorem nec elit. Fusce augue arcu, facilisis nec 
-							posuere quis, ullamcorper sed neque. Pellentesque et eros tellus. Suspendisse id ex scelerisque, venenatis tortor nec, 
-							sodales tellus. Praesent dui libero, vehicula placerat consequat et, laoreet vitae justo. Sed in dignissim dolor. 
-						</p>
 				</div>
 				<div id='artifact-column' class="column-within-blade c">
 						<span>
-							<button id="artifact-play-button" class='play-button'>&#9658;</button>
-							<button id="artifact-pause-button" class='play-button button-enabled'>❚❚</button>
 							<p class='column-title'>Artifact, 1984</p>
 						</span>
-						<div id="artifact-slider-container">
+						<p class='column-paragraph para centered'>William Forsythe<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						<div id="artifact-slider-container" class='slider-container'>
+							<button id="artifact-play-button" class='play-button'>&#9658;</button>
+							<button id="artifact-pause-button" class='play-button button-enabled'>❚❚</button>
 							<input type='range' min='0' max='61' step='1' value='0' id='artifact-slider' class='slider'/> 
 						</div>
 						<div id="artifact-choreo-radial" class='choreo-radial'></div>
-						<p class='column-paragraph para' style='text-align: left;'>William Forsythe<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
-							in lacinia porttitor, leo metus vehicula turpis, et consequat felis lorem nec elit. Fusce augue arcu, facilisis nec 
-							posuere quis, ullamcorper sed neque. Pellentesque et eros tellus. Suspendisse id ex scelerisque, venenatis tortor nec, 
-							sodales tellus. Praesent dui libero, vehicula placerat consequat et, laoreet vitae justo. Sed in dignissim dolor. 
-						</p>
+						
 				</div>
 			</div>
 	</div>
