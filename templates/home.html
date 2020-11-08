@@ -312,25 +312,19 @@
 		.slider::-webkit-slider-thumb {
 			-webkit-appearance: none;
 			appearance: none;
-			width: 23px;
-			height: 24px;
-			border: 0;
-			background-image: linear-gradient(90deg, transparent 50%, black 50%), linear-gradient(90deg, black 50%, transparent 50%);
-			background-position: calc(100% - 10px) calc(0.5em), calc(100% - 5px) calc(0.5em), calc(100% - 2.5em) 0.5em;
-			background-size: 5px 10px, 5px 10px, 1px 1.5em;
-			background-repeat: no-repeat;
-			cursor: pointer;
+			width: 0.5px;
+			height: 20px;
+			border: black;
+			border-style: solid;
 		}
 
 		.slider::-moz-range-thumb {
-			width: 23px;
-			height: 25px;
-			border: 0;
-			background-image: linear-gradient(90deg, transparent 50%, black 50%), linear-gradient(90deg, black 50%, transparent 50%);
-			background-position: calc(100% - 10px) calc(0.5em), calc(100% - 5px) calc(0.5em), calc(100% - 2.5em) 0.5em;
-			background-size: 5px 10px, 5px 10px, 1px 1.5em;
-			background-repeat: no-repeat;
-			cursor: pointer;
+			-webkit-appearance: none;
+			appearance: none;
+			width: 0.5px;
+			height: 20px;
+			border: black;
+			border-style: solid;
 		}
 		input[type=range]{
 			pointer-events: none;
@@ -879,30 +873,30 @@
 				circleWrapperartifact = artifact_svg.append("g")
 					.attr("transform", "translate(" + 0 + "," + 0 + ")");
 
-				// for (i = 0; i < artifact_dataArr.length; i++) {
-				// 	className = "artifact"
-				// 	curRadialLineWidth = artifact_dataStyling[i].step_length
-				// 	curPlaybackTime = artifact_dataStyling[i].playback_time
-				// 	radialWrapperartifact
-				// 		.append("path")
-				// 		.attr("d", lineRadial(artifact_dataArr[i].artifact_data))
-				// 		.attr("class", className)
-				// 		.attr("transform", "rotate(" + ( -55 ) + ")")
-				// 		.attr("fill", "none")
-				// 		.attr("stroke-width", curRadialLineWidth/2)
-				// 		.attr("stroke", "black")
-				// 		.style("filter", "url(#glow)")
-				// 		.attr("opacity", 0.7)
-				// 	circleWrapperartifact
-				// 		.append("circle")
-				// 			.attr("opacity", 0.5)
-				// 			.attr("class", className)
-				// 			.attr("cy", artifact_dataArr[i].artifact_data[0][1]*Math.sin(artifact_dataStyling[i].weight_dist))
-				// 			.attr("cx", artifact_dataArr[i].artifact_data[0][1]*Math.cos(artifact_dataStyling[i].weight_dist))
-				// 			.attr("r", 1)
-				// 			.style("filter", "url(#glow)")
-				// 			.style('fill', weightCircleColor)
-				// }
+				for (i = 0; i < artifact_dataArr.length; i++) {
+					className = "artifact"
+					curRadialLineWidth = artifact_dataStyling[i].step_length
+					curPlaybackTime = artifact_dataStyling[i].playback_time
+					radialWrapperartifact
+						.append("path")
+						.attr("d", lineRadial(artifact_dataArr[i].artifact_data))
+						.attr("class", className)
+						.attr("transform", "rotate(" + ( -55 ) + ")")
+						.attr("fill", "none")
+						.attr("stroke-width", curRadialLineWidth/2)
+						.attr("stroke", "black")
+						.style("filter", "url(#glow)")
+						.attr("opacity", 0.7)
+					circleWrapperartifact
+						.append("circle")
+							.attr("opacity", 0.5)
+							.attr("class", className)
+							.attr("cy", artifact_dataArr[i].artifact_data[0][1]*Math.sin(artifact_dataStyling[i].weight_dist))
+							.attr("cx", artifact_dataArr[i].artifact_data[0][1]*Math.cos(artifact_dataStyling[i].weight_dist))
+							.attr("r", 1)
+							.style("filter", "url(#glow)")
+							.style('fill', weightCircleColor)
+				}
 
 				function update(timePoint) {
 					if(timePoint == 1){
