@@ -330,13 +330,13 @@
 			pointer-events: none;
 		}
 		input[type=range]::-webkit-slider-thumb{/*Webkit Browsers like Chome and Safari*/
-			pointer-events: auto;
+			pointer-events: none;
 		}
 		input[type=range]::-moz-range-thumb{/*Firefox*/
-			pointer-events: auto;
+			pointer-events: none;
 		}
 		input[type=range]::-ms-thumb{/*Internet Explorer*/
-			pointer-events: auto;
+			pointer-events: none;
 		}
 		/************ CAUTION: MOBILE STYLES ***************
 		****************************************************
@@ -355,6 +355,18 @@
 				height: 82vh !important;
 				margin-top: 20vh !important;
 				margin-bottom: 20vh !important;
+			}
+			.slider {
+				height: 2px; /* Specified height */
+			}
+			.slider::-webkit-slider-thumb {
+				border-width: 1px;
+				height: 10px;
+			}
+
+			.slider::-moz-range-thumb {
+				border-width: 1px;
+				height: 10px;
 			}
 			#modern-era-vis-spread {
 				min-height: 200vh;
