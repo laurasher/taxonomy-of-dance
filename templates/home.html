@@ -560,7 +560,7 @@
 			<p class='era-title left-margin' style='margin-bottom: 5vh;'>The Contemporary Era</p>
 			<div class='spread-container'>
 				<div id='endolor-column' class="column-within-blade a">
-						<button id="endolor-play-button" class='play-button' onclick="document.getElementById('endolor-audio').play()">&#9658;</button>
+						<button id="endolor-play-button" class='play-button' onclick="document.getElementById('endolor-audio').play()">▶</button>
 						<p class='column-title'>En Dolor, 1944</p>
 						<div id='endolor-choreo-radial' class='choreo-radial'></div>
 						<p class='column-paragraph para' style='text-align: left;'>Ethel Winter<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
@@ -570,7 +570,7 @@
 						</p>
 				</div>
 				<div id='songs-column' class="column-within-blade b">
-						<button id="songs-play-button" class='play-button' onclick="document.getElementById('songs-audio').play()">&#9658;</button>
+						<button id="songs-play-button" class='play-button' onclick="document.getElementById('songs-audio').play()">▶</button>
 						<p class='column-title'>Songs, 1956</p>
 						<div id='songs-choreo-radial' class='choreo-radial'></div>
 						<p class='column-paragraph para' style='text-align: left;'>Mary Anthony<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
@@ -582,7 +582,7 @@
 				<div id='artifact-column' class="column-within-blade c">
 						<span>
 							<!-- <button id="artifact-play-button" class='play-button' onclick="document.getElementById('artifact-audio').play()">&#9658;</button> -->
-							<button id="artifact-play-button" class='play-button'>&#9658;</button>
+							<button id="artifact-play-button" class='play-button'>▶</button>
 							<button id="artifact-pause-button" class='play-button button-enabled'>❚❚</button>
 							<p class='column-title'>Artifact, 1984</p>
 						</span>
@@ -912,7 +912,7 @@
 						.attr("d", lineRadial(artifact_dataArr[timePoint].artifact_data))
 						.attr("class", className)
 						.attr("opacity", 0)
-						.attr("transform", "rotate(" + ( -55 ) + ")")
+						// .attr("transform", "rotate(" + ( -55 ) + ")")
 						.attr("fill", "none")
 						.attr("stroke-width", curRadialLineWidth/2)
 						.attr("stroke", animateColor)
@@ -1105,7 +1105,7 @@
 		if ($('#songs-play-button').hasClass('enabled')){
 			$('#songs-play-button').html("❚❚")
 		}else{
-			$('#songs-play-button').html("&#9658;")
+			$('#songs-play-button').html("▶")
 		}
 		for (i = 0; i < songs_dataArr.length; i++) {
 			className = "songs"
