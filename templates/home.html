@@ -299,6 +299,51 @@
 			color: lightgray;
 			display: none;
 		}
+		.slider {
+			-webkit-appearance: none;  /* Override default CSS styles */
+			appearance: none;
+			height: 3px; /* Specified height */
+			background: #000; 
+			outline: none; /* Remove outline */
+			opacity: 0.8; /* Set transparency (for mouse-over effects on hover) */
+			-webkit-transition: .2s; /* 0.2 seconds transition on hover */
+			transition: opacity .2s;
+		}
+		.slider::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 23px;
+			height: 24px;
+			border: 0;
+			background-image: linear-gradient(90deg, transparent 50%, black 50%), linear-gradient(90deg, black 50%, transparent 50%);
+			background-position: calc(100% - 10px) calc(0.5em), calc(100% - 5px) calc(0.5em), calc(100% - 2.5em) 0.5em;
+			background-size: 5px 10px, 5px 10px, 1px 1.5em;
+			background-repeat: no-repeat;
+			cursor: pointer;
+		}
+
+		.slider::-moz-range-thumb {
+			width: 23px;
+			height: 25px;
+			border: 0;
+			background-image: linear-gradient(90deg, transparent 50%, black 50%), linear-gradient(90deg, black 50%, transparent 50%);
+			background-position: calc(100% - 10px) calc(0.5em), calc(100% - 5px) calc(0.5em), calc(100% - 2.5em) 0.5em;
+			background-size: 5px 10px, 5px 10px, 1px 1.5em;
+			background-repeat: no-repeat;
+			cursor: pointer;
+		}
+		input[type=range]{
+			pointer-events: none;
+		}
+		input[type=range]::-webkit-slider-thumb{/*Webkit Browsers like Chome and Safari*/
+			pointer-events: auto;
+		}
+		input[type=range]::-moz-range-thumb{/*Firefox*/
+			pointer-events: auto;
+		}
+		input[type=range]::-ms-thumb{/*Internet Explorer*/
+			pointer-events: auto;
+		}
 		/************ CAUTION: MOBILE STYLES ***************
 		****************************************************
 		***************************************************/
@@ -548,7 +593,7 @@
 							<p class='column-title'>Artifact, 1984</p>
 						</span>
 						<div id="slider">
-							<input type='range' min='0' max='61' step='1' value='0' id='artifact-slider' /> 
+							<input type='range' min='0' max='61' step='1' value='0' id='artifact-slider' class='slider'/> 
 						</div>
 						<div id="artifact-choreo-radial" class='choreo-radial'></div>
 						<p class='column-paragraph para' style='text-align: left;'>William Forsythe<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
