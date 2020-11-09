@@ -507,6 +507,7 @@
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<audio id="coppelia-audio" src="{{ url_for('static', filename='audio/coppelia_dawn.mp3') }}"></audio>
 	<audio id="songs-audio" src="{{ url_for('static', filename='audio/songs.mp3') }}"></audio>
 	<audio id="artifact-audio" src="{{ url_for('static', filename='audio/artifact.mp3') }}"></audio>
 	<audio id="endolor-audio" src="{{ url_for('static', filename='audio/endolor.mp3') }}"></audio>
@@ -653,7 +654,7 @@
 						<div id="coppelia-slider-container" class='slider-container'>
 							<button id="coppelia-play-button" class='play-button'>&#9658;</button>
 							<button id="coppelia-pause-button" class='play-button button-enabled'>❚❚</button>
-							<input type='range' min='0' max='80' step='1' value='0' id='coppelia-slider' class='slider'/> 
+							<input type='range' min='0' max='139' step='1' value='0' id='coppelia-slider' class='slider'/> 
 						</div>
 						<div id='coppelia-choreo-radial' class='choreo-radial'></div>
 				</div>
@@ -1336,8 +1337,6 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 		.attr("transform", "translate(" + 200 + "," + 200 + ")");
 		// .attr("transform", "translate(" + 150 + "," + 100 + ")");
 
-
-
 	//Container for the gradients
 	coppelia_defs = coppelia_svg.append("defs");
 
@@ -1495,7 +1494,7 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 			t = (+b.property("value") + 1) % (+b.property("max") + 1);
 			curPlaybackTime = (coppelia_dataset.filter(x=>x.slider_time==t)[0].playbackTime)*2000
 			if (t == 0) { t = +b.property("min"); }
-			if (t >= 80){
+			if (t >= 139){
 				$("#coppelia-pause-button").addClass('button-enabled')
 				$("#acoppelia-play-button").removeClass('button-enabled')
 				clearInterval (myTimer);
@@ -1503,7 +1502,8 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 			}
 			b.property("value", t);
 			update (t);
-		}, 700);
+		// }, 300);
+		}, 320);
 	});
 
 	d3.select("#coppelia-pause-button").on("click", function() {
