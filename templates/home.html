@@ -692,6 +692,27 @@
 	{% block script %}{% endblock %}
 </body>
 <script>
+
+	function myFunction(x) {
+		if (x.matches) { // If media query matches
+			$('#modern-era-feature-spread').hide()
+			$('#modern-era-vis-overview-spread').hide()
+			$('#classical-era-feature-spread').hide()
+			$('#classical-era-vis-overview-spread').hide()
+
+		} else {
+			$('#modern-era-feature-spread').show()
+			$('#modern-era-vis-overview-spread').show()
+			$('#classical-era-feature-spread').show()
+			$('#classical-era-vis-overview-spread').show()
+		}
+	}
+
+	var x = window.matchMedia("(max-width: 1024px)")
+	myFunction(x) // Call listener function at run time
+	x.addListener(myFunction) // Attach listener function on state changes
+
+
 	const datapath = "static/data/"
 	var stepCircleColor = "black"
 	var stepCircleAlpha = 0.3
