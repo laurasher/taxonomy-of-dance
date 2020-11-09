@@ -350,8 +350,8 @@
 			}
 			.blade {
 				height: 82vh !important;
-				margin-top: 20vh !important;
-				margin-bottom: 20vh !important;
+				/* margin-top: 20vh !important; */
+				/* margin-bottom: 20vh !important; */
 				width: 90vw;
 			}
 			.slider {
@@ -372,6 +372,8 @@
 			}
 			#title {
 				margin-top: -25% !important;
+				margin-left: 10%;
+				width: 80%;
 			}
 			#taxonomy-title {
 				height: 95% !important;
@@ -494,10 +496,10 @@
 				margin-left: 10vw;
 				width: 100%;
 			}
-			.era-title {
+			/* .era-title {
 				text-align: center;
 				margin-left: 10vw !important;
-			}
+			} */
 		}
 		/************ CAUTION: MOBILE STYLES ***************
 		****************************************************
@@ -693,17 +695,18 @@
 </body>
 <script>
 
-	function myFunction(x) {
+	// Maybe just have static images on mobile?
+	function myFunction(x) {	
 		if (x.matches) { // If media query matches
-			$('#modern-era-feature-spread').hide()
-			$('#modern-era-vis-overview-spread').hide()
+			// $('#modern-era-feature-spread').hide()
+			// $('#modern-era-vis-overview-spread').hide()
 			$('#classical-era-feature-spread').hide()
 			$('#classical-era-vis-overview-spread').hide()
 			$('#classical-era-vis-spread').hide()
 
 		} else {
-			$('#modern-era-feature-spread').show()
-			$('#modern-era-vis-overview-spread').show()
+			// $('#modern-era-feature-spread').show()
+			// $('#modern-era-vis-overview-spread').show()
 			$('#classical-era-feature-spread').show()
 			$('#classical-era-vis-overview-spread').show()
 			$('#classical-era-vis-spread').show()
