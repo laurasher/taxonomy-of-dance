@@ -351,6 +351,40 @@
 		input[type=range]::-ms-thumb{/*Internet Explorer*/
 			pointer-events: none;
 		}
+		.ticks {
+		font-size: 10px;
+		}
+
+		.track,
+		.track-inset,
+		.track-overlay {
+		stroke-linecap: round;
+		}
+
+		.track {
+		stroke: #000;
+		stroke-opacity: 0.3;
+		stroke-width: 10px;
+		}
+
+		.track-inset {
+		stroke: #dcdcdc;
+		stroke-width: 8px;
+		}
+
+		.track-overlay {
+		pointer-events: stroke;
+		stroke-width: 50px;
+		stroke: transparent;
+		cursor: crosshair;
+		}
+
+		.handle {
+		fill: #fff;
+		stroke: #000;
+		stroke-opacity: 0.5;
+		stroke-width: 1.25px;
+		}
 		/************ CAUTION: MOBILE STYLES ***************
 		****************************************************
 		***************************************************/
@@ -678,9 +712,10 @@
 						</span>
 						<p class='column-paragraph para centered'>Arthur Michel Saint-Leon<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 						<div id="coppelia-slider-container" class='slider-container'>
-							<button id="coppelia-play-button" class='play-button'>&#9658;</button>
-							<button id="coppelia-pause-button" class='play-button button-enabled'>❚❚</button>
-							<input type='range' min='0' max='139' step='1' value='0' id='coppelia-slider' class='slider'/> 
+							<!-- <button id="coppelia-play-button" class='play-button'>&#9658;</button> -->
+							<button id="coppelia-play-button" class='play-button'>Play</button>
+							<!-- <button id="coppelia-pause-button" class='play-button button-enabled'>❚❚</button> -->
+							<!-- <input type='range' min='0' max='139' step='1' value='0' id='coppelia-slider' class='slider'/>  -->
 						</div>
 						<div id='coppelia-choreo-radial' class='choreo-radial'></div>
 				</div>
@@ -1382,11 +1417,8 @@ var circleWrappercoppelia;
 var coppeliaButton = document.getElementById("coppelia-play-button");
 var coppeliaAudio = document.getElementById("coppelia-audio");
 
-d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
-	coppelia_dataset = coppelia_data;
-
-	//SVG container
-	coppelia_svg = d3.select("#coppelia-choreo-radial")
+//SVG container
+var coppelia_svg = d3.select("#coppelia-choreo-radial")
 		.append("svg")
 		// .attr("width", 200)
 		// .attr("height", 200)
@@ -1394,6 +1426,62 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 		.append("g")
 		.attr("transform", "translate(" + 200 + "," + 200 + ")");
 		// .attr("transform", "translate(" + 150 + "," + 100 + ")");
+
+var moving = false;
+var currentValue = 0;
+var targetValue = width;
+
+var playButton = d3.select("#coppelia-play-button");
+	
+var x = d3.scaleLinear()
+	.domain([0, 139])
+	.range([0, targetValue])
+	.clamp(true);
+
+var slider = coppelia_svg.append("g")
+	.attr("class", "slider")
+	.attr("transform", "translate(" + -width/2 + "," + -height + ")");
+
+slider.append("line")
+	.attr("class", "track")
+	.attr("x1", x.range()[0])
+	.attr("x2", x.range()[1])
+.select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+	.attr("class", "track-inset")
+.select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+	.attr("class", "track-overlay")
+	.call(d3.drag()
+		.on("start.interrupt", function() { slider.interrupt(); })
+		.on("start drag", function() {
+		currentValue = d3.event.x;
+		update(x.invert(currentValue)); 
+		})
+	);
+
+slider.insert("g", ".track-overlay")
+	.attr("class", "ticks")
+	.attr("transform", "translate(0," + 18 + ")")
+.selectAll("text")
+	.data(x.ticks(10))
+	.enter()
+	.append("text")
+	.attr("x", x)
+	.attr("y", 10)
+	.attr("text-anchor", "middle")
+
+var handle = slider.insert("circle", ".track-overlay")
+	.attr("class", "handle")
+	.attr("r", 9);
+
+var label = slider.append("text")  
+	.attr("class", "label")
+	.attr("text-anchor", "middle")
+	.attr("transform", "translate(0," + (-25) + ")")
+
+
+d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
+
+	coppelia_dataset = coppelia_data;
 
 	//Container for the gradients
 	coppelia_defs = coppelia_svg.append("defs");
@@ -1420,6 +1508,8 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 		}
 	});
 	
+	dataset = coppelia_dataset;
+
 	///////////////////////////////////////////////////////////////////////////
 	//////////////////////////// Radial line //////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////
@@ -1467,8 +1557,33 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 	circleWrappercoppelia = coppelia_svg.append("g")
 		.attr("transform", "translate(" + 0 + "," + 0 + ")");
 
+	drawPlotAll(coppelia_dataset);
+	
+	playButton
+		.on("click", function() {
+			var button = d3.select(this);
+			if (button.text() == "Pause") {
+				moving = false;
+				clearInterval(timer);
+				// timer = 0;
+				button.text("Play");
+				coppeliaAudio.pause();
+			} else {
+				moving = true;
+				timer = setInterval(step, 100);
+				button.text("Pause");
+				coppeliaAudio.play();
+			}
+			console.log("Slider moving: " + moving);
+		})
+})
+
+function drawPlotAll(data) {
+	console.log('------------- DRAW PLOT, DATA: ')
+	console.log(data)
+
 	for (i = 0; i < coppelia_dataArr.length; i++) {
-		className = "coppelia"
+		className = "coppelia-all"
 		curRadialLineWidth = coppelia_dataStyling[i].step_length
 		curPlaybackTime = coppelia_dataStyling[i].playback_time
 		radialWrappercoppelia
@@ -1491,88 +1606,72 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 				.style("filter", "url(#glow)")
 				.style('fill', weightCircleColor)
 	}
+}
 	
-	// NO DELAY, JUST CALL IMMEDIATELY TO SHOW THROUGH UPDATE. USE THE PLAYBACKTIME IN UPDATE CALL
-	function update(timePoint) {
-		if(timePoint == 1 || timePoint == 0){
-			d3.selectAll('.coppelia')
-				.remove()
-		}
-		// for (i = 0; i < artifact_dataArr.length; i++) {
+function step() {
+	update(x.invert(currentValue));
+	currentValue = currentValue + (targetValue/151);
+	if (currentValue > targetValue) {
+		moving = false;
+		currentValue = 0;
+		clearInterval(timer);
+		// timer = 0;
+		playButton.text("Play");
+		console.log("Slider moving: " + moving);
+	}
+}
+
+function drawPlot(data, i) {
+	console.log('------------- DRAW PLOT, DATA: ')
+	console.log(data)
+	console.log(i)
+	d3.selectAll('.coppelia-all').remove()
+
+	// for (i = 0; i < coppelia_dataArr.length; i++) {
 		className = "coppelia"
-		curRadialLineWidth = coppelia_dataStyling[timePoint].step_length
-		curPlaybackTime = coppelia_dataStyling[timePoint].playback_time
+		curRadialLineWidth = coppelia_dataStyling[i].step_length
+		curPlaybackTime = coppelia_dataStyling[i].playback_time
 		radialWrappercoppelia
 			.append("path")
-			.attr("d", lineRadial(coppelia_dataArr[timePoint].coppelia_data))
+			.attr("d", lineRadial(coppelia_dataArr[i].coppelia_data))
 			.attr("class", className)
-			.attr("opacity", 0)
 			.attr("transform", "rotate(" + ( -55 ) + ")")
 			.attr("fill", "none")
 			.attr("stroke-width", curRadialLineWidth/2)
-			.attr("stroke", animateColor)
+			.attr("stroke", "black")
 			.style("filter", "url(#glow)")
-			.transition()
-			// .delay( (curPlaybackTime-14)*900)
-			// .delay( (curPlaybackTime-25))
-				.duration( 1 )
-				.attr("opacity", 0.7)
-			// .transition()
-			// 	.ease(d3.easeLinear)
-			// 	.duration(200)
-			// 	.attr("stroke", "black")
+			.attr("opacity", 0.7)
 		circleWrappercoppelia
 			.append("circle")
-				.attr("opacity", 0)
-				.attr("cy", coppelia_dataArr[timePoint].coppelia_data[0][1]*Math.sin(coppelia_dataStyling[timePoint].weight_dist))
-				.attr("cx", coppelia_dataArr[timePoint].coppelia_data[0][1]*Math.cos(coppelia_dataStyling[timePoint].weight_dist))
-				.attr("r", weightCircleSize)
+				.attr("opacity", 0.5)
 				.attr("class", className)
+				.attr("cy", coppelia_dataArr[i].coppelia_data[0][1]*Math.sin(coppelia_dataStyling[i].weight_dist))
+				.attr("cx", coppelia_dataArr[i].coppelia_data[0][1]*Math.cos(coppelia_dataStyling[i].weight_dist))
+				.attr("r", weightCircleSize)
+				.style("filter", "url(#glow)")
 				.style('fill', weightCircleColor)
-				.transition()
-				// .delay( (curPlaybackTime-14)*900)
-				// .delay( (curPlaybackTime-25))
-					.duration( 1 )
-						.attr("opacity", 0.5)
 	// }
-	};
+}
 
-	//Run the update function when the slider is changed
-	d3.select('#coppelia-slider').on('input', function() {
-		update(this.value); // PASSING IN THE INDEX
-	});
+function update(h) {
+	// update position and text of label according to slider scale
+	handle.attr("cx", x(h));
+	label
+		.attr("x", x(h))
 
-	var myTimer;
-	var t = 0;
-	d3.select("#coppelia-play-button").on("click", function() {
-		$("#coppelia-play-button").addClass('button-enabled')
-		$("#coppelia-pause-button").removeClass('button-enabled')
-		coppeliaAudio.play();
-		clearInterval (myTimer);
-		myTimer = setInterval (function() {
-			var b = d3.select("#coppelia-slider");
-			t = (+b.property("value") + 1) % (+b.property("max") + 1);
-			curPlaybackTime = (coppelia_dataset.filter(x=>x.slider_time==t)[0].playbackTime)*2000
-			if (t == 0) { t = +b.property("min"); }
-			if (t >= 139){
-				$("#coppelia-pause-button").addClass('button-enabled')
-				$("#coppelia-play-button").removeClass('button-enabled')
-				clearInterval (myTimer);
-				return
-			}
-			b.property("value", t);
-			update (t);
-		// }, 300);
-		}, 520);
-	});
+	// filter data set and redraw plot
+	var newData = coppelia_dataset.filter(function(d) {
+		// return d.slider_time < h;
+		return d.slider_time == Math.ceil(h-1);
+	})
+	console.log('UPDATE data: ')
+	console.log(Math.ceil(h-1))
+	console.log(newData)
+	if (Math.ceil(h-1) > 0){
+		drawPlot(newData, Math.ceil(h-1));
+	}
+}
 
-	d3.select("#coppelia-pause-button").on("click", function() {
-		$("#coppelia-pause-button").addClass('button-enabled')
-		$("#coppelia-play-button").removeClass('button-enabled')
-		clearInterval (myTimer);
-		coppeliaAudio.pause();
-	});
-})
 
 
 ///////////////////////////////////////////////////////////////////////////
