@@ -334,7 +334,10 @@
 			border-width: 1px;
 		}
 		#taxonomy-timeline{
-			margin-top: 10%;
+			margin-top: var(--general-margin);
+		}
+		#overview-choreo-radials{
+			width: 70%;
 		}
 		input[type=range]{
 			pointer-events: none;
@@ -710,8 +713,10 @@
 	</div>
 	<div id='overview' class='blade'>
 		<div class='feature-spread-container'>
-			<p class='feature-title'>In Overview</p>
-			<img id='taxonomy-timeline' class='desktop' src="{{ url_for('static', filename='assets/taxonomy-timeline-black.svg') }}" alt="taxonomy timeline">
+			<p class='era-title'>In Overview</p>
+			<img id='overview-choreo-radials' class='desktop' src="{{ url_for('static', filename='assets/overview-radial-grid-timeline.svg') }}" alt="taxonomy timeline">
+			<!-- <img id='taxonomy-timeline' class='desktop' src="{{ url_for('static', filename='assets/taxonomy-timeline-black.svg') }}" alt="taxonomy timeline"> -->
+			<!-- <img id='overview-choreo-radials' class='desktop' src="{{ url_for('static', filename='assets/overview-radial-grid.svg') }}" alt="all choreo radials"> -->
 		</div>
 	</div>
 	<main>
@@ -1486,9 +1491,10 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 				.style("filter", "url(#glow)")
 				.style('fill', weightCircleColor)
 	}
-
+	
+	// NO DELAY, JUST CALL IMMEDIATELY TO SHOW THROUGH UPDATE. USE THE PLAYBACKTIME IN UPDATE CALL
 	function update(timePoint) {
-		if(timePoint == 1){
+		if(timePoint == 1 || timePoint == 0){
 			d3.selectAll('.coppelia')
 				.remove()
 		}
@@ -1508,8 +1514,9 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 			.style("filter", "url(#glow)")
 			.transition()
 			// .delay( (curPlaybackTime-14)*900)
-			.delay( (curPlaybackTime-25))
-			.attr("opacity", 0.7)
+			// .delay( (curPlaybackTime-25))
+				.duration( 1 )
+				.attr("opacity", 0.7)
 			// .transition()
 			// 	.ease(d3.easeLinear)
 			// 	.duration(200)
@@ -1524,14 +1531,15 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 				.style('fill', weightCircleColor)
 				.transition()
 				// .delay( (curPlaybackTime-14)*900)
-				.delay( (curPlaybackTime-25))
-					.attr("opacity", 0.5)
+				// .delay( (curPlaybackTime-25))
+					.duration( 1 )
+						.attr("opacity", 0.5)
 	// }
 	};
 
 	//Run the update function when the slider is changed
 	d3.select('#coppelia-slider').on('input', function() {
-		update(this.value);
+		update(this.value); // PASSING IN THE INDEX
 	});
 
 	var myTimer;
@@ -1555,14 +1563,14 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 			b.property("value", t);
 			update (t);
 		// }, 300);
-		}, 320);
+		}, 520);
 	});
 
 	d3.select("#coppelia-pause-button").on("click", function() {
 		$("#coppelia-pause-button").addClass('button-enabled')
 		$("#coppelia-play-button").removeClass('button-enabled')
-		coppeliaAudio.pause();
 		clearInterval (myTimer);
+		coppeliaAudio.pause();
 	});
 })
 
