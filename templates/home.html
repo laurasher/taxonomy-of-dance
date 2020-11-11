@@ -133,6 +133,15 @@
 		#year_1984_solid_2 {
 			margin-top: 17vh;
 		}
+		#year_1898 {
+			margin-top: 240vh;
+		}
+		#year_1890 {
+			margin-top: 20vh;
+		}
+		#year_1870 {
+			margin-top: 20vh;
+		}
 		#intro {
 			height: 105vh;
 		}
@@ -537,9 +546,12 @@
 					<img src="{{ url_for('static', filename='assets/learn-more-2.svg') }}">
 				</div>
 				<img id="HOW" class='timeline-circle' src="{{ url_for('static', filename='assets/HOW.svg') }}">
-				<img id="year_1944" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1944_expand.svg') }}">
+				<img id="year_1944" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1984_solid_expand.svg') }}">
 				<img id="year_1956" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1956_expand.svg') }}">
-				<img id="year_1984" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1984_solid_expand.svg') }}">
+				<img id="year_1984" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1944_expand.svg') }}">
+				<img id="year_1898" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1898.svg') }}">
+				<img id="year_1890" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1890.svg') }}">
+				<img id="year_1870" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1870.svg') }}">
 				<!-- <img id="year_1944_solid" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1944_solid_expand.svg') }}">
 				<img id="year_1956_solid" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1956_solid_expand.svg') }}">
 				<img id="year_1984_solid" class='timeline-circle' src="{{ url_for('static', filename='assets/year_1984_solid_expand.svg') }}">
@@ -640,8 +652,8 @@
 			<div class='feature-spread-container'>
 				<div>
 					<p class='era-title'>The Classical Era</p>
-					<p class='feature-title'>Raymonda, 1898</p>
-					<p class='era-title' style='margin-top: 0;'>Marius Petipa</p>
+					<p class='feature-title'>Coppélia, 1870</p>
+					<p class='era-title' style='margin-top: 0;'>Arthur Michel Saint-Léon</p>
 					<p class='feature-para'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin laoreet, ligula 
 							in lacinia porttitor, leo metus vehicula turpis, et consequat felis lorem nec elit. Fusce augue arcu, facilisis nec 
 							posuere quis, ullamcorper sed neque. Pellentesque et eros tellus. Suspendisse id ex scelerisque, venenatis tortor nec, 
@@ -692,6 +704,12 @@
 						
 				</div>
 			</div>
+	</div>
+	<div id='overview' class='blade'>
+		<div class='feature-spread-container'>
+			<p class='feature-title'>In Overview</p>
+			<img id='taxonomy-timeline' class='desktop' src="{{ url_for('static', filename='assets/taxonomy-timeline-black.svg') }}" alt="taxonomy timeline">
+		</div>
 	</div>
 	<main>
 	{% block main %}{% endblock %}
