@@ -364,6 +364,10 @@
 		#outro-p{
 			margin-top: 12vh;
 		}
+		#colophon-img {
+			margin-top: 15vw;
+			width: 60%;
+		}
 		input[type=range]{
 			pointer-events: none;
 		}
@@ -757,6 +761,11 @@
 			<img id='overview-choreo-radials' class='desktop' src="{{ url_for('static', filename='assets/overview-radial-grid-timeline.svg') }}" alt="taxonomy timeline">
 		</div>
 	</div>
+	<div id='colophon' class='blade desktop'>
+			<div class='feature-spread-container'>
+				<img id='colophon-img' class='desktop centered' src="{{ url_for('static', filename='assets/colophon.svg') }}" alt="taxonomy timeline">
+			</div>
+		</div>
 	<main>
 	{% block main %}{% endblock %}
 	</main>
