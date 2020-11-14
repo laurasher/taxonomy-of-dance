@@ -181,7 +181,7 @@
 			grid-area: 1 / 1 / 2 / 2;
 			/* opacity: 0.9; */
 			/* height: 780vh; */
-			height: 650vh;
+			height: 770vh;
 			width: 20px;
 			border-left: var(--black-line-width) solid black;
 			margin-top: -18vw;
@@ -209,6 +209,7 @@
 			height: 90%;
 			margin-top: 0px;
 			margin-left: 12%;
+			margin-bottom: 15vw;
 		}
 		.column-within-blade {
 			text-align: center;
@@ -286,7 +287,7 @@
 		.column-paragraph{
 			width: 50%;
 		}
-		#artifact-feature-choreo-radials {
+		.feature-choreo-radials {
 			display: block;
 			width: 65vw;
 			margin-top: var(--general-margin);
@@ -338,7 +339,14 @@
 			margin-top: var(--general-margin);
 		}
 		#overview-choreo-radials{
-			height: 100%;
+			/* height: 100%; */
+			width: 80vw;
+		}
+		#overview {
+			/* margin-top: 15vw; */
+		}
+		#pre-overview {
+			height: 55vh;
 		}
 		input[type=range]{
 			pointer-events: none;
@@ -599,38 +607,14 @@
 					key players, how it compares in this visual format to the Classical Era.
 				</p>
 			</div>
-			<img id='artifact-feature-choreo-radials' class='desktop' src="{{ url_for('static', filename='assets/artifact-radials-names-below-illus-white-blobs.svg') }}" alt="artifact 1984 choreo radials">
+			<img id='artifact-feature-choreo-radials' class='desktop feature-choreo-radials' src="{{ url_for('static', filename='assets/artifact-radials-names-below-illus-white-blobs.svg') }}" alt="artifact 1984 choreo radials">
 			<img id='artifact-feature-choreo-radials' class='mobile' src="{{ url_for('static', filename='assets/artifact-radials-vert-names-right-illus.svg') }}" alt="artifact 1984 choreo radials">
 		</div>
 	</div>
 	<div id='modern-era-vis-spread' class='blade desktop'>
 			<p class='era-title left-margin' style='margin-bottom: 5vh;'>The Modern & Contemporary Eras</p>
 			<div class='spread-container'>
-				<div id='endolor-column' class="column-within-blade a">
-						<span>
-							<p class='column-title'>En Dolor, 1944</p>
-						</span>
-						<p class='column-paragraph para centered'>Ethel Winter<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-						<div id="endolor-slider-container" class='slider-container'>
-							<button id="endolor-play-button" class='play-button'>&#9658;</button>
-							<button id="endolor-pause-button" class='play-button button-enabled'>❚❚</button>
-							<input type='range' min='0' max='80' step='1' value='0' id='endolor-slider' class='slider'/> 
-						</div>
-						<div id='endolor-choreo-radial' class='choreo-radial'></div>
-				</div>
-				<div id='songs-column' class="column-within-blade b">
-						<span>
-							<p class='column-title'>Songs, 1956</p>
-						</span>
-						<p class='column-paragraph para centered'>Mary Anthony<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-						<div id="songs-slider-container" class='slider-container'>
-								<button id="songs-play-button" class='play-button'>&#9658;</button>
-								<button id="songs-pause-button" class='play-button button-enabled'>❚❚</button>
-							<input type='range' min='0' max='175' step='1' value='0' id='songs-slider' class='slider'/> 
-						</div>
-						<div id='songs-choreo-radial' class='choreo-radial'></div>
-				</div>
-				<div id='artifact-column' class="column-within-blade c">
+				<div id='artifact-column' class="column-within-blade a">
 						<span>
 							<p class='column-title'>Artifact, 1984</p>
 						</span>
@@ -642,6 +626,30 @@
 						</div>
 						<div id="artifact-choreo-radial" class='choreo-radial'></div>
 						
+				</div>
+				<div id='songs-column' class="column-within-blade b">
+					<span>
+						<p class='column-title'>Songs, 1956</p>
+					</span>
+					<p class='column-paragraph para centered'>Mary Anthony<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<div id="songs-slider-container" class='slider-container'>
+							<button id="songs-play-button" class='play-button'>&#9658;</button>
+							<button id="songs-pause-button" class='play-button button-enabled'>❚❚</button>
+						<input type='range' min='0' max='175' step='1' value='0' id='songs-slider' class='slider'/> 
+					</div>
+					<div id='songs-choreo-radial' class='choreo-radial'></div>
+				</div>
+				<div id='endolor-column' class="column-within-blade c">
+						<span>
+							<p class='column-title'>En Dolor, 1944</p>
+						</span>
+						<p class='column-paragraph para centered'>Ethel Winter<br>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						<div id="endolor-slider-container" class='slider-container'>
+							<button id="endolor-play-button" class='play-button'>&#9658;</button>
+							<button id="endolor-pause-button" class='play-button button-enabled'>❚❚</button>
+							<input type='range' min='0' max='80' step='1' value='0' id='endolor-slider' class='slider'/> 
+						</div>
+						<div id='endolor-choreo-radial' class='choreo-radial'></div>
 				</div>
 			</div>
 	</div>
@@ -667,14 +675,14 @@
 							posuere quis, ullamcorper sed neque. Pellentesque et eros tellus. Suspendisse id ex scelerisque, venenatis tortor nec, 
 							sodales tellus. Praesent dui libero, vehicula placerat consequat et, laoreet vitae justo. Sed in dignissim dolor.</p>
 				</div>
-				<img id='artifact-feature-choreo-radials' class='desktop' src="{{ url_for('static', filename='assets/artifact-radials-names-below-illus-white-blobs.svg') }}" alt="artifact 1984 choreo radials">
-				<img id='artifact-feature-choreo-radials' class='mobile' src="{{ url_for('static', filename='assets/artifact-radials-vert-names-right-illus.svg') }}" alt="artifact 1984 choreo radials">
+				<img id='coppelia-feature-choreo-radials' class='desktop feature-choreo-radials' src="{{ url_for('static', filename='assets/coppelia-radials-names-below-illus-white-blobs.svg') }}" alt="coppelia 1870 choreo radials">
+				<!-- <img id='artifact-feature-choreo-radials' class='mobile' src="{{ url_for('static', filename='assets/artifact-radials-vert-names-right-illus.svg') }}" alt="artifact 1984 choreo radials"> -->
 			</div>
 	</div>
 	<div id='classical-era-vis-spread' class='blade desktop'>
 			<p class='era-title left-margin' style='margin-bottom: 5vh;'>The Classical Era</p>
 			<div class='spread-container'>
-				<div id='coppelia-column' class="column-within-blade a">
+				<div id='coppelia-column' class="column-within-blade c">
 						<span>
 							<p class='column-title'>Coppélia, 1870</p>
 						</span>
@@ -698,7 +706,7 @@
 						</div>
 						<div id='sleepingbeauty-choreo-radial' class='choreo-radial'></div>
 				</div>
-				<div id='raymonda-column' class="column-within-blade c">
+				<div id='raymonda-column' class="column-within-blade a">
 						<span>
 							<p class='column-title'>Raymonda, 1898</p>
 						</span>
@@ -713,12 +721,25 @@
 				</div>
 			</div>
 	</div>
+	<div class='feature-spread-container'>
+			<div>
+				<p class='era-title'>The Modern & Contemporary Eras</p>
+				<p class='feature-para'>Plotting measures in a feature space representing movement diversity and repetition, we can get a sense of the nature of the movement of each dance.</p>
+			</div>
+			<img id='modern-era-choreo-radials' class='desktop grid-radials' src="{{ url_for('static', filename='assets/contemporary-era-radial-grid.svg') }}" alt="contemporary choreo radials">
+			<img id='modern-era-choreo-radials' class='mobile grid-radials' src="{{ url_for('static', filename='assets/contemporary-era-radial-grid-mobile.svg') }}" alt="contemporary choreo radials">
+		</div>
+	</div>
+	<div id='pre-overview' class='blade desktop'>
+			<div class='feature-spread-container'>
+				<p class='feature-title'>Now let's look at the dances in summary. Can you spot any trends?</p>
+				<!-- <img id='overview-choreo-radials' class='desktop' src="{{ url_for('static', filename='assets/overview-radial-grid-timeline.svg') }}" alt="taxonomy timeline"> -->
+			</div>
+		</div>
 	<div id='overview' class='blade desktop'>
 		<div class='feature-spread-container'>
-			<p class='era-title'>In Overview</p>
+			<p class='feature-title'>In Overview</p>
 			<img id='overview-choreo-radials' class='desktop' src="{{ url_for('static', filename='assets/overview-radial-grid-timeline.svg') }}" alt="taxonomy timeline">
-			<!-- <img id='taxonomy-timeline' class='desktop' src="{{ url_for('static', filename='assets/taxonomy-timeline-black.svg') }}" alt="taxonomy timeline"> -->
-			<!-- <img id='overview-choreo-radials' class='desktop' src="{{ url_for('static', filename='assets/overview-radial-grid.svg') }}" alt="all choreo radials"> -->
 		</div>
 	</div>
 	<main>
@@ -728,15 +749,18 @@
 </body>
 <script>
 
+	var MOBILE = false;
 	// Maybe just have static images on mobile?
 	function myFunction(x) {	
-		if (x.matches) { // If media query matches
+		if (x.matches) { 
+			// If media query matches --> MOBILE
 			// $('#classical-era-feature-spread').hide()
 			// $('#classical-era-vis-overview-spread').hide()
 			// $('#classical-era-vis-spread').hide()
 			$('.mobile').show()
 			$('.desktop').hide()
 			$('#title').show()
+			MOBILE = true;
 		} else {
 			// DESKTOP
 			// $('#classical-era-feature-spread').show()
@@ -744,6 +768,7 @@
 			// $('#classical-era-vis-spread').show()
 			$('.desktop').show()
 			$('.mobile').hide()
+			MOBILE = false;
 		}
 	}
 
@@ -1385,6 +1410,7 @@ var circleWrappercoppelia;
 var coppeliaButton = document.getElementById("coppelia-play-button");
 var coppeliaAudio = document.getElementById("coppelia-audio");
 
+// if (!MOBILE)
 d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 	coppelia_dataset = coppelia_data;
 
