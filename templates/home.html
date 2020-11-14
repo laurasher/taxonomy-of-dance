@@ -107,7 +107,7 @@
 			margin-top: 25vh;
 		}
 		#TRY {
-			margin-top: 25vh;
+			margin-top: 260vh;
 		}
 		#HOW {
 			margin-top: 70vh;
@@ -359,7 +359,10 @@
 			/* margin-top: 15vw; */
 		}
 		#pre-overview {
-			height: 55vh;
+			height: 50vh;
+		}
+		#outro-p{
+			margin-top: 12vh;
 		}
 		input[type=range]{
 			pointer-events: none;
@@ -575,7 +578,6 @@
 					<img src="{{ url_for('static', filename='assets/learn-more-2.svg') }}">
 				</div>
 				<img id="WHY" class='timeline-circle' src="{{ url_for('static', filename='assets/WHY.svg') }}">
-				<!-- <img id="TRY" class='timeline-circle' src="{{ url_for('static', filename='assets/TRY.svg') }}"> -->
 				<img id="HOW" class='timeline-circle' src="{{ url_for('static', filename='assets/HOW.svg') }}">
 				<img id="year_1944" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/year_1984_solid_expand.svg') }}">
 				<img id="year_1956" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/year_1956_expand.svg') }}">
@@ -583,6 +585,7 @@
 				<img id="year_1898" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/year_1898.svg') }}">
 				<img id="year_1890" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/year_1890.svg') }}">
 				<img id="year_1870" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/year_1870.svg') }}">
+				<img id="TRY" class='timeline-circle' src="{{ url_for('static', filename='assets/HOW.svg') }}">
 			</div>	
 		</div>
 		
@@ -739,14 +742,13 @@
 				<p class='era-title'>The Classical Era</p>
 				<p class='feature-para'>Plotting measures in a feature space representing movement diversity and repetition, we can get a sense of the nature of the movement of each dance.</p>
 			</div>
-			<img id='modern-era-choreo-radials' class='desktop grid-radials' src="{{ url_for('static', filename='assets/contemporary-era-radial-grid.svg') }}" alt="contemporary choreo radials">
+			<img id='modern-era-choreo-radials' class='desktop grid-radials' src="{{ url_for('static', filename='assets/classical-era-radial-grid.svg') }}" alt="contemporary choreo radials">
 			<!-- <img id='modern-era-choreo-radials' class='mobile grid-radials' src="{{ url_for('static', filename='assets/contemporary-era-radial-grid-mobile.svg') }}" alt="contemporary choreo radials"> -->
 		</div>
 	</div>
 	<div id='pre-overview' class='blade desktop'>
-			<div class='feature-spread-container'>
-				<p class='feature-title'>Now let's look at the dances in summary. Can you spot any trends?</p>
-				<!-- <img id='overview-choreo-radials' class='desktop' src="{{ url_for('static', filename='assets/overview-radial-grid-timeline.svg') }}" alt="taxonomy timeline"> -->
+			<div class='two-column-spread'>
+					<img id='outro-p' class='intro-p' src="{{ url_for('static', filename='assets/outro-p.svg') }}" alt="">
 			</div>
 		</div>
 	<div id='overview' class='blade desktop'>
