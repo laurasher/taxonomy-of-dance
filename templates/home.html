@@ -140,7 +140,7 @@
 			margin-top: 17vh;
 		}
 		#year_1898 {
-			margin-top: 240vh;
+			margin-top: 270vh;
 		}
 		#year_1890 {
 			margin-top: 20vh;
@@ -194,7 +194,7 @@
 			grid-area: 1 / 1 / 2 / 2;
 			/* opacity: 0.9; */
 			/* height: 780vh; */
-			height: 880vh;
+			height: 910vh;
 			width: 20px;
 			border-left: var(--black-line-width) solid black;
 			margin-top: -18vw;
@@ -285,11 +285,17 @@
 			font-family: 'League', Fallback, sans-serif;
 			font-size: 3.5vh !important;
 			margin-top: 0px;
-			margin-bottom: 0.8vh;
+			margin-bottom: 0px;
 		}
 		.era-title {
 			font-family: 'League', Fallback, sans-serif;
 			font-size: 2.5vh !important;
+			margin-top: 0px;
+			margin-bottom: 0.8vh;
+		}
+		.era-subtitle {
+			font-family: 'League', Fallback, sans-serif;
+			font-size: 2vh !important;
 			margin-top: 0px;
 		}
 		.feature-para {
@@ -351,21 +357,24 @@
 		#taxonomy-timeline{
 			margin-top: var(--general-margin);
 		}
+		#classical-era-feature-spread {
+			margin-top: 30vh;
+		}
 		#overview-choreo-radials{
 			/* height: 100%; */
 			width: 75vw;
 		}
 		#overview {
-			/* margin-top: 15vw; */
+			margin-top: 15vw;
 		}
 		#pre-overview {
 			height: 50vh;
 		}
 		#outro-p{
-			margin-top: 12vh;
+			margin-top: 23vh;
 		}
 		#colophon-img {
-			margin-top: 15vw;
+			margin-top: 25vw;
 			width: 60%;
 		}
 		input[type=range]{
@@ -456,7 +465,7 @@
 				margin-left: -4.5vw !important;
 			}
 			#HOW {
-				margin-top: 30vh;
+				margin-top: 50vh;
 			}
 			#year_1944 {
 				margin-top: 170vh;
@@ -476,6 +485,10 @@
 			}
 			#year_1984_solid {
 				margin-top: 75vh;
+			}
+			#intro-p-12{
+				width: 100%;
+				margin-top: 5vh !important;
 			}
 			.a {
 				grid-row: 1;
@@ -515,7 +528,8 @@
 				width: 95%;
 			}
 			.two-column-spread {
-				margin-top: 10vh !important;
+				margin-top: 0 !important;
+				height: 50vh !important;
 			}
 			.feature-spread-container {
 				height: 100vh;
@@ -589,7 +603,7 @@
 				<img id="year_1898" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/year_1898.svg') }}">
 				<img id="year_1890" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/year_1890.svg') }}">
 				<img id="year_1870" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/year_1870.svg') }}">
-				<img id="TRY" class='timeline-circle' src="{{ url_for('static', filename='assets/HOW.svg') }}">
+				<img id="TRY" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/outro-circle.svg') }}">
 			</div>	
 		</div>
 		
@@ -632,7 +646,8 @@
 		</div>
 	</div>
 	<div id='modern-era-vis-spread' class='blade desktop'>
-			<p class='era-title left-margin' style='margin-bottom: 5vh;'>The Modern & Contemporary Eras</p>
+			<p class='era-title left-margin''>The Modern & Contemporary Eras</p>
+			<p class='era-subtitle left-margin' style='margin-bottom: 5vh;'>Radial Playback with Scores</p>
 			<div class='spread-container'>
 				<div id='artifact-column' class="column-within-blade a">
 						<span>
@@ -677,6 +692,7 @@
 	<div class='feature-spread-container'>
 			<div>
 				<p class='era-title'>The Modern & Contemporary Eras</p>
+				<p class='era-subtitle' style='margin-bottom: 5vh;'>Era Overview</p>
 				<p class='feature-para'>Plotting measures in a feature space representing movement diversity and repetition, we can get a sense of the nature of the movement of each dance.</p>
 			</div>
 			<img id='modern-era-choreo-radials' class='desktop grid-radials' src="{{ url_for('static', filename='assets/contemporary-era-radial-grid.svg') }}" alt="contemporary choreo radials">
@@ -700,7 +716,8 @@
 			</div>
 	</div>
 	<div id='classical-era-vis-spread' class='blade desktop'>
-			<p class='era-title left-margin' style='margin-bottom: 5vh;'>The Classical Era</p>
+			<p class='era-title left-margin'>The Classical Era</p>
+			<p class='era-subtitle left-margin' style='margin-bottom: 5vh;'>Radial Playback with Score</p>
 			<div class='spread-container'>
 				<div id='coppelia-column' class="column-within-blade c">
 						<span>
@@ -741,9 +758,10 @@
 				</div>
 			</div>
 	</div>
-	<div class='feature-spread-container'>
+	<div id='classical-feture-spread-container' class='feature-spread-container desktop'>
 			<div>
 				<p class='era-title'>The Classical Era</p>
+				<p class='era-subtitle'>Era Overview</p>
 				<p class='feature-para'>Plotting measures in a feature space representing movement diversity and repetition, we can get a sense of the nature of the movement of each dance.</p>
 			</div>
 			<img id='modern-era-choreo-radials' class='desktop grid-radials' src="{{ url_for('static', filename='assets/classical-era-radial-grid.svg') }}" alt="contemporary choreo radials">
@@ -757,7 +775,7 @@
 		</div>
 	<div id='overview' class='blade desktop'>
 		<div class='feature-spread-container'>
-			<p class='feature-title'>In Overview</p>
+			<p class='era-title'>In Overview</p>
 			<img id='overview-choreo-radials' class='desktop' src="{{ url_for('static', filename='assets/overview-radial-grid-timeline.svg') }}" alt="taxonomy timeline">
 		</div>
 	</div>
