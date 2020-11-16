@@ -106,6 +106,9 @@
 		#WHY {
 			margin-top: 25vh;
 		}
+		#WHAT {
+			margin-top: 98vh;
+		}
 		#TRY {
 			margin-top: 260vh;
 		}
@@ -365,7 +368,7 @@
 			width: 75vw;
 		}
 		#overview {
-			margin-top: 15vw;
+			margin-top: 10vw;
 		}
 		#pre-overview {
 			height: 50vh;
@@ -392,6 +395,7 @@
 		/************ CAUTION: MOBILE STYLES ***************
 		****************************************************
 		***************************************************/
+		/*TODO: Put 'mobile version under construction. please visit on desktop.'*/
 		@media (max-width: 1024px) and (min-width: 0px){
 			.desktop{
 				display: none !important;
@@ -597,13 +601,13 @@
 				</div>
 				<img id="WHY" class='timeline-circle' src="{{ url_for('static', filename='assets/WHY.svg') }}">
 				<img id="HOW" class='timeline-circle' src="{{ url_for('static', filename='assets/HOW.svg') }}">
+				<img id="WHAT" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/WHAT.svg') }}">
 				<img id="year_1944" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/year_1984_solid_expand.svg') }}">
 				<img id="year_1956" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/year_1956_expand.svg') }}">
 				<img id="year_1984" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/year_1944_expand.svg') }}">
 				<img id="year_1898" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/year_1898.svg') }}">
 				<img id="year_1890" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/year_1890.svg') }}">
 				<img id="year_1870" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/year_1870.svg') }}">
-				<img id="TRY" class='timeline-circle desktop' src="{{ url_for('static', filename='assets/outro-circle.svg') }}">
 			</div>	
 		</div>
 		
@@ -627,6 +631,14 @@
 			</div>
 		</div>
 	</div>
+	<div id='table-of-contents' class='blade desktop'>
+			<div class='feature-spread-container'>
+				<div>
+					<p class='era-title'>Table of contents</p>
+					<p class='era-title' style='margin-top: 0;'>what</p>
+				</div>
+			</div>
+		</div>
 	<div id='modern-era-feature-spread' class='blade desktop'>
 		<div class='feature-spread-container'>
 			<div>
