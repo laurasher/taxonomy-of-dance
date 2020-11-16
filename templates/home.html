@@ -150,7 +150,8 @@
 		}
 		#choreo-radial-explainer {
 			width: 100%;
-			margin-top: var(--general-margin);
+			/* margin-top: var(--general-margin); */
+			margin-top: 2vh;
 		}
 		#choreo-radial-explainer-body {
 			width: 80%;
@@ -598,7 +599,8 @@
 				<img id='intro-p-12' class='intro-p' src="{{ url_for('static', filename='assets/intro-p-12.svg') }}" alt="">
 			</div>
 			<div class='two-column-spread'>
-				<div class='left-column'>
+				<img id='choreo-radial-explainer' src="{{ url_for('static', filename='assets/test-explainer.svg') }}" alt="choreo-radial explainer graphic">
+				<!-- <div class='left-column'>
 					<p id='intro-text' class='para'>
 						Using a method of dance notation called <b>Labanotation</b>, it is possible to translate dance choreography into 
 						machine-parseable data by labeling x,y bounding boxes around each movement in a dance score. 
@@ -609,7 +611,7 @@
 				</div>
 				<div class='right-column'>
 					<img id='choreo-radial-explainer-body' src="{{ url_for('static', filename='assets/explainer-choreo-radial-body.svg') }}" alt="choreo-radial-body explainer graphic">
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
