@@ -116,7 +116,7 @@
 			margin-top: 70vh;
 		}
 		#year_1944 {
-			margin-top: 100vh;
+			margin-top: 143vh;
 		}
 		#year_1956 {
 			margin-top: 20vh;
@@ -150,7 +150,10 @@
 		}
 		#choreo-radial-explainer {
 			width: 60%;
-			/* margin-top: var(--general-margin); */
+			margin-top: 2vh;
+		}
+		#table-of-contents {
+			width: 60%;
 			margin-top: 2vh;
 		}
 		#choreo-radial-explainer-body {
@@ -180,7 +183,7 @@
 			grid-area: 1 / 1 / 2 / 2;
 			/* opacity: 0.9; */
 			/* height: 780vh; */
-			height: 1200vh;
+			height: 1240vh;
 			width: 20px;
 			border-left: var(--black-line-width) solid black;
 			margin-top: -18vw;
@@ -340,6 +343,9 @@
 			border-style: solid;
 			border-width: 1px;
 		}
+		#modern-era-feature-spread {
+			margin-top: 60vh !important;
+		}
 		#taxonomy-timeline{
 			margin-top: var(--general-margin);
 		}
@@ -354,10 +360,10 @@
 			margin-top: 10vw;
 		}
 		#pre-overview {
-			height: 50vh;
+			height: 60vh;
 		}
 		#outro-p{
-			margin-top: 10vh;
+			margin-top: 20vh;
 			width: 40vw;
 		}
 		#colophon-img {
@@ -410,7 +416,7 @@
 			}
 			#modern-era-vis-spread {
 				min-height: 200vh;
-				margin-top: 40vh !important;
+				margin-top: 100vh !important;
 			}
 			#title {
 				margin-top: -25% !important;
@@ -601,29 +607,14 @@
 			</div>
 			<div class='two-column-spread'>
 				<img id='choreo-radial-explainer' src="{{ url_for('static', filename='assets/how-explainer.svg') }}" alt="choreo-radial explainer graphic">
-				<!-- <div class='left-column'>
-					<p id='intro-text' class='para'>
-						Using a method of dance notation called <b>Labanotation</b>, it is possible to translate dance choreography into 
-						machine-parseable data by labeling x,y bounding boxes around each movement in a dance score. 
-						<br><br>The visualization paradigm below was developed to show <b>when</b>, in which <b>direction</b>, and 
-						<b>how long</b> a body part moves during a dance.
-					</p>
-					<img id='choreo-radial-explainer' src="{{ url_for('static', filename='assets/explainer-choreo-radial-black.svg') }}" alt="choreo-radial explainer graphic">
-				</div>
-				<div class='right-column'>
-					<img id='choreo-radial-explainer-body' src="{{ url_for('static', filename='assets/explainer-choreo-radial-body.svg') }}" alt="choreo-radial-body explainer graphic">
-				</div> -->
 			</div>
 		</div>
 	</div>
-	<div id='table-of-contents' class='blade desktop'>
-			<div class='feature-spread-container'>
-				<div>
-					<p class='era-title'>Table of contents</p>
-					<p class='era-title' style='margin-top: 0;'>what</p>
-				</div>
-			</div>
+	<div id='contents' class='blade'>
+		<div class='two-column-spread'>
+			<img id='table-of-contents' src="{{ url_for('static', filename='assets/table-of-contents.svg') }}" alt="choreo-radial explainer graphic">
 		</div>
+	</div>
 	<div id='modern-era-feature-spread' class='blade desktop'>
 		<div class='feature-spread-container'>
 			<div>
