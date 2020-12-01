@@ -713,7 +713,7 @@
 						<div id="coppelia-slider-container" class='slider-container'>
 							<button id="coppelia-play-button" class='play-button'>&#9658;</button>
 							<button id="coppelia-pause-button" class='play-button button-enabled'>❚❚</button>
-							<input type='range' min='0' max='139' step='1' value='0' id='coppelia-slider' class='slider'/> 
+							<input type='range' min='0' max='136' step='1' value='0' id='coppelia-slider' class='slider'/> 
 						</div>
 						<div id='coppelia-choreo-radial' class='choreo-radial'></div>
 				</div>
@@ -933,7 +933,7 @@
 var coppelia_dataset;
 var coppelia_svg;
 var coppelia_defs;
-var radiusOutwardMult_coppelia = 0.8;
+var radiusOutwardMult_coppelia = 0.7;
 var coppelia_measures = [
 			   {
 			      "index":0,
@@ -1440,8 +1440,7 @@ var coppeliaAudio = document.getElementById("coppelia-audio");
 
 // if (!MOBILE)
 d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
-	coppelia_dataset = coppelia_data;
-
+	coppelia_dataset = coppelia_data.filter(x=>x.direction_movement!='place');
 	//SVG container
 	coppelia_svg = d3.select("#coppelia-choreo-radial")
 		.append("svg")
@@ -1570,14 +1569,9 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 			.attr("stroke", animateColor)
 			.style("filter", "url(#glow)")
 			.transition()
-			// .delay( (curPlaybackTime-14)*900)
-			// .delay( (curPlaybackTime-25))
 				.duration( 1 )
 				.attr("opacity", 0.7)
-			// .transition()
-			// 	.ease(d3.easeLinear)
-			// 	.duration(200)
-			// 	.attr("stroke", "black")
+
 		circleWrappercoppelia
 			.append("circle")
 				.attr("opacity", 0)
@@ -1591,7 +1585,6 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 				// .delay( (curPlaybackTime-25))
 					.duration( 1 )
 						.attr("opacity", 0.5)
-	// }
 	};
 
 	//Run the update function when the slider is changed
@@ -1611,7 +1604,7 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 			t = (+b.property("value") + 1) % (+b.property("max") + 1);
 			curPlaybackTime = (coppelia_dataset.filter(x=>x.slider_time==t)[0].playbackTime)*2000
 			if (t == 0) { t = +b.property("min"); }
-			if (t >= 139){
+			if (t >= 136){
 				$("#coppelia-pause-button").addClass('button-enabled')
 				$("#coppelia-play-button").removeClass('button-enabled')
 				clearInterval (myTimer);
@@ -1619,8 +1612,7 @@ d3.json(datapath+'coppelia_dawn'+".json", function(coppelia_data) {
 			}
 			b.property("value", t);
 			update (t);
-		// }, 300);
-		}, 520);
+		}, 280);
 	});
 
 	d3.select("#coppelia-pause-button").on("click", function() {
