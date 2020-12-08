@@ -118,7 +118,7 @@
 		}
 		#year_1944 {
 			/* margin-top: 173vh; */
-			margin-top: 200vh;
+			margin-top: 156vh;
 		}
 		#year_1956 {
 			margin-top: 20vh;
@@ -147,8 +147,10 @@
 			width: 50%;
 			margin-top: 8.5vh;
 		}
-		#intro-p-3 {
-			
+		#methodology-link {
+			font-size: 2vh !important;
+			font-style: italic;
+			color: black !important;
 		}
 		#choreo-radial-explainer {
 			/* width: 60%; */
@@ -187,7 +189,7 @@
 		.child {
 			grid-area: 1 / 1 / 2 / 2;
 			/* opacity: 0.9; */
-			height: 1325vh;
+			height: 1280vh;
 			width: 20px;
 			border-left: var(--black-line-width) solid black;
 			margin-top: -18vw;
@@ -351,8 +353,8 @@
 			border-width: 1px;
 		}
 		#modern-era-feature-spread {
-			/* margin-top: 90vh !important; */
-			margin-top: 135vh !important;
+			margin-top: 90vh !important;
+			/* margin-top: 135vh !important; */
 		}
 		#taxonomy-timeline{
 			margin-top: var(--general-margin);
@@ -623,13 +625,15 @@
 				<img id='intro-p-12' class='intro-p' src="{{ url_for('static', filename='assets/intro-p-12.svg') }}" alt="">
 			</div>
 			<div class='two-column-spread desktop'>
+				<a  id='methodology-link' href=https://laurasher.github.io/labanotation/LabanotationMethodology.pdf>Read more about the methodology here.</a><br>
 				<img id='choreo-radial-explainer' src="{{ url_for('static', filename='assets/how-explainer.svg') }}" alt="choreo-radial explainer graphic">
 			</div>
 		</div>
 	</div>
 	<div id='contents' class='blade desktop'>
 		<div class='two-column-spread'>
-			<img id='table-of-contents' src="{{ url_for('static', filename='assets/table-of-contents.svg') }}" alt="choreo-radial explainer graphic">
+			<!-- <img id='table-of-contents' src="{{ url_for('static', filename='assets/table-of-contents.svg') }}" alt="choreo-radial explainer graphic"> -->
+			<img id='table-of-contents' src="{{ url_for('static', filename='assets/table-shortened.svg') }}" alt="choreo-radial explainer graphic">
 		</div>
 	</div>
 	<div id='modern-era-feature-spread' class='blade desktop'>
