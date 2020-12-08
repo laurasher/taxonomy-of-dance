@@ -107,7 +107,8 @@
 			margin-top: 25vh;
 		}
 		#WHAT {
-			margin-top: 98vh;
+			/* margin-top: 98vh; */
+			margin-top: 115vh;
 		}
 		#TRY {
 			margin-top: 260vh;
@@ -116,8 +117,8 @@
 			margin-top: 70vh;
 		}
 		#year_1944 {
-			/* margin-top: 143vh; */
-			margin-top: 173vh;
+			/* margin-top: 173vh; */
+			margin-top: 200vh;
 		}
 		#year_1956 {
 			margin-top: 20vh;
@@ -150,12 +151,15 @@
 			
 		}
 		#choreo-radial-explainer {
-			width: 60%;
+			/* width: 60%; */
+			width: 80%;
 			margin-top: 2vh;
 		}
 		#table-of-contents {
-			width: 60%;
-			margin-top: 2vh;
+			/* width: 60%; */
+			width: 80%;
+			margin-top: 17vh; /* plus 15vh */
+			/* margin-top: 2vh; */
 		}
 		#choreo-radial-explainer-body {
 			width: 80%;
@@ -183,7 +187,7 @@
 		.child {
 			grid-area: 1 / 1 / 2 / 2;
 			/* opacity: 0.9; */
-			height: 1240vh;
+			height: 1325vh;
 			width: 20px;
 			border-left: var(--black-line-width) solid black;
 			margin-top: -18vw;
@@ -292,6 +296,9 @@
 			font-size: 2vh !important;
 			line-height: 2.5vh !important;
 		}
+		.sub-era-overview {
+			display: none;
+		}
 		.column-paragraph{
 			width: 50%;
 		}
@@ -344,8 +351,8 @@
 			border-width: 1px;
 		}
 		#modern-era-feature-spread {
-			/* margin-top: 60vh !important; */
-			margin-top: 90vh !important;
+			/* margin-top: 90vh !important; */
+			margin-top: 135vh !important;
 		}
 		#taxonomy-timeline{
 			margin-top: var(--general-margin);
@@ -370,6 +377,7 @@
 		#colophon-img {
 			margin-top: 25vw;
 			width: 60%;
+			margin-left: 12vw !important;
 		}
 		input[type=range]{
 			pointer-events: none;
@@ -689,7 +697,7 @@
 			<div>
 				<p class='era-title'>The Modern & Contemporary Eras</p>
 				<p class='era-subtitle' style='margin-bottom: 5vh;'>Era overview</p>
-				<p class='feature-para'>Plotting measures in a feature space representing movement diversity and repetition, we can get a sense of the nature of the movement of each dance.</p>
+				<p class='feature-para sub-era-overview'>Plotting measures in a feature space representing movement diversity and repetition, we can get a sense of the nature of the movement of each dance.</p>
 			</div>
 			<img id='modern-era-choreo-radials' class='desktop grid-radials' src="{{ url_for('static', filename='assets/contemporary-era-radial-grid.svg') }}" alt="contemporary choreo radials">
 			<!-- <img id='modern-era-choreo-radials' class='mobile grid-radials' src="{{ url_for('static', filename='assets/contemporary-era-radial-grid-mobile.svg') }}" alt="contemporary choreo radials"> -->
@@ -757,7 +765,7 @@
 			<div>
 				<p class='era-title'>The Classical Era</p>
 				<p class='era-subtitle'>Era overview</p>
-				<p class='feature-para'>Plotting measures in a feature space representing movement diversity and repetition, we can get a sense of the nature of the movement of each dance.</p>
+				<p class='feature-para sub-era-overview'>Plotting measures in a feature space representing movement diversity and repetition, we can get a sense of the nature of the movement of each dance.</p>
 			</div>
 			<img id='modern-era-choreo-radials' class='desktop grid-radials' src="{{ url_for('static', filename='assets/classical-era-radial-grid.svg') }}" alt="contemporary choreo radials">
 			<!-- <img id='modern-era-choreo-radials' class='mobile grid-radials' src="{{ url_for('static', filename='assets/contemporary-era-radial-grid-mobile.svg') }}" alt="contemporary choreo radials"> -->
