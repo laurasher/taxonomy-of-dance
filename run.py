@@ -6,6 +6,10 @@ import os
 
 app = Flask(__name__)
 
+@app.route('/ping', methods=['GET])
+def ping():
+	return({"status":"ok"})
+
 @app.route('/', methods=['GET'])
 def home():
 	return render_template("home.html")
